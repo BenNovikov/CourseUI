@@ -6,14 +6,11 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #import "BNNRectView.h"
-#import "BNNRectView+Extensions.h"
-
-@interface BNNRectView ()
-
-- (CGRect)frameForPosition:(BNNRectPositionType)position;
-
-@end
+#import "BNNUIWindow+Extensions.h"
+#import "BNNUIColor+Extensions.h"
 
 @implementation BNNRectView
 
@@ -25,7 +22,7 @@
         _rectModel = rectModel;
     }
     
-    self.rectangle.frame = [self frameForPosition:rectModel.position];
+    self.rectangle.frame = [self.rectModel frame:self.rectangle.frame atPosition:rectModel.position];
 }
 
 #pragma mark -
@@ -47,14 +44,14 @@
 {
     NSTimeInterval duration = animated ? kBNNRectangleAnimationDuration : 0;
     NSTimeInterval delay = animated ? kBNNRectangleAnimationDelay : 0;
-    CGRect frame = [self frameForPosition:position];
+    CGRect frame = [self.rectModel frame:self.rectangle.frame atPosition:position];
     [UIView animateWithDuration:duration
                           delay:delay
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          self.rectangle.frame = frame;
                          
-                         self.rectangle.backgroundColor = [self randomColor];
+                         self.rectangle.backgroundColor = [self.rectangle.backgroundColor randomColor];
 //                         CGAffineTransform scale = CGAffineTransformMakeScale([self randomScale], [self randomScale]);
 //                         CGAffineTransform rotation = CGAffineTransformMakeRotation([self randomRotation]);
 //                         CGAffineTransform transform = CGAffineTransformConcat(scale, rotation);
@@ -70,21 +67,5 @@
 
 #pragma mark -
 #pragma mark Private
-
-// to Model
-- (CGRect)frameForPosition:(BNNRectPositionType)position
-{
-    CGRect  frame           = self.rectangle.frame;
-    CGFloat frameWidth      = frame.size.width;
-    CGFloat frameHeight     = frame.size.height;
-    CGRect screenBounds     = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth     = screenBounds.size.width;
-    CGFloat screenHeight    = screenBounds.size.height;
-    
-    frame.origin.x = ((position & 1) ^ ((position & (1 << 1)) >> 1)) * (screenWidth - frameWidth);
-    frame.origin.y = ((position & (1 << 1)) >> 1) * (screenHeight - frameHeight);
-    
-    return frame;
-}
 
 @end

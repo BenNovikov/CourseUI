@@ -1,5 +1,5 @@
 //
-//  BNNRectViewController+Extensions.h
+//  BNNUIWindow+Extensions.h
 //  CourseUI
 //
 //  Created by Admin on 15/09/12/.
@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIView.h>
+
 #import "BNNRectView.h"
 
-@interface BNNRectView (Extensions)
+@interface UIWindow (Extensions)
 
-- (UIColor *)randomColor;
 - (CGFloat)randomScale;
 - (CGFloat)randomRotation;
 

@@ -16,7 +16,6 @@
 
 - (void)moveRectWithBlock:(BNNRectPositionType(^)(void))block;
 - (void)moveRectTo:(BNNRectPositionType)position;
-- (BNNRectPositionBlock)nextPositionBlock;
 
 @end
 
@@ -51,7 +50,7 @@
     self.running = ![self isRunning];
     NSLog(@"runnung:%d", self.running);
     if (self.running) {
-        [self moveRectWithBlock:[self nextPositionBlock]];
+        [self moveRectWithBlock:[self.rectModel nextPositionBlock]];
     }
 }
 
@@ -93,15 +92,5 @@
         }];
     }
 }
-
-// to Model
-- (BNNRectPositionBlock)nextPositionBlock {
-    BNNRectPositionBlock result = ^{
-        return (self.rectModel.position + 1) % BNNRectPositionTypeCount;
-    };
-    
-    return result;
-}
-
 
 @end

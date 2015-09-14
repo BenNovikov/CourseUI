@@ -15,5 +15,7 @@
 @property(nonatomic, unsafe_unretained) BNNRectPositionType position;
 
 - (instancetype)initWithPosition:(BNNRectPositionType)position;
+- (BNNRectPositionBlock)nextPositionBlock;
+- (CGRect)frame:(CGRect)viewFrame atPosition:(BNNRectPositionType)position;
 
 @end
