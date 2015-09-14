@@ -12,8 +12,6 @@
 
 @interface BNNRectModel : NSObject
 @property(nonatomic, unsafe_unretained) BNNRectPositionType position;
-//@property(nonatomic, unsafe_unretained) CGFloat             width;
-//@property(nonatomic, unsafe_unretained) CGFloat             height;
 
 - (instancetype)initWithPosition:(BNNRectPositionType)position;
 

@@ -16,9 +16,6 @@
 - (instancetype)initWithPosition:(BNNRectPositionType)position {
     if ((self = [super init])) {
         self.position = position;
-        
-//        self.width = kBNNRectSizeWidth;
-//        self.height = kBNNRectSizeHeigh;
     }
     
     return self;

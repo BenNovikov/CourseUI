@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, BNNRectPositionType) {
 
 typedef BNNRectPositionType(^BNNRectPositionBlock)(void);
 
+//get min/max
 #define GetOriginAdjustedForMainScreenBounds(objectName, subtractX, subtractY) \
 objectName.origin.x = [[UIScreen mainScreen] bounds].size.width - subtractX; \
 objectName.origin.y = [[UIScreen mainScreen] bounds].size.height - subtractY

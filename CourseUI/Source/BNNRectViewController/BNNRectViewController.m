@@ -31,8 +31,6 @@
     if ([self isViewLoaded] && [self.view isKindOfClass:([BNNRectView class])]) {
         NSLog(@"[self.view isKindOfClass:([BNNRectView class])]:%d", [self.view isKindOfClass:([BNNRectView class])]);
         
-        
-        
         return (BNNRectView *)self.view;
     }
     
@@ -51,7 +49,6 @@
 #pragma mark Public
 
 - (IBAction)onClickStartButton:(id)sender {
-    //BOOL current = self.running;
     self.running = ![self isRunning];
     NSLog(@"runnung:%d", self.running);
     if (self.running) {
@@ -99,6 +96,7 @@
     }
 }
 
+// to Model
 - (BNNRectPositionBlock)nextPositionBlock {
     BNNRectPositionBlock result = ^{
         return (self.rect.position + 1) % BNNRectPositionTypeCount;

@@ -10,10 +10,10 @@
 #import "BNNRectModel.h"
 
 @interface BNNRectView : UIView
-@property(nonatomic, weak)    IBOutlet    UIImageView   *rectangle;
-@property(nonatomic, weak)    IBOutlet    UILabel   *startButton;
+@property (nonatomic, weak)     IBOutlet    UIImageView *rectangle;
+@property (nonatomic, weak)     IBOutlet    UILabel     *startButton; //animateButton
 
-@property(nonatomic, strong)    BNNRectModel    *rect;
+@property(nonatomic, strong)    BNNRectModel            *rect;      //rectModel
 
 - (void)setRectPosition:(BNNRectPositionType)position;
 - (void)setRectPosition:(BNNRectPositionType)position

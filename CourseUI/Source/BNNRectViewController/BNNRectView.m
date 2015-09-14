@@ -24,8 +24,6 @@
     if (rect != _rect) {
         _rect = rect;
     }
-
-    //Images
     
     self.rectangle.frame = [self frameForPosition:rect.position];
 }
@@ -59,13 +57,13 @@
                          self.rectangle.backgroundColor = [self randomColor];
 //                         CGAffineTransform scale = CGAffineTransformMakeScale([self randomScale], [self randomScale]);
 //                         CGAffineTransform rotation = CGAffineTransformMakeRotation([self randomRotation]);
-//                         CGAffineTransform transform = rotation;
-//                         transform = CGAffineTransformConcat(scale, rotation);                         
+//                         CGAffineTransform transform = CGAffineTransformConcat(scale, rotation);
 //                         self.rectangle.transform = transform;
                      }
                      completion:^(BOOL finished){
                          if (block) {
                              block(finished);
+                             // set position
                          }
                      }];
 }
@@ -73,15 +71,17 @@
 #pragma mark -
 #pragma mark Private
 
+// to Model
 - (CGRect)frameForPosition:(BNNRectPositionType)position
 {
     CGRect  frame = self.rectangle.frame;
     CGFloat frameWidth = frame.size.width;
     CGFloat frameHeight = frame.size.height;
-//    CGFloat frameWidth = self.rect.width;
-//    CGFloat frameHeight = self.rect.height;
-    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+
+//#define ...
+    CGSize size = [[UIScreen mainScreen] bounds].size;
+    CGFloat screenWidth = size.width;
+    CGFloat screenHeight = size.height;
     
     switch (position) {
         case BNNUpperLeftCorner:
@@ -99,8 +99,6 @@
         default:
             break;
     }
-//    frame.size.width = frameWidth;
-//    frame.size.height = frameHeight;
     
     return frame;
 }
