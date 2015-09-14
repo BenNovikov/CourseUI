@@ -7,14 +7,15 @@
 //
 
 #import "BNNRectView+Extensions.h"
-#import "BNNConstants+Macros.h"
+#import "BNNConstants.h"
+#import "BNNMacros.h"
 
 @implementation BNNRectView (Extensions)
 
-- (UIColor *)randomColor {
-    CGFloat r = GetRandomCGFloat(255);
-    CGFloat g = GetRandomCGFloat(255);
-    CGFloat b = GetRandomCGFloat(255);
+- (UIColor *)randomColor {  
+    CGFloat r = BNN_RANDOM_FLOAT(255);
+    CGFloat g = BNN_RANDOM_FLOAT(255);
+    CGFloat b = BNN_RANDOM_FLOAT(255);
     
     return [UIColor colorWithRed:r green:g blue:b alpha:kBNNRandomColorAlpha];
 }

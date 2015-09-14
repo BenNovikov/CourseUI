@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "BNNConstants+Macros.h"
+#import "BNNConstants.h"
+#import "BNNMacros.h"
 
 @interface BNNRectModel : NSObject
 @property(nonatomic, unsafe_unretained) BNNRectPositionType position;

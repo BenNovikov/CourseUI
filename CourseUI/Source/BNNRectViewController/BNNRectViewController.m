@@ -29,7 +29,6 @@
 
 - (BNNRectView *)rectView {
     if ([self isViewLoaded] && [self.view isKindOfClass:([BNNRectView class])]) {
-        NSLog(@"[self.view isKindOfClass:([BNNRectView class])]:%d", [self.view isKindOfClass:([BNNRectView class])]);
         
         return (BNNRectView *)self.view;
     }
@@ -48,7 +47,7 @@
 #pragma mark -
 #pragma mark Public
 
-- (IBAction)onClickStartButton:(id)sender {
+- (IBAction)onClickAnimationButton:(id)sender {
     self.running = ![self isRunning];
     NSLog(@"runnung:%d", self.running);
     if (self.running) {
@@ -68,7 +67,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
 
 #pragma mark -
 #pragma mark Private

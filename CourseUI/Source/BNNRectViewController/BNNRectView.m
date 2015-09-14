@@ -64,7 +64,6 @@
                          if (block) {
                              block(finished);
                              self.rectModel.position = position;
-                             // set position
                          }
                      }];
 }
@@ -75,31 +74,15 @@
 // to Model
 - (CGRect)frameForPosition:(BNNRectPositionType)position
 {
-    CGRect  frame = self.rectangle.frame;
-    CGFloat frameWidth = frame.size.width;
-    CGFloat frameHeight = frame.size.height;
-
-//#define ...
-    CGSize size = [[UIScreen mainScreen] bounds].size;
-    CGFloat screenWidth = size.width;
-    CGFloat screenHeight = size.height;
+    CGRect  frame           = self.rectangle.frame;
+    CGFloat frameWidth      = frame.size.width;
+    CGFloat frameHeight     = frame.size.height;
+    CGRect screenBounds     = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth     = screenBounds.size.width;
+    CGFloat screenHeight    = screenBounds.size.height;
     
-    switch (position) {
-        case BNNUpperLeftCorner:
-            GetOriginAdjustedForMainScreenBounds(frame, screenWidth, screenHeight);
-            break;
-        case BNNUpperRightCorner:
-            GetOriginAdjustedForMainScreenBounds(frame, frameWidth, screenHeight);
-            break;
-        case BNNBottomRightCorner:
-            GetOriginAdjustedForMainScreenBounds(frame, frameWidth, frameHeight);
-            break;
-        case BNNBottomLeftCorner:
-            GetOriginAdjustedForMainScreenBounds(frame, screenWidth, frameHeight);
-            break;
-        default:
-            break;
-    }
+    frame.origin.x = ((position & 1) ^ ((position & (1 << 1)) >> 1)) * (screenWidth - frameWidth);
+    frame.origin.y = ((position & (1 << 1)) >> 1) * (screenHeight - frameHeight);
     
     return frame;
 }

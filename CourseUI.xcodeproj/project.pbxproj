@@ -38,7 +38,7 @@
 		8462E48A1BA4C4EE00FEDC15 /* Tasks */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tasks; sourceTree = "<group>"; };
 		8462E48C1BA4C69500FEDC15 /* BNNRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNRectView.h; path = BNNRectViewController/BNNRectView.h; sourceTree = "<group>"; };
 		8462E48D1BA4C69500FEDC15 /* BNNRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNRectView.m; path = BNNRectViewController/BNNRectView.m; sourceTree = "<group>"; };
-		8462E48F1BA4D78C00FEDC15 /* BNNConstants+Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BNNConstants+Macros.h"; path = "Extensions+Protocols/BNNConstants+Macros.h"; sourceTree = "<group>"; };
+		8462E48F1BA4D78C00FEDC15 /* BNNConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BNNConstants.h; path = "Extensions+Protocols/BNNConstants.h"; sourceTree = "<group>"; };
 		848E9CAB1BA3641100B0B178 /* CourseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848E9CAF1BA3641100B0B178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848E9CB01BA3641100B0B178 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -52,6 +52,7 @@
 		848E9CCA1BA3641100B0B178 /* CourseUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseUITests.m; sourceTree = "<group>"; };
 		848E9CD61BA3678E00B0B178 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BNNRectViewController.xib; path = BNNRectViewController/BNNRectViewController.xib; sourceTree = "<group>"; };
+		84C27B9E1BA751C7001300B8 /* BNNMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNNMacros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,16 +73,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8462E4811BA4B9C700FEDC15 /* BNNRectViewConroller */ = {
+		8462E4811BA4B9C700FEDC15 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				848E9CB51BA3641100B0B178 /* BNNRectViewController.h */,
-				848E9CB61BA3641100B0B178 /* BNNRectViewController.m */,
-				848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */,
-				8462E48C1BA4C69500FEDC15 /* BNNRectView.h */,
-				8462E48D1BA4C69500FEDC15 /* BNNRectView.m */,
+				84C27B9F1BA76099001300B8 /* BNNRectViewController */,
 			);
-			name = BNNRectViewConroller;
+			name = "User Interface";
 			sourceTree = "<group>";
 		};
 		8462E4851BA4BA6700FEDC15 /* Model */ = {
@@ -93,14 +90,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		8462E4891BA4BB3F00FEDC15 /* Extensions+Protocols */ = {
+		8462E4891BA4BB3F00FEDC15 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				8462E48F1BA4D78C00FEDC15 /* BNNConstants+Macros.h */,
+				8462E48F1BA4D78C00FEDC15 /* BNNConstants.h */,
+				84C27B9E1BA751C7001300B8 /* BNNMacros.h */,
 				8462E4861BA4BB3900FEDC15 /* BNNRectView+Extensions.h */,
 				8462E4871BA4BB3900FEDC15 /* BNNRectView+Extensions.m */,
 			);
-			name = "Extensions+Protocols";
+			name = Library;
 			sourceTree = "<group>";
 		};
 		848E9CA21BA3641100B0B178 = {
@@ -155,9 +153,9 @@
 		848E9CD41BA3674400B0B178 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8462E4811BA4B9C700FEDC15 /* BNNRectViewConroller */,
+				8462E4811BA4B9C700FEDC15 /* User Interface */,
 				8462E4851BA4BA6700FEDC15 /* Model */,
-				8462E4891BA4BB3F00FEDC15 /* Extensions+Protocols */,
+				8462E4891BA4BB3F00FEDC15 /* Library */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -169,6 +167,18 @@
 				848E9CD61BA3678E00B0B178 /* LaunchScreen.xib */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		84C27B9F1BA76099001300B8 /* BNNRectViewController */ = {
+			isa = PBXGroup;
+			children = (
+				848E9CB51BA3641100B0B178 /* BNNRectViewController.h */,
+				848E9CB61BA3641100B0B178 /* BNNRectViewController.m */,
+				848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */,
+				8462E48C1BA4C69500FEDC15 /* BNNRectView.h */,
+				8462E48D1BA4C69500FEDC15 /* BNNRectView.m */,
+			);
+			name = BNNRectViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

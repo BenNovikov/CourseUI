@@ -19,13 +19,6 @@ typedef NS_ENUM(NSUInteger, BNNRectPositionType) {
 
 typedef BNNRectPositionType(^BNNRectPositionBlock)(void);
 
-//get min/max
-#define GetOriginAdjustedForMainScreenBounds(objectName, subtractX, subtractY) \
-objectName.origin.x = [[UIScreen mainScreen] bounds].size.width - subtractX; \
-objectName.origin.y = [[UIScreen mainScreen] bounds].size.height - subtractY
-
-#define GetRandomCGFloat(limit) (CGFloat)(arc4random() % (limit + 1)) / (float)limit
-
 #define BNN_NSTIMEINTERVAL_KEY(key, value) static NSTimeInterval const key = value
 BNN_NSTIMEINTERVAL_KEY(kBNNRectangleAnimationDuration,  3.0);
 BNN_NSTIMEINTERVAL_KEY(kBNNRectangleAnimationDelay,     1.0);
@@ -37,15 +30,6 @@ BNN_FLOAT_KEY(kBNNRandomColorAlpha,                     1.f);
 BNN_FLOAT_KEY(kBNNRectSizeWidth,                        100.f);
 BNN_FLOAT_KEY(kBNNRectSizeHeigh,                        100.f);
 
-#define SetImageName(image, imageName) \
-[UIImage imageNamed:@imageName]
-
-/*
- UIImage *image[10];
- image[0] = SetImageName(image[0], "01.jpg");
- UIImage *image1 = [UIImage imageNamed:@"02.jpg"]; 
- NSArray *images = [NSArray arrayWithArray:image];
- */
 /*reserved
 #define BNN_STRING_KEY(key, value) static NSString *const key = value
 BNN_STRING_KEY(kBNN_, @"");
