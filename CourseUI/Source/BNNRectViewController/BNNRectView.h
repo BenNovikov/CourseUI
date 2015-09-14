@@ -11,9 +11,9 @@
 
 @interface BNNRectView : UIView
 @property (nonatomic, weak)     IBOutlet    UIImageView *rectangle;
-@property (nonatomic, weak)     IBOutlet    UILabel     *startButton; //animateButton
+@property (nonatomic, weak)     IBOutlet    UIButton     *startButton; //animateButton
 
-@property(nonatomic, strong)    BNNRectModel            *rect;      //rectModel
+@property(nonatomic, strong)    BNNRectModel            *rectModel;      //rectModel
 
 - (void)setRectPosition:(BNNRectPositionType)position;
 - (void)setRectPosition:(BNNRectPositionType)position

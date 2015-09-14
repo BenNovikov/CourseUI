@@ -20,12 +20,12 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setRect:(BNNRectModel *)rect {
-    if (rect != _rect) {
-        _rect = rect;
+- (void)setRect:(BNNRectModel *)rectModel {
+    if (rectModel != _rectModel) {
+        _rectModel = rectModel;
     }
     
-    self.rectangle.frame = [self frameForPosition:rect.position];
+    self.rectangle.frame = [self frameForPosition:rectModel.position];
 }
 
 #pragma mark -
@@ -63,6 +63,7 @@
                      completion:^(BOOL finished){
                          if (block) {
                              block(finished);
+                             self.rectModel.position = position;
                              // set position
                          }
                      }];

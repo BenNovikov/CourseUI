@@ -11,7 +11,7 @@
 #import "BNNRectModel.h"
 
 @interface BNNRectViewController : UIViewController
-@property (nonatomic, strong) BNNRectModel *rect;
+@property (nonatomic, strong) BNNRectModel *rectModel;
 
 - (IBAction)onClickStartButton:(id)sender;
 

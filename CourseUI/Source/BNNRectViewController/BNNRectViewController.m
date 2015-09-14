@@ -37,12 +37,12 @@
     return nil;
 }
 
-- (void)setRect:(BNNRectModel *)rect {
-    if (rect != _rect) {
-        _rect = rect;
+- (void)setRect:(BNNRectModel *)rectModel {
+    if (rectModel != _rectModel) {
+        _rectModel = rectModel;
     }
     
-    self.rectView.rect = rect;
+    self.rectView.rectModel = rectModel;
 }
 
 #pragma mark -
@@ -62,7 +62,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.rectView.rect = self.rect;
+    self.rectView.rectModel = self.rectModel;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,7 +78,7 @@
         BNNRectPositionType position = block();
         [self.rectView setRectPosition:position animated:YES completion:^(BOOL finished){
             if (finished) {
-                self.rect.position = position;
+                self.rectModel.position = position;
                 [self moveRectWithBlock:block];
             }
         }];
@@ -89,8 +89,8 @@
     if (self.running) {
         [self.rectView setRectPosition:position animated:YES completion:^(BOOL finished) {
             if (finished) {
-                self.rect.position = position;
-                [self moveRectTo:(self.rect.position + 1) % BNNRectPositionTypeCount];
+                self.rectModel.position = position;
+                [self moveRectTo:(self.rectModel.position + 1) % BNNRectPositionTypeCount];
             }
         }];
     }
@@ -99,7 +99,7 @@
 // to Model
 - (BNNRectPositionBlock)nextPositionBlock {
     BNNRectPositionBlock result = ^{
-        return (self.rect.position + 1) % BNNRectPositionTypeCount;
+        return (self.rectModel.position + 1) % BNNRectPositionTypeCount;
     };
     
     return result;

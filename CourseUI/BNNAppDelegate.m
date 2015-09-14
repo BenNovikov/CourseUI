@@ -23,7 +23,7 @@
     BNNRectViewController *controller = [BNNRectViewController new];
     window.rootViewController = controller;
     
-    controller.rect = [[BNNRectModel alloc] initWithPosition:BNNUpperLeftCorner];
+    controller.rectModel = [[BNNRectModel alloc] initWithPosition:BNNUpperLeftCorner];
     [window makeKeyAndVisible];
     
     return YES;
