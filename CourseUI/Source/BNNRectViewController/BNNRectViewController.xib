@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BNNRectViewController">
@@ -27,14 +27,14 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onClickAnimationButton:" destination="-1" eventType="touchUpInside" id="irm-kq-7si"/>
+                        <action selector="onAnimationButton:" destination="-1" eventType="touchUpInside" id="MCQ-Ni-QSW"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="animationButton" destination="x3o-5c-WJz" id="w1r-8i-Aur"/>
-                <outlet property="rectangle" destination="067-g1-PuV" id="Ak1-sx-bVA"/>
+                <outlet property="animationButton" destination="x3o-5c-WJz" id="BfG-G4-PvF"/>
+                <outlet property="rectView" destination="067-g1-PuV" id="eX0-2P-WW8"/>
             </connections>
             <point key="canvasLocation" x="485" y="375"/>
         </view>

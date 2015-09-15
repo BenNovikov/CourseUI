@@ -1,15 +1,15 @@
 //
-//  BNNUIWindow+Extensions.m
+//  BNNUIWindow+BNNWindow.m
 //  CourseUI
 //
 //  Created by Admin on 15/09/12/.
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNUIWindow+Extensions.h"
+#import "BNNUIWindow+BNNWindow.h"
 #import "BNNConstants.h"
 
-@implementation UIWindow (Extensions)
+@implementation UIWindow (BNNWindow)
 
 - (CGFloat)randomScale {
     return (float)(arc4random() % (int)(kBNNAffineTransformScaleUpperLimit * 100 + 1)) / 100 + kBNNAffineTransformScaleLowerLimit;

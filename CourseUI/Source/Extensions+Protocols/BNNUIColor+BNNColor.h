@@ -1,5 +1,5 @@
 //
-//  BNNUIColor+BNNUIColor_Extensions.h
+//  BNNUIColor+BNNColor.h
 //  CourseUI
 //
 //  Created by Admin on 15/09/15/.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (Extensions)
+@interface UIColor (BNNColor)
 
 - (UIColor *)randomColor;
 

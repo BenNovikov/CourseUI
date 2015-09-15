@@ -13,7 +13,7 @@
 @interface BNNRectViewController : UIViewController
 @property (nonatomic, strong) BNNRectModel *rectModel;
 
-- (IBAction)onClickAnimationButton:(id)sender;
+- (IBAction)onAnimationButton:(id)sender;
 
 @end
 

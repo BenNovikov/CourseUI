@@ -1,5 +1,5 @@
 //
-//  BNNUIWindow+Extensions.h
+//  BNNUIWindow+BNNWindow.h
 //  CourseUI
 //
 //  Created by Admin on 15/09/12/.
@@ -11,7 +11,7 @@
 
 #import "BNNRectView.h"
 
-@interface UIWindow (Extensions)
+@interface UIWindow (BNNWindow)
 
 - (CGFloat)randomScale;
 - (CGFloat)randomRotation;

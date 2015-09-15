@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "BNNRectView.h"
-#import "BNNUIWindow+Extensions.h"
-#import "BNNUIColor+Extensions.h"
+#import "BNNUIWindow+BNNWindow.h"
+#import "BNNUIColor+BNNColor.h"
+
+@interface BNNRectView()
+
+- (CGRect)frame:(CGRect)viewFrame atPosition:(BNNRectPositionType)position;
+
+@end
 
 @implementation BNNRectView
 
@@ -22,7 +28,7 @@
         _rectModel = rectModel;
     }
     
-    self.rectangle.frame = [self.rectModel frame:self.rectangle.frame atPosition:rectModel.position];
+    self.rectView.frame = [self frame:self.rectView.frame atPosition:rectModel.position];
 }
 
 #pragma mark -
@@ -44,18 +50,18 @@
 {
     NSTimeInterval duration = animated ? kBNNRectangleAnimationDuration : 0;
     NSTimeInterval delay = animated ? kBNNRectangleAnimationDelay : 0;
-    CGRect frame = [self.rectModel frame:self.rectangle.frame atPosition:position];
+    CGRect frame = [self frame:self.rectView.frame atPosition:position];
     [UIView animateWithDuration:duration
                           delay:delay
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
-                         self.rectangle.frame = frame;
+                         self.rectView.frame = frame;
                          
-                         self.rectangle.backgroundColor = [self.rectangle.backgroundColor randomColor];
+                         self.rectView.backgroundColor = [self.rectView.backgroundColor randomColor];
 //                         CGAffineTransform scale = CGAffineTransformMakeScale([self randomScale], [self randomScale]);
 //                         CGAffineTransform rotation = CGAffineTransformMakeRotation([self randomRotation]);
 //                         CGAffineTransform transform = CGAffineTransformConcat(scale, rotation);
-//                         self.rectangle.transform = transform;
+//                         self.rectView.transform = transform;
                      }
                      completion:^(BOOL finished){
                          if (block) {
@@ -67,5 +73,20 @@
 
 #pragma mark -
 #pragma mark Private
+
+- (CGRect)frame:(CGRect)viewFrame atPosition:(BNNRectPositionType)position
+{
+    CGRect  frame           = viewFrame;
+    CGFloat frameWidth      = frame.size.width;
+    CGFloat frameHeight     = frame.size.height;
+    CGRect screenBounds     = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth     = screenBounds.size.width;
+    CGFloat screenHeight    = screenBounds.size.height;
+    
+    frame.origin.x = ((position & 1) ^ ((position & (1 << 1)) >> 1)) * (screenWidth - frameWidth);
+    frame.origin.y = ((position & (1 << 1)) >> 1) * (screenHeight - frameHeight);
+    
+    return frame;
+}
 
 @end

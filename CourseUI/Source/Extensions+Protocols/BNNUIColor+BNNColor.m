@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNUIColor+Extensions.h"
+#import "BNNUIColor+BNNColor.h"
 #import "BNNConstants.h"
 #import "BNNMacros.h"
 
-@implementation UIColor (Extensions)
+@implementation UIColor (BNNColor)
 
 - (UIColor *)randomColor {
     CGFloat r = BNN_RANDOM_FLOAT(255);

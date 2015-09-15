@@ -11,11 +11,12 @@
 #import "BNNRectModel.h"
 
 @interface BNNRectViewController ()
-@property (nonatomic, readonly)                 BNNRectView *rectView;
-@property (nonatomic, assign, getter=isRunning) BOOL        running;
+@property (nonatomic, readonly)                         BNNRectView *rectView;
+@property (nonatomic, assign, getter=isAnimationRunning) BOOL       animationRunning;
 
 - (void)moveRectWithBlock:(BNNRectPositionType(^)(void))block;
-- (void)moveRectTo:(BNNRectPositionType)position;
+- (void)moveRectToPosition:(BNNRectPositionType)position;
+- (BNNRectPositionBlock)nextPositionBlock;
 
 @end
 
@@ -46,11 +47,11 @@
 #pragma mark -
 #pragma mark Public
 
-- (IBAction)onClickAnimationButton:(id)sender {
-    self.running = ![self isRunning];
-    NSLog(@"runnung:%d", self.running);
-    if (self.running) {
-        [self moveRectWithBlock:[self.rectModel nextPositionBlock]];
+- (IBAction)onAnimationButton:(id)sender {
+    self.animationRunning = ![self isAnimationRunning];
+    NSLog(@"animation runnung:%d", self.animationRunning);
+    if (self.animationRunning) {
+        [self moveRectWithBlock:[self nextPositionBlock]];
     }
 }
 
@@ -71,7 +72,7 @@
 #pragma mark Private
 
 - (void)moveRectWithBlock:(BNNRectPositionType(^)(void))block {
-    if (self.running) {
+    if (self.animationRunning) {
         BNNRectPositionType position = block();
         [self.rectView setRectPosition:position animated:YES completion:^(BOOL finished){
             if (finished) {
@@ -82,15 +83,23 @@
     }
 }
 
-- (void)moveRectTo:(BNNRectPositionType)position {
-    if (self.running) {
+- (void)moveRectToPosition:(BNNRectPositionType)position {
+    if (self.animationRunning) {
         [self.rectView setRectPosition:position animated:YES completion:^(BOOL finished) {
             if (finished) {
                 self.rectModel.position = position;
-                [self moveRectTo:(self.rectModel.position + 1) % BNNRectPositionTypeCount];
+                [self moveRectToPosition:(self.rectModel.position + 1) % BNNRectPositionTypeCount];
             }
         }];
     }
+}
+
+- (BNNRectPositionBlock)nextPositionBlock {
+    BNNRectPositionBlock result = ^{
+        return (self.rectModel.position + 1) % BNNRectPositionTypeCount;
+    };
+    
+    return result;
 }
 
 @end
