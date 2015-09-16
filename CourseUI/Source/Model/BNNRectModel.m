@@ -23,4 +23,8 @@
     return self;
 }
 
+- (BNNRectPositionType)nextPosition {
+    return (self.position + 1) % BNNRectPositionTypeCount;
+}
+
 @end

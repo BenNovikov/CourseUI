@@ -15,5 +15,6 @@
 @property(nonatomic, unsafe_unretained) BNNRectPositionType position;
 
 - (instancetype)initWithPosition:(BNNRectPositionType)position;
+- (BNNRectPositionType)nextPosition;
 
 @end

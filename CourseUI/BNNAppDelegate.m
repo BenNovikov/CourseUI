@@ -8,6 +8,7 @@
 
 #import "BNNAppDelegate.h"
 #import "BNNRectViewController.h"
+#import "UIViewController+BNNViewController.h"
 
 @interface BNNAppDelegate ()
 
@@ -20,7 +21,7 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
-    BNNRectViewController *controller = [BNNRectViewController new];
+    BNNRectViewController *controller = [BNNRectViewController controller];
     window.rootViewController = controller;
     
     controller.rectModel = [[BNNRectModel alloc] initWithPosition:BNNUpperLeftCorner];

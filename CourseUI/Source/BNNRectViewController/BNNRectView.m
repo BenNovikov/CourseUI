@@ -16,6 +16,10 @@
 
 - (CGRect)frame:(CGRect)viewFrame atPosition:(BNNRectPositionType)position;
 
+//- (void)moveRectWithBlock:(BNNRectPositionType(^)(void))block;
+//- (void)moveRectToPosition:(BNNRectPositionType)position;
+//- (BNNRectPositionBlock)nextPositionBlock;
+
 @end
 
 @implementation BNNRectView
@@ -55,18 +59,15 @@
                           delay:delay
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
-                         self.rectView.frame = frame;
-                         
-                         self.rectView.backgroundColor = [self.rectView.backgroundColor randomColor];
-//                         CGAffineTransform scale = CGAffineTransformMakeScale([self randomScale], [self randomScale]);
-//                         CGAffineTransform rotation = CGAffineTransformMakeRotation([self randomRotation]);
-//                         CGAffineTransform transform = CGAffineTransformConcat(scale, rotation);
-//                         self.rectView.transform = transform;
+                         UIView *currentView = self.rectView;
+                         currentView.frame = frame;
+                         currentView.backgroundColor = [currentView.backgroundColor randomColor];
                      }
-                     completion:^(BOOL finished){
+                     completion:^(BOOL finished) {
+                         self.rectModel.position = position;
+                         
                          if (block) {
                              block(finished);
-                             self.rectModel.position = position;
                          }
                      }];
 }
@@ -88,5 +89,36 @@
     
     return frame;
 }
+
+
+#pragma mark -
+#pragma mark 2BeKilledLater
+
+//- (void)moveRectWithBlock:(BNNRectPositionType(^)(void))block {
+//    if (self. animationRunning) {
+//        BNNRectPositionType position = block();
+//        [self.rectView setRectPosition:position animated:YES completion:^(BOOL finished){
+//            self.rectModel.position = position;
+//            if (finished) {
+//                [self moveRectWithBlock:block];
+//            }
+//        }];
+//    }
+//}
+
+
+//- (void)moveRectToPosition:(BNNRectPositionType)position {
+//    if (self.animationRunning) {
+//        [self.rectView setRectPosition:position animated:YES completion:^(BOOL finished) {
+//            if (finished) {
+//                self.rectModel.position = position;
+//                [self moveRectToPosition:(self.rectModel.position + 1) % BNNRectPositionTypeCount];
+//            }
+//        }];
+//    }
+//}
+
+
+
 
 @end
