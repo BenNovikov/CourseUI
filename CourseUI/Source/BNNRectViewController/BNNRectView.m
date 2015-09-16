@@ -9,31 +9,16 @@
 #import <UIKit/UIKit.h>
 
 #import "BNNRectView.h"
-#import "BNNUIWindow+BNNWindow.h"
-#import "BNNUIColor+BNNColor.h"
+#import "UIColor+BNNColor.h"
+#import "UIWindow+BNNWindow.h"
 
 @interface BNNRectView()
 
-- (CGRect)frame:(CGRect)viewFrame atPosition:(BNNRectPositionType)position;
-
-//- (void)moveRectWithBlock:(BNNRectPositionType(^)(void))block;
-//- (void)moveRectToPosition:(BNNRectPositionType)position;
-//- (BNNRectPositionBlock)nextPositionBlock;
+- (CGRect)frameAtPosition:(BNNRectPositionType)position;
 
 @end
 
 @implementation BNNRectView
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setRect:(BNNRectModel *)rectModel {
-    if (rectModel != _rectModel) {
-        _rectModel = rectModel;
-    }
-    
-    self.rectView.frame = [self frame:self.rectView.frame atPosition:rectModel.position];
-}
 
 #pragma mark -
 #pragma mark Public
@@ -53,8 +38,8 @@
              completion:(void(^)(BOOL finished))block
 {
     NSTimeInterval duration = animated ? kBNNRectangleAnimationDuration : 0;
-    NSTimeInterval delay = animated ? kBNNRectangleAnimationDelay : 0;
-    CGRect frame = [self frame:self.rectView.frame atPosition:position];
+    NSTimeInterval delay    = animated ? kBNNRectangleAnimationDelay : 0;
+    CGRect frame = [self frameAtPosition:position];
     [UIView animateWithDuration:duration
                           delay:delay
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
@@ -72,53 +57,53 @@
                      }];
 }
 
+- (void)animateRect {
+    if (self.animationRunning) {
+        __weak typeof(self) weakSelf = self;
+        [weakSelf setRectPosition:[self.rectModel nextPosition] animated:YES completion:^(BOOL finished) {
+            if (finished) {
+                __strong typeof(self) self = weakSelf;
+                [self animateRect];
+            }
+        }];
+    }
+}
+
 #pragma mark -
 #pragma mark Private
 
-- (CGRect)frame:(CGRect)viewFrame atPosition:(BNNRectPositionType)position
+#define SIZE_X_SUBTRACT(minuend, subtrahend) minuend.size.width  - subtrahend.size.width
+#define SIZE_Y_SUBTRACT(minuend, subtrahend) minuend.size.height - subtrahend.size.height
+
+- (CGRect)frameAtPosition:(BNNRectPositionType)position
 {
-    CGRect  frame           = viewFrame;
-    CGFloat frameWidth      = frame.size.width;
-    CGFloat frameHeight     = frame.size.height;
-    CGRect screenBounds     = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth     = screenBounds.size.width;
-    CGFloat screenHeight    = screenBounds.size.height;
+    CGRect  frame               = self.rectView.frame;
+    CGRect  applicationFrame    = [[UIScreen mainScreen] applicationFrame];
+    CGPoint point = CGPointZero;
     
-    frame.origin.x = ((position & 1) ^ ((position & (1 << 1)) >> 1)) * (screenWidth - frameWidth);
-    frame.origin.y = ((position & (1 << 1)) >> 1) * (screenHeight - frameHeight);
+    switch(position) {
+        case BNNTopRightCorner:
+            point.x = SIZE_X_SUBTRACT(applicationFrame, frame);
+            break;
+            
+        case BNNBottomRightCorner:
+            point.x = SIZE_X_SUBTRACT(applicationFrame, frame);
+            point.y = SIZE_Y_SUBTRACT(applicationFrame, frame);
+            break;
+            
+        case BNNBottomLeftCorner:
+            point.y = SIZE_Y_SUBTRACT(applicationFrame, frame);
+            break;
+            
+        default:
+            break;
+    }
+    frame.origin = point;
     
     return frame;
 }
 
-
-#pragma mark -
-#pragma mark 2BeKilledLater
-
-//- (void)moveRectWithBlock:(BNNRectPositionType(^)(void))block {
-//    if (self. animationRunning) {
-//        BNNRectPositionType position = block();
-//        [self.rectView setRectPosition:position animated:YES completion:^(BOOL finished){
-//            self.rectModel.position = position;
-//            if (finished) {
-//                [self moveRectWithBlock:block];
-//            }
-//        }];
-//    }
-//}
-
-
-//- (void)moveRectToPosition:(BNNRectPositionType)position {
-//    if (self.animationRunning) {
-//        [self.rectView setRectPosition:position animated:YES completion:^(BOOL finished) {
-//            if (finished) {
-//                self.rectModel.position = position;
-//                [self moveRectToPosition:(self.rectModel.position + 1) % BNNRectPositionTypeCount];
-//            }
-//        }];
-//    }
-//}
-
-
-
+#undef SIZE_Y_SUBTRACT
+#undef SIZE_X_SUBTRACT
 
 @end

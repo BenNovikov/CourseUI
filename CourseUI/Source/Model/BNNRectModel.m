@@ -13,7 +13,7 @@
 @implementation BNNRectModel
 
 #pragma mark -
-#pragma Initializations and Deallocations
+#pragma mark Public
 
 - (instancetype)initWithPosition:(BNNRectPositionType)position {
     if ((self = [super init])) {

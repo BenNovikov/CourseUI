@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8462E4841BA4BA6200FEDC15 /* BNNRectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462E4831BA4BA6200FEDC15 /* BNNRectModel.m */; };
-		8462E4881BA4BB3900FEDC15 /* BNNUIWindow+BNNWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462E4871BA4BB3900FEDC15 /* BNNUIWindow+BNNWindow.m */; };
+		8462E4881BA4BB3900FEDC15 /* UIWindow+BNNWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462E4871BA4BB3900FEDC15 /* UIWindow+BNNWindow.m */; };
 		8462E48B1BA4C4EE00FEDC15 /* Tasks in Resources */ = {isa = PBXBuildFile; fileRef = 8462E48A1BA4C4EE00FEDC15 /* Tasks */; };
 		8462E48E1BA4C69500FEDC15 /* BNNRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462E48D1BA4C69500FEDC15 /* BNNRectView.m */; };
 		848E9CB11BA3641100B0B178 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E9CB01BA3641100B0B178 /* main.m */; };
@@ -18,7 +18,7 @@
 		848E9CCB1BA3641100B0B178 /* CourseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E9CCA1BA3641100B0B178 /* CourseUITests.m */; };
 		848E9CD71BA3678E00B0B178 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848E9CD61BA3678E00B0B178 /* LaunchScreen.xib */; };
 		848E9CD91BA36D4800B0B178 /* BNNRectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */; };
-		84C27BA31BA78648001300B8 /* BNNUIColor+BNNColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C27BA21BA78648001300B8 /* BNNUIColor+BNNColor.m */; };
+		84C27BA31BA78648001300B8 /* UIColor+BNNColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C27BA21BA78648001300B8 /* UIColor+BNNColor.m */; };
 		84C27BA61BA9AFEC001300B8 /* UIViewController+BNNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C27BA51BA9AFEC001300B8 /* UIViewController+BNNViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +35,8 @@
 /* Begin PBXFileReference section */
 		8462E4821BA4BA6200FEDC15 /* BNNRectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNRectModel.h; path = Model/BNNRectModel.h; sourceTree = "<group>"; };
 		8462E4831BA4BA6200FEDC15 /* BNNRectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNRectModel.m; path = Model/BNNRectModel.m; sourceTree = "<group>"; };
-		8462E4861BA4BB3900FEDC15 /* BNNUIWindow+BNNWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BNNUIWindow+BNNWindow.h"; path = "Extensions+Protocols/BNNUIWindow+BNNWindow.h"; sourceTree = "<group>"; };
-		8462E4871BA4BB3900FEDC15 /* BNNUIWindow+BNNWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BNNUIWindow+BNNWindow.m"; path = "Extensions+Protocols/BNNUIWindow+BNNWindow.m"; sourceTree = "<group>"; };
+		8462E4861BA4BB3900FEDC15 /* UIWindow+BNNWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWindow+BNNWindow.h"; path = "Extensions+Protocols/UIWindow+BNNWindow.h"; sourceTree = "<group>"; };
+		8462E4871BA4BB3900FEDC15 /* UIWindow+BNNWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWindow+BNNWindow.m"; path = "Extensions+Protocols/UIWindow+BNNWindow.m"; sourceTree = "<group>"; };
 		8462E48A1BA4C4EE00FEDC15 /* Tasks */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tasks; sourceTree = "<group>"; };
 		8462E48C1BA4C69500FEDC15 /* BNNRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNRectView.h; path = BNNRectViewController/BNNRectView.h; sourceTree = "<group>"; };
 		8462E48D1BA4C69500FEDC15 /* BNNRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNRectView.m; path = BNNRectViewController/BNNRectView.m; sourceTree = "<group>"; };
@@ -54,9 +54,8 @@
 		848E9CCA1BA3641100B0B178 /* CourseUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseUITests.m; sourceTree = "<group>"; };
 		848E9CD61BA3678E00B0B178 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BNNRectViewController.xib; path = BNNRectViewController/BNNRectViewController.xib; sourceTree = "<group>"; };
-		84C27B9E1BA751C7001300B8 /* BNNMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNNMacros.h; sourceTree = "<group>"; };
-		84C27BA11BA78648001300B8 /* BNNUIColor+BNNColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BNNUIColor+BNNColor.h"; path = "Extensions+Protocols/BNNUIColor+BNNColor.h"; sourceTree = "<group>"; };
-		84C27BA21BA78648001300B8 /* BNNUIColor+BNNColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BNNUIColor+BNNColor.m"; path = "Extensions+Protocols/BNNUIColor+BNNColor.m"; sourceTree = "<group>"; };
+		84C27BA11BA78648001300B8 /* UIColor+BNNColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+BNNColor.h"; path = "Extensions+Protocols/UIColor+BNNColor.h"; sourceTree = "<group>"; };
+		84C27BA21BA78648001300B8 /* UIColor+BNNColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+BNNColor.m"; path = "Extensions+Protocols/UIColor+BNNColor.m"; sourceTree = "<group>"; };
 		84C27BA41BA9AFEC001300B8 /* UIViewController+BNNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+BNNViewController.h"; path = "Extensions+Protocols/UIViewController+BNNViewController.h"; sourceTree = "<group>"; };
 		84C27BA51BA9AFEC001300B8 /* UIViewController+BNNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+BNNViewController.m"; path = "Extensions+Protocols/UIViewController+BNNViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,11 +99,10 @@
 			isa = PBXGroup;
 			children = (
 				8462E48F1BA4D78C00FEDC15 /* BNNConstants.h */,
-				84C27B9E1BA751C7001300B8 /* BNNMacros.h */,
-				8462E4861BA4BB3900FEDC15 /* BNNUIWindow+BNNWindow.h */,
-				8462E4871BA4BB3900FEDC15 /* BNNUIWindow+BNNWindow.m */,
-				84C27BA11BA78648001300B8 /* BNNUIColor+BNNColor.h */,
-				84C27BA21BA78648001300B8 /* BNNUIColor+BNNColor.m */,
+				8462E4861BA4BB3900FEDC15 /* UIWindow+BNNWindow.h */,
+				8462E4871BA4BB3900FEDC15 /* UIWindow+BNNWindow.m */,
+				84C27BA11BA78648001300B8 /* UIColor+BNNColor.h */,
+				84C27BA21BA78648001300B8 /* UIColor+BNNColor.m */,
 				84C27BA41BA9AFEC001300B8 /* UIViewController+BNNViewController.h */,
 				84C27BA51BA9AFEC001300B8 /* UIViewController+BNNViewController.m */,
 			);
@@ -293,13 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8462E4881BA4BB3900FEDC15 /* BNNUIWindow+BNNWindow.m in Sources */,
+				8462E4881BA4BB3900FEDC15 /* UIWindow+BNNWindow.m in Sources */,
 				8462E48E1BA4C69500FEDC15 /* BNNRectView.m in Sources */,
 				8462E4841BA4BA6200FEDC15 /* BNNRectModel.m in Sources */,
 				848E9CB71BA3641100B0B178 /* BNNRectViewController.m in Sources */,
 				84C27BA61BA9AFEC001300B8 /* UIViewController+BNNViewController.m in Sources */,
 				848E9CB41BA3641100B0B178 /* BNNAppDelegate.m in Sources */,
-				84C27BA31BA78648001300B8 /* BNNUIColor+BNNColor.m in Sources */,
+				84C27BA31BA78648001300B8 /* UIColor+BNNColor.m in Sources */,
 				848E9CB11BA3641100B0B178 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

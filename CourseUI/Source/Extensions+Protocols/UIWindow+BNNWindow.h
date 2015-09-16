@@ -1,5 +1,5 @@
 //
-//  BNNUIWindow+BNNWindow.h
+//  UIWindow+BNNWindow.h
 //  CourseUI
 //
 //  Created by Admin on 15/09/12/.

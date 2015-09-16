@@ -1,5 +1,5 @@
 //
-//  BNNUIColor+BNNColor.h
+//  UIColor+BNNColor.h
 //  CourseUI
 //
 //  Created by Admin on 15/09/15/.

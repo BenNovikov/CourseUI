@@ -9,7 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "BNNConstants.h"
-#import "BNNMacros.h"
+
+typedef NS_ENUM(NSUInteger, BNNRectPositionType) {
+    BNNTopLeftCorner,
+    BNNTopRightCorner,
+    BNNBottomRightCorner,
+    BNNBottomLeftCorner,
+    BNNRectPositionTypeCount
+};
 
 @interface BNNRectModel : NSObject
 @property(nonatomic, unsafe_unretained) BNNRectPositionType position;

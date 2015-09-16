@@ -11,8 +11,7 @@
 #import "BNNRectModel.h"
 
 @interface BNNRectViewController ()
-@property (nonatomic, readonly)                             BNNRectView *rectView;
-@property (nonatomic, assign, getter=isAnimationRunning)    BOOL        animationRunning;
+@property (nonatomic, readonly) BNNRectView *rectView;
 
 @end
 
@@ -32,24 +31,18 @@
     return nil;
 }
 
-- (void)setRect:(BNNRectModel *)rectModel {
-    if (rectModel != _rectModel) {
-        _rectModel = rectModel;
-    }
-    
-    self.rectView.rectModel = rectModel;
-}
-
 #pragma mark -
 #pragma mark Public
 
 - (IBAction)onAnimationButton:(id)sender {
-    self.animationRunning = !self.isAnimationRunning;
-    NSLog(@"animation runnung:%d", self.animationRunning);
+    self.rectView.animationRunning = !self.rectView.isAnimationRunning;
     
-//    if (self.animationRunning) {
-//        [self.rectView moveRectWithBlock:[self.rectView.rectModel nextPosition]];
-//    }
+    BOOL isAnimationRunning = self.rectView.isAnimationRunning;
+    NSLog(@"animation runnung:%d", isAnimationRunning);
+    
+    if (isAnimationRunning) {
+        [self.rectView animateRect];
+    }
 }
 
 #pragma mark -
@@ -64,8 +57,5 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-
-
 
 @end

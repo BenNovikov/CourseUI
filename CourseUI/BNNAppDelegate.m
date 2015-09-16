@@ -10,10 +10,6 @@
 #import "BNNRectViewController.h"
 #import "UIViewController+BNNViewController.h"
 
-@interface BNNAppDelegate ()
-
-@end
-
 @implementation BNNAppDelegate
 
 
@@ -24,7 +20,7 @@
     BNNRectViewController *controller = [BNNRectViewController controller];
     window.rootViewController = controller;
     
-    controller.rectModel = [[BNNRectModel alloc] initWithPosition:BNNUpperLeftCorner];
+    controller.rectModel = [[BNNRectModel alloc] initWithPosition:BNNTopLeftCorner];
     [window makeKeyAndVisible];
     
     return YES;
