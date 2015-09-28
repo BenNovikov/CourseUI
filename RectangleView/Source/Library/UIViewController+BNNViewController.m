@@ -10,6 +10,9 @@
 
 @implementation UIViewController (BNNViewController)
 
+#pragma mark -
+#pragma mark Class methods
+
 + (instancetype)controller {
     return [[self alloc] initWithNibName:[self nibName] bundle:nil];
 }

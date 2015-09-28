@@ -14,12 +14,4 @@
 #pragma mark -
 #pragma mark Public
 
-- (CGFloat)randomScale {
-    return (float)(arc4random() % (int)(kBNNAffineTransformScaleUpperLimit * 100 + 1)) / 100 + kBNNAffineTransformScaleLowerLimit;
-}
-
-- (CGFloat)randomRotation {
-    return (float)(arc4random() % (int)(M_PI * 2 * 100)) / 100 - M_PI;
-}
-
 @end

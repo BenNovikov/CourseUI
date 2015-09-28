@@ -15,6 +15,7 @@
 @interface BNNRectView()
 
 - (CGRect)frameAtPosition:(BNNRectPositionType)position;
+- (void)animateRect;
 
 @end
 
@@ -40,6 +41,7 @@
     NSTimeInterval duration = animated ? kBNNRectangleAnimationDuration : 0;
     NSTimeInterval delay    = animated ? kBNNRectangleAnimationDelay : 0;
     CGRect frame = [self frameAtPosition:position];
+    [self animateRect];
     [UIView animateWithDuration:duration
                           delay:delay
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState

@@ -35,14 +35,10 @@
 #pragma mark Public
 
 - (IBAction)onAnimationButton:(id)sender {
-    self.rectView.animationRunning = !self.rectView.isAnimationRunning;
+    BNNRectView *rectView = self.rectView;
+    rectView.animationRunning = !rectView.isAnimationRunning;
     
-    BOOL isAnimationRunning = self.rectView.isAnimationRunning;
-    NSLog(@"animation runnung:%d", isAnimationRunning);
-    
-    if (isAnimationRunning) {
-        [self.rectView animateRect];
-    }
+    NSLog(@"animation runnung:%d", rectView.isAnimationRunning);
 }
 
 #pragma mark -

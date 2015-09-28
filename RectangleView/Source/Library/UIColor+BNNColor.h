@@ -10,6 +10,8 @@
 
 @interface UIColor (BNNColor)
 
+- (double)BNNRandomColor;
+
 - (UIColor *)randomColor;
 
 @end

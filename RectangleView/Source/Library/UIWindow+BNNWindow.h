@@ -13,7 +13,4 @@
 
 @interface UIWindow (BNNWindow)
 
-- (CGFloat)randomScale;
-- (CGFloat)randomRotation;
-
 @end

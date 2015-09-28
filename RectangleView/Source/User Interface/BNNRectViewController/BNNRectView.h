@@ -24,6 +24,4 @@
                animated:(BOOL)animated
              completion:(void(^)(BOOL finished))block;
 
-- (void)animateRect;
-
 @end
