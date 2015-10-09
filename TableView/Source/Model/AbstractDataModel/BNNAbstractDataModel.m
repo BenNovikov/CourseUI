@@ -12,7 +12,7 @@
 
 #pragma mark - Public Methods
 
-- (void)performLoading {
+- (void)load {
     @synchronized(self) {
         NSUInteger state = self.state;
         if(BNNDataModelDidUnload == state ||
@@ -22,7 +22,7 @@
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 
-                [self startLoading];
+                [self performLoading];
             });
         } else {
             [self notifyObserversWithSelector:[self selectorForState:state]];
@@ -30,11 +30,11 @@
     }
 }
 
-- (void)initiateLoading {
+- (void)initiateLoading {
     // do something before loading
 }
 
-- (void)startLoading {
+- (void)performLoading {
     // do what you need to load
 }
 
@@ -53,6 +53,9 @@
             
         case BNNDataModelDidFailLoading:
             return @selector(modelDidFailLoading:);
+            
+        case BNNDataModelDidChange:
+            return @selector(modelDidChange:);
             
         default:
             return [super selectorForState:state];

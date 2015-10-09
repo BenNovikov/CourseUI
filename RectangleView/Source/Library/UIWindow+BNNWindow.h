@@ -13,4 +13,6 @@
 
 @interface UIWindow (BNNWindow)
 
++ (instancetype)window;
+
 @end

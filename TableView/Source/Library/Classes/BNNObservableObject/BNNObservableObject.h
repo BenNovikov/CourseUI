@@ -10,7 +10,7 @@
 #import "BNNModelStateProtocol.h"
 
 @interface BNNObservableObject : NSObject
-@property (nonatomic, assign)   NSHashTable *observers;
+@property (nonatomic, readonly) NSSet       *observerSet;
 @property (atomic, assign)      NSUInteger  state;
 
 - (void)addObserver:(id)observer;

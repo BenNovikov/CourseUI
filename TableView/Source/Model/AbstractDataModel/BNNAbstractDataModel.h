@@ -9,16 +9,17 @@
 #import "BNNObservableObject.h"
 
 typedef NS_ENUM(NSUInteger, BNNDataModelState) {
-    BNNDataModelDidUnload, //is it better to call it ...IsUnload ?
+    BNNDataModelDidUnload, 
     BNNDataModelWillLoad,
     BNNDataModelDidLoad,
-    BNNDataModelDidFailLoading
+    BNNDataModelDidFailLoading,    
+    BNNDataModelDidChange
 };
 
 @interface BNNAbstractDataModel : BNNObservableObject
 
-- (void)performLoading;
+- (void)load;
 - (void)initiateLoading;    //does nothing until reloaded in subclasses
-- (void)startLoading;       //does nothing until reloaded in subclasses
+- (void)performLoading;     //does nothing until reloaded in subclasses
 
 @end

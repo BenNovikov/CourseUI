@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BNNAppTabDelegate.h
 //  TableView
 //
 //  Created by Admin on 15/09/26/.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface BNNAppTabDelegate : UIResponder <UIApplicationDelegate>
+@property (nonatomic, strong) UIWindow *window;
 
 @end
 

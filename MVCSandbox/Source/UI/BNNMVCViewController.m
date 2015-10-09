@@ -1,18 +1,18 @@
 //
-//  ViewController.m
-//  TableView
+//  BNNMVCViewController.m
+//  MVCSandbox
 //
-//  Created by Admin on 15/09/26/.
+//  Created by Home on 10/8/15.
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "BNNMVCViewController.h"
 
-@interface ViewController ()
+@interface BNNMVCViewController ()
 
 @end
 
-@implementation ViewController
+@implementation BNNMVCViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

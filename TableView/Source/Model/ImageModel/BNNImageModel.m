@@ -51,22 +51,15 @@
     NSLog(@"Image Loading Started...");
 }
 
-- (void)startLoading {
+- (void)performLoading {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *path = self.url.path;
-    UIImage *image = self.image;
-    image = [UIImage imageWithContentsOfFile:path];
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
 //        (NSString *)name = self.url.absoluteString;
 //        image = [UIImage imageNamed:name];
-    if(image) {
-        self.image = image;
-        self.state = BNNDataModelDidLoad;
-    } else {
-        
-        self.state = BNNDataModelDidFailLoading;
-    }
-    
-    return self;
+    self.image = image;
+    self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
+
 }
 
 @end

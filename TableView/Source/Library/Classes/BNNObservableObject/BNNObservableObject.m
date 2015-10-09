@@ -8,13 +8,18 @@
 
 #import "BNNObservableObject.h"
 
+@interface BNNObservableObject ()
+@property (nonatomic, assign)   NSHashTable *observers;
+
+@end
+
 @implementation BNNObservableObject
 
 #pragma mark - Initialization and Deallocation
 
 - (id)init {
     if ((self = [super init])) {
-        _observers = [NSHashTable weakObjectsHashTable];
+        self.observers = [NSHashTable weakObjectsHashTable];
     }
     
     return self;
@@ -22,6 +27,15 @@
 
 - (void)dealloc {
     self.observers = nil;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSSet *)observerSet {
+    @synchronized(self.observers) {
+        return [self.observers copy];
+    }
 }
 
 #pragma mark - Public Methods

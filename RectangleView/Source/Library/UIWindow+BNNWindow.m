@@ -11,7 +11,8 @@
 
 @implementation UIWindow (BNNWindow)
 
-#pragma mark -
-#pragma mark Public
++ (instancetype)window {
+    return [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+}
 
 @end

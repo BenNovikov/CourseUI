@@ -12,7 +12,8 @@
 
 @implementation BNNDataModel
 
-# pragma mark - Class Methods
+# pragma mark - 
+# pragma mark Class Methods
 
 + (instancetype)dataModel {
     return [[super alloc] initWithString:[NSString randomUnicodeStringWithLength:kBNNRandomStringLength]];
@@ -26,19 +27,27 @@
     return self;
 }
 
-#pragma mark - Accesors
+#pragma mark - 
+# pragma mark Accesors
 
 - (BNNImageModel *)imageModel {
-    return [BNNImageModel imageFromURL:[NSURL initWithString:kBNNImageName]];
+    static BNNImageModel *imageModel =  nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        imageModel = [BNNImageModel imageFromURL:[NSURL URLWithString:kBNNImageName]];
+    });
+    
+    return imageModel;
 }
 
-#pragma mark - BNNAbstractDataModel
+#pragma mark - 
+# pragma mark BNNAbstractDataModel
 
 - (void)initiateLoading {
     NSLog(@"Data Model Loading Started...");
 }
 
-- (void)startLoading {
+- (void)performLoading {
     self.state = BNNDataModelDidLoad;
 }
 

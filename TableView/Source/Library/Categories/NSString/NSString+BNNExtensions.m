@@ -23,7 +23,7 @@
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         
         if (nil != response) {
-            NSString *jsonString = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
+            NSString *jsonString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
             
             return jsonString;
         }
@@ -46,7 +46,7 @@
 //                                                             error:&error];
 //        NSString *jsonString = [[[NSString alloc] initWithData:jsonData
 //                                                      encoding:NSUTF8StringEncoding] autorelease];
-        NSMutableString *string = [[NSMutableString new] autorelease];
+        NSMutableString *string = [NSMutableString new];
         
         [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             [string appendFormat:@"%@ : %@\n", key, obj];
@@ -54,7 +54,7 @@
         
         if (nil == error) {
             
-            return [[string copy] autorelease];
+            return [string copy];
         }
         message = kBNNErrorConvertToString;
     }
@@ -73,7 +73,7 @@
         NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
         
         NSError *error;
-        NSDictionary *jsonDictionary = [[self new] autorelease];
+        NSDictionary *jsonDictionary = [self new];
         jsonDictionary  = [NSJSONSerialization JSONObjectWithData:data
                                                           options:optionsPrettyPrint
                                                             error:&error];
@@ -134,7 +134,7 @@
         [string appendFormat:@"%C", [alphabet characterAtIndex:arc4random_uniform(countLength)]];
     }
     
-    return [[string copy] autorelease];
+    return [string copy];
 }
 
 + (NSString *)randomStringWithLength:(NSUInteger)length string:(NSString *)alphabet {
@@ -146,7 +146,7 @@
         [string appendFormat:@"%C", [alphabet characterAtIndex:arc4random_uniform(countLength)]];
     }
     
-    return [[string copy] autorelease];
+    return [string copy];
 }
 
 @end
