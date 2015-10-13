@@ -13,8 +13,8 @@
 @class BNNDataModel;
 
 @interface BNNDataCell : BNNTableViewCell
-@property (nonatomic, strong) IBOutlet UILabel      *dataTextLabel;
-@property (nonatomic, strong) IBOutlet UIImageView  *dataImageView;
+@property (nonatomic, strong) IBOutlet UILabel      *contentLabel;
+@property (nonatomic, strong) IBOutlet UIImageView  *contentImageView;
 @property (nonatomic, strong) BNNDataModel          *model;
 
 - (void)fillWithModel:(BNNDataModel *)model;

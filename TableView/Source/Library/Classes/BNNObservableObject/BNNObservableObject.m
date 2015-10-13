@@ -9,11 +9,13 @@
 #import "BNNObservableObject.h"
 
 @interface BNNObservableObject ()
-@property (nonatomic, assign)   NSHashTable *observers;
+@property (nonatomic, strong)   NSHashTable *observers;
 
 @end
 
 @implementation BNNObservableObject
+
+@dynamic observerSet;
 
 #pragma mark - Initialization and Deallocation
 
@@ -33,7 +35,7 @@
 #pragma mark Accessors
 
 - (NSSet *)observerSet {
-    @synchronized(self.observers) {
+    @synchronized(self) {
         return [self.observers copy];
     }
 }
@@ -41,13 +43,13 @@
 #pragma mark - Public Methods
 
 - (void)addObserver:(id)observer {
-    @synchronized(self.observers) {
+    @synchronized(self) {
         [self.observers addObject:observer];
     }
 }
 
 - (void)removeObserver:(id)observer {
-    @synchronized(self.observers) {
+    @synchronized(self) {
         [self.observers removeObject:observer];
     }
 }
@@ -79,6 +81,14 @@
 - (SEL)selectorForState:(NSUInteger)state {
     // to be overloaded in subclasses
     return NULL;
+}
+
+- (void)setState:(NSUInteger)state withObject:(id)object {
+    @synchronized(self) {
+        self.state = state;
+        
+        [self notifyObserversWithSelector:[self selectorForState:_state] withObject:object];
+    }
 }
 
 @end

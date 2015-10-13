@@ -24,12 +24,17 @@
 - (id)modelAtIndexedSubscript:(NSUInteger)index;
 
 - (void)addModel:(id)model;
-- (void)removeModel:(id)model;
-
 - (void)insertModel:(id)model atIndex:(NSUInteger)index;
+
+- (void)removeModel:(id)model;
 - (void)removeModelAtIndex:(NSUInteger)index;
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex;
-- (void)replaceModelAtIndex:(NSUInteger)sourceIndex withModelAtIndex:(NSUInteger)destinationIndex;
+
+- (void)addModelsFromArray:(NSArray *)anArray;
+- (void)removeModelsInArray:(NSArray *)anArray;
+
+- (id)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
+- (void)encodeWithCoder:(NSCoder *)coder;
 
 @end

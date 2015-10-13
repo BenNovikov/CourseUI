@@ -6,12 +6,16 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNDataArrayModelModification.h"
+#import "BNNDataArrayModelChanges.h"
+#import "BNNDataArrayModelChangingPaths.h"
 
 #import "UITableView+BNNExtensions.h"
 #import "UINib+BNNExtensions.h"
 
 @implementation UITableView (BNNExtensions)
+
+#pragma mark -
+#pragma mark Public Methods
 
 - (id)reusableCellWithClass:(Class)cls {
     id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(cls)];
@@ -22,23 +26,26 @@
     return cell;
 }
 
-- (void)updateWithModification:(id)modification {
-    
-}
-
-- (void)updateWithSourcePaths:(NSIndexPath *)sourcePath destinationPath:(NSIndexPath *)destinationPath {
-    UITableView *tableView = self;
+- (void)updateWithChanges:(BNNDataArrayModelChanges *)changes {
+    UITableView *tableView = self;    
     
     [tableView beginUpdates];
     
-    if (sourcePath) {
-        if (destinationPath) {
-            [tableView moveRowAtIndexPath:sourcePath toIndexPath:destinationPath];
-        } else {
-            [tableView deleteRowsAtIndexPaths:@[sourcePath] withRowAnimation:UITableViewRowAnimationRight];
-        }
-    } else if (destinationPath) {
-        [tableView insertRowsAtIndexPaths:@[destinationPath] withRowAnimation:UITableViewRowAnimationLeft];
+    switch (changes.state) {
+        case BNNDataArrayModelInsert:
+            [tableView insertRowsAtIndexPaths:@[changes.paths.destinationPath] withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+            
+        case BNNDataArrayModelMove:
+            [tableView moveRowAtIndexPath:changes.paths.sourcePath toIndexPath:changes.paths.destinationPath];
+            break;
+            
+        case BNNDataArrayModelDelete:
+            [tableView deleteRowsAtIndexPaths:@[changes.paths.destinationPath] withRowAnimation:UITableViewRowAnimationRight];
+            break;
+            
+        default:
+            break;
     }
     
     [tableView endUpdates];

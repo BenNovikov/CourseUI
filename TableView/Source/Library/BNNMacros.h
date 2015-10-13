@@ -51,4 +51,11 @@
         return result; \
     }
 
+#define BNNSetObservableVarToField(var) \
+    if (_##var != var) { \
+        [_##var removeObserver:self]; \
+        _##var = var; \
+        [_##var addObserver:self]; \
+    }
+
 #endif

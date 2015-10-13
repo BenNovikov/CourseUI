@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class BNNDataArrayModelChanges;
+
 @interface UITableView (BNNExtensions)
 
 - (id)reusableCellWithClass:(Class)cls;
 
-- (void)updateWithModification:(id)modification;
+- (void)updateWithChanges:(BNNDataArrayModelChanges *)changes;
 
 @end

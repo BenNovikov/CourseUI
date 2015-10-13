@@ -15,8 +15,9 @@
 - (void)load {
     @synchronized(self) {
         NSUInteger state = self.state;
-        if(BNNDataModelDidUnload == state ||
-           BNNDataModelDidFailLoading == state) {
+        if(BNNDataModelDidUnload == state
+           || BNNDataModelDidFailLoading == state)
+        {
             self.state = BNNDataModelWillLoad;
             [self initiateLoading];
             

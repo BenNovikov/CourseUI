@@ -55,11 +55,20 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *path = self.url.path;
     UIImage *image = [UIImage imageWithContentsOfFile:path];
-//        (NSString *)name = self.url.absoluteString;
-//        image = [UIImage imageNamed:name];
+    if ([fileManager fileExistsAtPath:path]) {
+        if (!image) {
+            //load
+        } else {
+            //use current
+
+        }
+    } else {
+        // task 2 solution
+        NSString *imageName = self.url.absoluteString;
+        image = [UIImage imageNamed:imageName];
+    }
     self.image = image;
     self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
-
 }
 
 @end

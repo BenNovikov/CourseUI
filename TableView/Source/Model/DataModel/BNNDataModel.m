@@ -7,6 +7,7 @@
 //
 
 #import "BNNDataModel.h"
+
 #import "NSString+BNNExtensions.h"
 #import "BNNTableConstants.h"
 
@@ -22,6 +23,7 @@
 - (instancetype)initWithString:(NSString *)string {
     if((self = [super init])) {
         self.text = string;
+
     }
     
     return self;
@@ -31,13 +33,13 @@
 # pragma mark Accesors
 
 - (BNNImageModel *)imageModel {
-    static BNNImageModel *imageModel =  nil;
+    static BNNImageModel *__imageModel =  nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        imageModel = [BNNImageModel imageFromURL:[NSURL URLWithString:kBNNImageName]];
+        __imageModel = [BNNImageModel imageFromURL:[NSURL URLWithString:kBNNImageName]];
     });
     
-    return imageModel;
+    return __imageModel;
 }
 
 #pragma mark - 

@@ -25,8 +25,8 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="dataImageView" destination="Zq2-gq-hra" id="qBZ-nF-PX1"/>
-                <outlet property="dataTextLabel" destination="ySg-Yl-KG0" id="fhG-DK-DhG"/>
+                <outlet property="contentImageView" destination="Zq2-gq-hra" id="d8u-UC-mGE"/>
+                <outlet property="contentLabel" destination="ySg-Yl-KG0" id="zLE-bc-D73"/>
             </connections>
             <point key="canvasLocation" x="352" y="180"/>
         </tableViewCell>

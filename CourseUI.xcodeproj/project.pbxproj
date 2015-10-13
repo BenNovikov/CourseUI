@@ -43,7 +43,9 @@
 		848E9CD71BA3678E00B0B178 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848E9CD61BA3678E00B0B178 /* LaunchScreen.xib */; };
 		848E9CD91BA36D4800B0B178 /* BNNRectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */; };
 		84E7C4D61BBC69CE00CD9011 /* UITableView+BNNExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7C4D51BBC69CD00CD9011 /* UITableView+BNNExtensions.m */; };
-		F4E7BDD11BC55DEE00BBFD63 /* BNNDataArrayModelModification.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7BDD01BC55DEE00BBFD63 /* BNNDataArrayModelModification.m */; };
+		F461D5901BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = F461D58F1BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.m */; };
+		F461D5941BCC4D97007FA69C /* NSIndexPath+BNNExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F461D5931BCC4D97007FA69C /* NSIndexPath+BNNExtensions.m */; };
+		F4E7BDD11BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7BDD01BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m */; };
 		F4E8606A1BC6ED350019587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E860691BC6ED350019587B /* main.m */; };
 		F4E8606D1BC6ED350019587B /* BNNMVCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8606C1BC6ED350019587B /* BNNMVCAppDelegate.m */; };
 		F4E860701BC6ED350019587B /* BNNMVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8606F1BC6ED350019587B /* BNNMVCViewController.m */; };
@@ -146,8 +148,13 @@
 		848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNNRectViewController.xib; sourceTree = "<group>"; };
 		84E7C4D41BBC69CD00CD9011 /* UITableView+BNNExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+BNNExtensions.h"; path = "UITableView/UITableView+BNNExtensions.h"; sourceTree = "<group>"; };
 		84E7C4D51BBC69CD00CD9011 /* UITableView+BNNExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+BNNExtensions.m"; path = "UITableView/UITableView+BNNExtensions.m"; sourceTree = "<group>"; };
-		F4E7BDCF1BC55DEE00BBFD63 /* BNNDataArrayModelModification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNDataArrayModelModification.h; path = Source/Model/DataArrayModelModification/BNNDataArrayModelModification.h; sourceTree = "<group>"; };
-		F4E7BDD01BC55DEE00BBFD63 /* BNNDataArrayModelModification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNDataArrayModelModification.m; path = Source/Model/DataArrayModelModification/BNNDataArrayModelModification.m; sourceTree = "<group>"; };
+		F461D58D1BCC18F4007FA69C /* BNNAbstractDataModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BNNAbstractDataModelProtocol.h; path = Source/Model/AbstractDataModel/BNNAbstractDataModelProtocol.h; sourceTree = "<group>"; };
+		F461D58E1BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNDataArrayModelChangingPaths.h; path = Source/Model/DataArrayModelChanges/BNNDataArrayModelChangingPaths/BNNDataArrayModelChangingPaths.h; sourceTree = "<group>"; };
+		F461D58F1BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNDataArrayModelChangingPaths.m; path = Source/Model/DataArrayModelChanges/BNNDataArrayModelChangingPaths/BNNDataArrayModelChangingPaths.m; sourceTree = "<group>"; };
+		F461D5921BCC4D97007FA69C /* NSIndexPath+BNNExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSIndexPath+BNNExtensions.h"; path = "NSIndexPath/NSIndexPath+BNNExtensions.h"; sourceTree = "<group>"; };
+		F461D5931BCC4D97007FA69C /* NSIndexPath+BNNExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSIndexPath+BNNExtensions.m"; path = "NSIndexPath/NSIndexPath+BNNExtensions.m"; sourceTree = "<group>"; };
+		F4E7BDCF1BC55DEE00BBFD63 /* BNNDataArrayModelChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNDataArrayModelChanges.h; path = Source/Model/DataArrayModelChanges/BNNDataArrayModelChanges.h; sourceTree = "<group>"; };
+		F4E7BDD01BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNDataArrayModelChanges.m; path = Source/Model/DataArrayModelChanges/BNNDataArrayModelChanges.m; sourceTree = "<group>"; };
 		F4E860651BC6ED350019587B /* MVCSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E860681BC6ED350019587B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4E860691BC6ED350019587B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = "<group>"; };
@@ -324,7 +331,7 @@
 				845515261BB8907D003AD071 /* ImageModel */,
 				84693DF91BC02578009AC956 /* ModelsArray */,
 				84693E151BC1DC2F009AC956 /* DataArrayModel */,
-				F4E7BDD21BC55DF600BBFD63 /* DataArrayModelModification */,
+				F4E7BDD21BC55DF600BBFD63 /* DataArrayModelChanges */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -336,6 +343,7 @@
 				845515181BB87962003AD071 /* Classes */,
 				8455151D1BB8796A003AD071 /* Protocols */,
 				845515271BB89B8C003AD071 /* BNNTableConstants.h */,
+				F4E8609E1BC709EE0019587B /* BNNMacros.h */,
 			);
 			name = Library;
 			path = Source/Library;
@@ -349,7 +357,7 @@
 				8455152A1BB8B6F3003AD071 /* NSString */,
 				843DD4421BBC617400EF6D5B /* UIWindow */,
 				84E7C4D71BBC69D300CD9011 /* UITableView */,
-				F4E8609E1BC709EE0019587B /* BNNMacros.h */,
+				F461D5951BCC4D9F007FA69C /* NSIndexPath */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -386,6 +394,7 @@
 			children = (
 				8455151F1BB87B55003AD071 /* BNNAbstractDataModel.h */,
 				845515201BB87B55003AD071 /* BNNAbstractDataModel.m */,
+				F461D58D1BCC18F4007FA69C /* BNNAbstractDataModelProtocol.h */,
 			);
 			name = AbstractDataModel;
 			sourceTree = "<group>";
@@ -572,13 +581,32 @@
 			name = UITableView;
 			sourceTree = "<group>";
 		};
-		F4E7BDD21BC55DF600BBFD63 /* DataArrayModelModification */ = {
+		F461D5911BCC4A50007FA69C /* BNNDataArrayModelChangingPaths */ = {
 			isa = PBXGroup;
 			children = (
-				F4E7BDCF1BC55DEE00BBFD63 /* BNNDataArrayModelModification.h */,
-				F4E7BDD01BC55DEE00BBFD63 /* BNNDataArrayModelModification.m */,
+				F461D58E1BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.h */,
+				F461D58F1BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.m */,
 			);
-			name = DataArrayModelModification;
+			name = BNNDataArrayModelChangingPaths;
+			sourceTree = "<group>";
+		};
+		F461D5951BCC4D9F007FA69C /* NSIndexPath */ = {
+			isa = PBXGroup;
+			children = (
+				F461D5921BCC4D97007FA69C /* NSIndexPath+BNNExtensions.h */,
+				F461D5931BCC4D97007FA69C /* NSIndexPath+BNNExtensions.m */,
+			);
+			name = NSIndexPath;
+			sourceTree = "<group>";
+		};
+		F4E7BDD21BC55DF600BBFD63 /* DataArrayModelChanges */ = {
+			isa = PBXGroup;
+			children = (
+				F4E7BDCF1BC55DEE00BBFD63 /* BNNDataArrayModelChanges.h */,
+				F4E7BDD01BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m */,
+				F461D5911BCC4A50007FA69C /* BNNDataArrayModelChangingPaths */,
+			);
+			name = DataArrayModelChanges;
 			sourceTree = "<group>";
 		};
 		F4E860661BC6ED350019587B /* MVCSandbox */ = {
@@ -891,11 +919,13 @@
 				845515211BB87B55003AD071 /* BNNAbstractDataModel.m in Sources */,
 				84693E081BC17F3D009AC956 /* BNNTableViewCell.m in Sources */,
 				F4E860991BC707540019587B /* UINib+BNNExtensions.m in Sources */,
+				F461D5941BCC4D97007FA69C /* NSIndexPath+BNNExtensions.m in Sources */,
+				F461D5901BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.m in Sources */,
 				84693E021BC17AE5009AC956 /* BNNDataCell.m in Sources */,
 				845515251BB89077003AD071 /* BNNImageModel.m in Sources */,
 				8455150F1BB86DA6003AD071 /* BNNDataModel.m in Sources */,
 				F4E8609D1BC7076A0019587B /* UIViewController+BNNExtensions.m in Sources */,
-				F4E7BDD11BC55DEE00BBFD63 /* BNNDataArrayModelModification.m in Sources */,
+				F4E7BDD11BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m in Sources */,
 				845514B01BB71C68003AD071 /* main.m in Sources */,
 				84693DF81BC02570009AC956 /* BNNModelArray.m in Sources */,
 				843DD4411BBC616C00EF6D5B /* UIWindow+BNNExtensions.m in Sources */,
@@ -1294,6 +1324,7 @@
 				F4E860871BC6ED350019587B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4E860881BC6ED350019587B /* Build configuration list for PBXNativeTarget "MVCSandboxTests" */ = {
 			isa = XCConfigurationList;
@@ -1302,6 +1333,7 @@
 				F4E8608A1BC6ED350019587B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
