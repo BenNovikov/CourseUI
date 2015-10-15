@@ -27,28 +27,30 @@
 }
 
 - (void)updateWithChanges:(BNNDataArrayModelChanges *)changes {
-    UITableView *tableView = self;    
+    UITableView *tableView = self;
+    NSIndexPath *destination = changes.paths.destinationPath;
     
     [tableView beginUpdates];
     
     switch (changes.state) {
         case BNNDataArrayModelInsert:
-            [tableView insertRowsAtIndexPaths:@[changes.paths.destinationPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [tableView insertRowsAtIndexPaths:@[destination] withRowAnimation:UITableViewRowAnimationLeft];
             break;
             
         case BNNDataArrayModelMove:
-            [tableView moveRowAtIndexPath:changes.paths.sourcePath toIndexPath:changes.paths.destinationPath];
+            [tableView moveRowAtIndexPath:changes.paths.sourcePath toIndexPath:destination];
             break;
             
         case BNNDataArrayModelDelete:
-            [tableView deleteRowsAtIndexPaths:@[changes.paths.destinationPath] withRowAnimation:UITableViewRowAnimationRight];
+            [tableView deleteRowsAtIndexPaths:@[destination] withRowAnimation:UITableViewRowAnimationRight];
             break;
             
         default:
             break;
     }
-    
     [tableView endUpdates];
+    
+//    [tableView reloadData];
 }
 
 @end

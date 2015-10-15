@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNModelArray.h"
+#import "BNNAbstractDataModel.h"
 
-@interface BNNDataArrayModel : BNNModelArray
+@interface BNNDataArrayModel : BNNAbstractDataModel <NSCoding>
 //@property (nonatomic, readonly) NSUInteger  count;
 //@property (nonatomic, readonly) NSArray     *array;
 

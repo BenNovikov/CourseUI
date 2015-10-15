@@ -13,17 +13,18 @@
 
 @implementation BNNDataModel
 
+@dynamic imageModel;
+
 # pragma mark - 
 # pragma mark Class Methods
 
 + (instancetype)dataModel {
-    return [[super alloc] initWithString:[NSString randomUnicodeStringWithLength:kBNNRandomStringLength]];
+    return [[self alloc] initWithString:[NSString randomUnicodeStringWithLength:kBNNRandomStringLength]];
 }
 
 - (instancetype)initWithString:(NSString *)string {
     if((self = [super init])) {
         self.text = string;
-
     }
     
     return self;

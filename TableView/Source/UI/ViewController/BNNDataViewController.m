@@ -17,7 +17,11 @@
 
 BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
+static NSString * const kBNNMainTitle = @"SomeTable";
+
 @interface BNNDataViewController () <BNNAbstractDataModelProtocol>
+
+- (void)setupNavigationItems;
 
 @end
 
@@ -32,6 +36,9 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+//        [self setupNavigationItems];
+    }
 
     return self;
 }
@@ -72,7 +79,12 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.arrayModel load];
+    // Task #3
+//    [self.arrayModel load];
+    
+    // Task #2
+    [self.dataView.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,6 +169,22 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (void)model:(BNNDataArrayModel *)modelArray didChangeWithObject:(BNNDataArrayModelChanges *)changes {
     NSLog(@"model didChangeWithObject: %@", changes);
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)setupNavigationItems {
+    UINavigationItem *navigationItem = self.navigationItem;
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                             target:self
+                                                                             action:@selector(onTapAddButton:)];
+    navigationItem.title = kBNNMainTitle;
+    navigationItem.leftBarButtonItem = addItem;
+    navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *editItem = self.editButtonItem;
+    editItem.target = self;
+    editItem.action = @selector(onTapEditButton:);
 }
 
 @end
