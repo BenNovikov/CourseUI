@@ -48,9 +48,8 @@
         default:
             break;
     }
-    [tableView endUpdates];
     
-//    [tableView reloadData];
+    [tableView endUpdates];
 }
 
 @end

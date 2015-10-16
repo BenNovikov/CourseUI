@@ -51,7 +51,7 @@
         return result; \
     }
 
-#define BNNSetObservableVarToField(var) \
+#define BNNObservableSetterSynthesize(var) \
     if (_##var != var) { \
         [_##var removeObserver:self]; \
         _##var = var; \

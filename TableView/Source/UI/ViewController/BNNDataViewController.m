@@ -47,28 +47,28 @@ static NSString * const kBNNMainTitle = @"SomeTable";
 #pragma mark Accessors
 
 - (void)setArrayModel:(BNNDataArrayModel *)arrayModel {
-    BNNSetObservableVarToField(arrayModel);
+    BNNObservableSetterSynthesize(arrayModel);
 }
 
 #pragma mark -
 #pragma mark UI
 
 - (IBAction)onTapAddButton:(id)sender {
-    NSLog(@"Added %lu row", (NSUInteger)self.arrayModel.count + 1);
-    [self.arrayModel addModel:[BNNDataModel dataModel]];    
+//    NSLog(@"Added %u row", (NSUInteger)self.arrayModel.count + 1);
+    [self.arrayModel addModel:[BNNDataModel dataModel]];
 }
 
 - (IBAction)onTapRemoveButton:(id)sender {
     NSUInteger counter = self.arrayModel.count;
     if (counter) {
-        NSLog(@"Removed %lu row", (unsigned long)self.arrayModel.count);
+//        NSLog(@"Removed %lu row", (unsigned long)self.arrayModel.count);
         NSUInteger sourcePath = (NSUInteger)[[self.dataView.tableView indexPathForSelectedRow] row];
         [self.arrayModel removeModelAtIndex:sourcePath];
     }
 }
 
 - (IBAction)onTapEditButton:(id)sender {
-    NSLog(@"Edit: %d", self.dataView.isEditing);
+//    NSLog(@"Edit: %d", self.dataView.isEditing);
     BNNDataView *view = self.dataView;
     [view setEditing:![view isEditing]];
 }
@@ -84,7 +84,6 @@ static NSString * const kBNNMainTitle = @"SomeTable";
     
     // Task #2
     [self.dataView.tableView reloadData];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -155,6 +154,8 @@ static NSString * const kBNNMainTitle = @"SomeTable";
 
 - (void)modelDidLoad:(id)model {
     //spinner off
+    
+    self.dataView.tableView.rowHeight = 44;
     [self.dataView.tableView reloadData];
 }
 
@@ -163,12 +164,12 @@ static NSString * const kBNNMainTitle = @"SomeTable";
 }
 
 - (void)modelDidChange:(id)changes {
-    NSLog(@"modelDidChange:%@", changes);
+//    NSLog(@"modelDidChange:%@", changes);
     [self.dataView.tableView updateWithChanges:changes];
 }
 
 - (void)model:(BNNDataArrayModel *)modelArray didChangeWithObject:(BNNDataArrayModelChanges *)changes {
-    NSLog(@"model didChangeWithObject: %@", changes);
+//    NSLog(@"model didChangeWithObject: %@", changes);
 }
 
 #pragma mark -
