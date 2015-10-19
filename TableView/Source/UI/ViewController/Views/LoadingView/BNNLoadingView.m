@@ -54,9 +54,9 @@ static CGFloat const kBNNInvisibleAlpha     = 0.0f;
     [UIView animateWithDuration:kBNNDuration animations:^{
         self.alpha = visible ? kBNNVisibleAlpha : kBNNInvisibleAlpha;
     } completion:^(BOOL finished) {
-        if (finished) {
-            self.visible = visible;
-        }
+//        if (finished) {
+//            self.visible = visible;
+//        }
     }];
     
 }

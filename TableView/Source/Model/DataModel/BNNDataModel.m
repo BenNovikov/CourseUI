@@ -69,6 +69,7 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 
 - (void)performLoading {
     //some kind of true load magic to be implemented here
+    //loops until non-nil image loaded
     UIImage *image = nil;
     
     self.image = image;

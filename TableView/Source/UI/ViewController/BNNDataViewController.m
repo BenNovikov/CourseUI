@@ -15,7 +15,7 @@
 #import "UITableView+BNNExtensions.h"
 #import "BNNMacros.h"
 
-static double const BNNOnTapDelayInSeconds = 0.2;
+//static double const BNNOnTapDelayInSeconds = 0.2;
 
 BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 

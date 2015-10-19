@@ -70,7 +70,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/Model/AbstractDataModel/BNNModel.m"
@@ -112,22 +112,6 @@
             startingLineNumber = "39"
             endingLineNumber = "39"
             landmarkName = "-fillWithModel:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TableView/Source/Model/DataModel/BNNDataModel.m"
-            timestampString = "466982390.289941"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-performLoading"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -184,7 +168,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
-            landmarkName = "-onTapRemoveButton:"
+            landmarkName = "-onTapAddButton:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -421,22 +405,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableView/Source/Model/DataModel/BNNDataModel.m"
-            timestampString = "466982388.873224"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-initiateLoading"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TableView/Source/UI/ViewController/Views/CellView/BNNDataCell.m"
             timestampString = "466982705.238006"
             startingColumnNumber = "9223372036854775807"
@@ -508,6 +476,22 @@
             startingLineNumber = "32"
             endingLineNumber = "32"
             landmarkName = "-setModel:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableView/Source/Model/DataModel/BNNDataModel.m"
+            timestampString = "466984423.785256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-image"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
