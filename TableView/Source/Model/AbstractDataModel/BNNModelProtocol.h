@@ -1,5 +1,5 @@
 //
-//  BNNAbstractDataModelProtocol.h
+//  BNNModelProtocol.h
 //  CourseUI
 //
 //  Created by Home on 10/12/15.
@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class BNNAbstractDataModel;
+@class BNNModel;
 
-@protocol BNNAbstractDataModelProtocol <NSObject>
+@protocol BNNModelProtocol <NSObject>
 
 @optional
 

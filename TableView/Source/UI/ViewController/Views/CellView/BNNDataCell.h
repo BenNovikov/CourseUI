@@ -10,11 +10,18 @@
 
 #import "BNNTableViewCell.h"
 
-@class BNNDataModel;
+#import "BNNLoadingView.h"
 
-@interface BNNDataCell : BNNTableViewCell
+#import "BNNModelStateProtocol.h"
+
+@class BNNDataModel;
+@class BNNImageView;
+
+@interface BNNDataCell : BNNTableViewCell <BNNModelStateProtocol>
 @property (nonatomic, strong) IBOutlet UILabel      *contentLabel;
-@property (nonatomic, strong) IBOutlet UIImageView  *contentImageView;
+@property (nonatomic, strong) IBOutlet BNNImageView *contentImageView;
+
+@property (nonatomic, assign) BNNLoadingView        *loadingView;
 @property (nonatomic, strong) BNNDataModel          *model;
 
 - (void)fillWithModel:(BNNDataModel *)model;

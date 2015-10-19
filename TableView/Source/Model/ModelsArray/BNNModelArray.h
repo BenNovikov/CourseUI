@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNAbstractDataModel.h"
+#import "BNNModel.h"
 
-@interface BNNModelArray : BNNAbstractDataModel
+@interface BNNModelArray : BNNModel
 
 
 @end

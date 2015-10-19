@@ -21,6 +21,9 @@ typedef NS_ENUM(NSUInteger, BNNDataArrayModelChangesState) {
 @property (nonatomic, readonly) BNNDataArrayModelChangingPaths  *paths;
 
 + (instancetype)changesWithPaths:(BNNDataArrayModelChangingPaths *)paths withState:(NSUInteger)state;
++ (instancetype)changesWithIndicesSource:(NSUInteger)sourceIndex
+                             destination:(NSUInteger)destinationIndex
+                               withState:(NSUInteger)state;
 
 - (instancetype)initChangesWithPaths:(BNNDataArrayModelChangingPaths *)paths withState:(NSUInteger)state;
 

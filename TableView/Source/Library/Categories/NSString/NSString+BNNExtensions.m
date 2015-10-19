@@ -10,7 +10,8 @@
 
 @implementation NSString (BNNExtensions)
 
-#pragma mark - Class Methods
+#pragma mark -
+#pragma mark Class Methods
 
 + (NSString *)downloadJSONfromURL:(NSString *)url;
 {

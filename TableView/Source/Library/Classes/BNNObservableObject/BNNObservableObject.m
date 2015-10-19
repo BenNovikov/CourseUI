@@ -17,7 +17,8 @@
 
 @dynamic observerSet;
 
-#pragma mark - Initialization and Deallocation
+#pragma mark -
+#pragma mark Initialization and Deallocation
 
 - (id)init {
     if ((self = [super init])) {
@@ -40,7 +41,8 @@
     }
 }
 
-#pragma mark - Public Methods
+#pragma mark -
+#pragma mark Public Methods
 
 - (void)addObserver:(id)observer {
     @synchronized(self) {

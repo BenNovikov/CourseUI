@@ -1,16 +1,17 @@
 //
-//  BNNAbstractDataModel.m
+//  BNNModel.m
 //  CourseUI
 //
 //  Created by Admin on 15/09/27/.
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNAbstractDataModel.h"
+#import "BNNModel.h"
 
-@implementation BNNAbstractDataModel
+@implementation BNNModel
 
-#pragma mark - Public Methods
+#pragma mark -
+#pragma mark Public Methods
 
 - (void)load {
     @synchronized(self) {
@@ -21,10 +22,10 @@
             self.state = BNNDataModelWillLoad;
             [self initiateLoading];
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
                 [self performLoading];
-            });
+//            });
         } else {
             [self notifyObserversWithSelector:[self selectorForState:state]];
         }
@@ -39,7 +40,8 @@
     // do what you need to load
 }
 
-#pragma mark - BNNObservableObject 
+#pragma mark -
+#pragma mark BNNObservableObject
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch(state) {

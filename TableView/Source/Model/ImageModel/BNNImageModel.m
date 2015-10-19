@@ -8,6 +8,10 @@
 
 #import "BNNImageModel.h"
 
+//static NSString * const kBNNImageFileName = @"01";
+//static NSString * const kBNNImageFileType = @"jpg";
+
+
 @interface BNNImageModel()
 @property (nonatomic, strong)   UIImage *image;
 @property (nonatomic, strong)   NSURL   *url;
@@ -16,20 +20,23 @@
 
 @implementation BNNImageModel
 
-#pragma mark - Initializations and Deallocations
+#pragma mark -
+#pragma mark Initializations and Deallocations
 
 - (void)dealloc {
     self.url = nil;
     [self unload];
 }
 
-#pragma mark - Class Methods
+#pragma mark -
+#pragma mark Class Methods
 
 + (instancetype)imageFromURL:(NSURL *)url {
     return [[self alloc] initWithURL:url];
 }
 
-#pragma mark - Public Methods
+#pragma mark -
+#pragma mark Public Methods
 
 - (instancetype)initWithURL:(NSURL *)url {
     @synchronized(self) {
@@ -37,36 +44,33 @@
             self.url = url;
         }
         
+        //cache call to be realized before loading
+        
+        self.state = BNNDataModelDidUnload;
+        [self load];
+        
         return self;
     }
 }
 
 - (void)unload {
     self.image = nil;
+    self.state = BNNDataModelDidUnload;
 }
 
-#pragma mark - BNNAbstractDataModel
+#pragma mark -
+#pragma mark BNNModel
 
 - (void)initiateLoading {
-    NSLog(@"Image Loading Started...");
+//    NSLog(@"Image Loading Started...state:%lu", (unsigned long)self.state);
 }
 
 - (void)performLoading {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *path = self.url.path;
-    UIImage *image = [UIImage imageWithContentsOfFile:path];
-    if ([fileManager fileExistsAtPath:path]) {
-        if (!image) {
-            //load
-        } else {
-            //use current
+    NSString *imageName = self.url.absoluteString;
+//    NSLog(@"Full path: %@", imageName);
+    
+    UIImage *image = [UIImage imageNamed:imageName];
 
-        }
-    } else {
-        // task 2 solution
-        NSString *imageName = self.url.absoluteString;
-        image = [UIImage imageNamed:imageName];
-    }
     self.image = image;
     self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
 }

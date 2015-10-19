@@ -10,7 +10,10 @@
 #define CourseUI_BNNMacros_h
 
 #define BNNDefineMainViewProperty(propertyName, class) \
-    @property (nonatomic, readonly) class   *propertyName;
+    @property (nonatomic, readonly) class   *propertyName
+
+//#define BNNDefineBoolProperty(boolName, boolGetter) \
+//@property (nonatomic, readonly, getter=##boolGetter) BOOL   *boolName
 
 #define BNNViewGetterSynthesize(selector, viewClass) \
     - (viewClass *) selector { \
@@ -23,7 +26,7 @@
 
 #define BNNViewControllerMainViewProperty(viewControllerClass, propertyName, viewClass) \
     @interface viewControllerClass (__##viewClass##_##propertyName) \
-    BNNDefineMainViewProperty(propertyName, viewClass) \
+    BNNDefineMainViewProperty(propertyName, viewClass); \
     \
     @end \
     \
@@ -35,12 +38,12 @@
     \
     @end
 
-//use in pair
-    #define BNNWeakify(var) \
-        __weak__typeof(var) __BNNWeakified_##var = var
+//pair with strongify
+#define BNNWeakify(var) \
+    __weak__typeof(var) __BNNWeakified_##var = var
 
-    #define BNNStrongify(var) \
-        __strong__typeof(var) var = __BNNWeakified_##var
+#define BNNStrongify(var) \
+    __strong__typeof(var) var = __BNNWeakified_##var
 
 #define BNNStrongifyAndReturnNilIfNil(var) \
     BNNStrongifyAndReturnResultIfNil(var, nil)

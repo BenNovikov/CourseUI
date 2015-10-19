@@ -1,5 +1,5 @@
 //
-//  BNNAbstractDataModel.h
+//  BNNModel.h
 //  CourseUI
 //
 //  Created by Admin on 15/09/27/.
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, BNNDataModelState) {
     BNNDataModelDidChange
 };
 
-@interface BNNAbstractDataModel : BNNObservableObject
+@interface BNNModel : BNNObservableObject
 
 - (void)load;
 - (void)initiateLoading;    //does nothing until reloaded in subclasses

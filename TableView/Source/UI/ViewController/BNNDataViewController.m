@@ -11,17 +11,16 @@
 #import "BNNDataCell.h"
 #import "BNNDataView.h"
 
-#import "BNNAbstractDataModelProtocol.h"
+#import "BNNModelProtocol.h"
 #import "UITableView+BNNExtensions.h"
 #import "BNNMacros.h"
 
+static double const BNNOnTapDelayInSeconds = 0.2;
+static NSUInteger const kBNNTableViewRowHeight = 66;
+
 BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
-static NSString * const kBNNMainTitle = @"SomeTable";
-
-@interface BNNDataViewController () <BNNAbstractDataModelProtocol>
-
-- (void)setupNavigationItems;
+@interface BNNDataViewController () <BNNModelProtocol>
 
 @end
 
@@ -37,7 +36,7 @@ static NSString * const kBNNMainTitle = @"SomeTable";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        [self setupNavigationItems];
+
     }
 
     return self;
@@ -56,6 +55,15 @@ static NSString * const kBNNMainTitle = @"SomeTable";
 - (IBAction)onTapAddButton:(id)sender {
 //    NSLog(@"Added %u row", (NSUInteger)self.arrayModel.count + 1);
     [self.arrayModel addModel:[BNNDataModel dataModel]];
+    
+    UIApplication *sharedApp = [UIApplication sharedApplication];
+    [sharedApp beginIgnoringInteractionEvents];
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC * BNNOnTapDelayInSeconds));
+    dispatch_after(time, dispatch_get_main_queue(), ^(void) {
+        if ([sharedApp isIgnoringInteractionEvents]) {
+            [sharedApp endIgnoringInteractionEvents];
+        }
+    });
 }
 
 - (IBAction)onTapRemoveButton:(id)sender {
@@ -78,12 +86,12 @@ static NSString * const kBNNMainTitle = @"SomeTable";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataView.tableView.rowHeight = kBNNTableViewRowHeight;
+
+    [self.arrayModel load];
     
-    // Task #3
-//    [self.arrayModel load];
-    
-    // Task #2
-    [self.dataView.tableView reloadData];
+//    /* Task #2 */
+//    [self.dataView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -133,29 +141,32 @@ static NSString * const kBNNMainTitle = @"SomeTable";
     return YES;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL insertable = (0 == indexPath.row || indexPath.row == self.arrayModel.count - 1);
+//    BOOL insertable = (0 == indexPath.row || indexPath.row == self.arrayModel.count - 1);
+//    return insertable ? UITableViewCellEditingStyleNone : UITableViewCellEditingStyleDelete;
     
-    return insertable ? UITableViewCellEditingStyleInsert : UITableViewCellEditingStyleDelete;
+    return UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark -
-#pragma mark BNNAbstractDataModelProtocol
+#pragma mark BNNModelProtocol
 
 - (void)modelDidUnload:(id)model {
     //do nothing yet
 }
 
 - (void)modelWillLoad:(id)model {
-    //spinner on
+
 }
 
 - (void)modelDidLoad:(id)model {
-    //spinner off
-    
-    self.dataView.tableView.rowHeight = 44;
+    //spinner off?
     [self.dataView.tableView reloadData];
 }
 
@@ -170,22 +181,7 @@ static NSString * const kBNNMainTitle = @"SomeTable";
 
 - (void)model:(BNNDataArrayModel *)modelArray didChangeWithObject:(BNNDataArrayModelChanges *)changes {
 //    NSLog(@"model didChangeWithObject: %@", changes);
-}
-
-#pragma mark -
-#pragma mark Private
-
-- (void)setupNavigationItems {
-    UINavigationItem *navigationItem = self.navigationItem;
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                             target:self
-                                                                             action:@selector(onTapAddButton:)];
-    navigationItem.title = kBNNMainTitle;
-    navigationItem.leftBarButtonItem = addItem;
-    navigationItem.rightBarButtonItem = self.editButtonItem;
-    UIBarButtonItem *editItem = self.editButtonItem;
-    editItem.target = self;
-    editItem.action = @selector(onTapEditButton:);
+    [self.dataView.tableView updateWithChanges:changes];
 }
 
 @end

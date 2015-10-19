@@ -10,7 +10,7 @@
 
 @interface BNNDataArrayModelChanges ()
 @property (nonatomic, assign) BNNDataArrayModelChangesState     state;
-@property (nonatomic, strong) BNNDataArrayModelChangingPaths *paths;
+@property (nonatomic, strong) BNNDataArrayModelChangingPaths    *paths;
 
 @end
 
@@ -21,6 +21,15 @@
 
 + (instancetype)changesWithPaths:(BNNDataArrayModelChangingPaths *)paths withState:(NSUInteger)state {
     return [[self alloc] initChangesWithPaths:paths withState:state];
+}
+
++ (instancetype)changesWithIndicesSource:(NSUInteger)sourceIndex
+                             destination:(NSUInteger)destinationIndex
+                               withState:(NSUInteger)state
+{
+    return [self changesWithPaths:[BNNDataArrayModelChangingPaths movingFromIndex:sourceIndex
+                                                                          toIndex:destinationIndex]
+                        withState:state];
 }
 
 #pragma mark -

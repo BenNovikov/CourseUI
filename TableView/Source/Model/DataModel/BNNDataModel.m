@@ -10,10 +10,17 @@
 
 #import "NSString+BNNExtensions.h"
 #import "BNNTableConstants.h"
+#import "BNNMacros.h"
+
+static NSString * const kBNNTextKey = @"text";
+static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2015/04/15/10/griner3.jpg";
+
+@interface BNNDataModel()
+@property(nonatomic, assign)  BNNImageModel   *imageModel;
+
+@end
 
 @implementation BNNDataModel
-
-@dynamic imageModel;
 
 # pragma mark - 
 # pragma mark Class Methods
@@ -30,28 +37,43 @@
     return self;
 }
 
-#pragma mark - 
-# pragma mark Accesors
+#pragma mark -
+#pragma mark Accesors
 
 - (BNNImageModel *)imageModel {
-    static BNNImageModel *__imageModel =  nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        __imageModel = [BNNImageModel imageFromURL:[NSURL URLWithString:kBNNImageName]];
-    });
+    self.state = BNNDataModelWillLoad;
+    BNNImageModel *imageModel = [BNNImageModel imageFromURL:[NSURL URLWithString:kBNNImageName]];
+    self.state = imageModel ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
+//    NSLog(@"Data Model state: %lu", self.state);
     
-    return __imageModel;
+    return imageModel;
 }
 
-#pragma mark - 
-# pragma mark BNNAbstractDataModel
+#pragma mark -
+#pragma mark BNNModel
 
 - (void)initiateLoading {
     NSLog(@"Data Model Loading Started...");
+    self.state = BNNDataModelWillLoad;
 }
 
 - (void)performLoading {
     self.state = BNNDataModelDidLoad;
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.text forKey:kBNNTextKey];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if((self = [super init])) {
+        self.text = [aDecoder decodeObjectForKey:kBNNTextKey];
+    }
+    
+    return self;
 }
 
 @end

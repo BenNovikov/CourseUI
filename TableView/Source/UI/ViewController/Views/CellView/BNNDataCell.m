@@ -7,7 +7,12 @@
 //
 
 #import "BNNDataCell.h"
+
 #import "BNNDataModel.h"
+#import "BNNLoadingView.h"
+#import "BNNImageView.h"
+
+#import "BNNMacros.h"
 
 @implementation BNNDataCell
 
@@ -22,11 +27,9 @@
 #pragma mark Accessors
 
 - (void)setModel:(BNNDataModel *)model {
-    if (_model != model) {
-        _model = model;
-        
-        [self fillWithModel:model];
-    }
+    BNNObservableSetterSynthesize(model);
+    
+    [self fillWithModel:model];
 }
 
 #pragma mark -
@@ -34,20 +37,25 @@
 
 - (void)fillWithModel:(BNNDataModel *)model {
     self.contentLabel.text = model.text;
+    [self.loadingView setVisible:YES];
     self.contentImageView.image = model.imageModel.image;
-    
-//    static dispatch_once_t once_Token;
-//    static dispatch_queue_t queue = nil;
-//    dispatch_once(&once_Token, ^{
-//        queue = dispatch_queue_create("label", DISPATCH_QUEUE_SERIAL);
-//    });
-//    
-//    dispatch_async(queue, ^{
-//        UIImage *image = model.imageModel.image;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            self.contentImageView.image = image;
-//        });
-//    });
+    [self.loadingView setVisible:NO withAnimation:YES];
+}
+
+#pragma mark -
+#pragma mark BNNModelStateProtocol
+
+- (void)modelWillLoad:(id)model {
+    [self.loadingView setVisible:YES withAnimation:YES];
+}
+
+- (void)modelDidLoad:(id)model {
+    [self fillWithModel:model];
+    [self.loadingView setVisible:NO withAnimation:YES];
+}
+
+- (void)modelDidFailLoading:(id)model{
+    [self.model load];
 }
 
 @end

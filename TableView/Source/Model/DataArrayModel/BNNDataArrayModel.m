@@ -11,15 +11,12 @@
 #import "BNNDataArrayModelChanges.h"
 
 #import "NSIndexPath+BNNExtensions.h"
+#import "NSMutableArray+BNNExtensions.h"
 
-static NSString * const BNNMutableModelArray = @"mutableModelArray";
+static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 
 @interface BNNDataArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableModelArray;
-
-- (BNNDataArrayModelChanges *)changesWithIndicesSource:(NSUInteger)sourceIndex
-                                            destination:(NSUInteger)destinationIndex
-                                                  state:(BNNDataArrayModelChangesState)state;
 
 @end
 
@@ -93,9 +90,9 @@ static NSString * const BNNMutableModelArray = @"mutableModelArray";
             [array addObject:model];
         }
         
-        BNNDataArrayModelChanges *changes = [self changesWithIndicesSource:index
-                                                               destination:index
-                                                                     state:BNNDataArrayModelInsert];
+        BNNDataArrayModelChanges *changes = [BNNDataArrayModelChanges changesWithIndicesSource:index
+                                                                                   destination:index
+                                                                                     withState:BNNDataArrayModelInsert];
         [self setState:BNNDataModelDidChange withObject:changes];
     }
 }
@@ -108,24 +105,21 @@ static NSString * const BNNMutableModelArray = @"mutableModelArray";
     @synchronized (self) {
         [self.mutableModelArray removeObjectAtIndex:index];
         
-        BNNDataArrayModelChanges *changes = [self changesWithIndicesSource:index
-                                                                destination:index
-                                                                      state:BNNDataArrayModelDelete];
+        BNNDataArrayModelChanges *changes = [BNNDataArrayModelChanges changesWithIndicesSource:index
+                                                                                   destination:index
+                                                                                     withState:BNNDataArrayModelDelete];
         [self setState:BNNDataModelDidChange withObject:changes];
     }
 }
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
-    if (sourceIndex != destinationIndex) {
-        BNNDataModel *tempModel = [self modelAtIndex:sourceIndex];
-        [self removeModelAtIndex:sourceIndex];
-        [self insertModel:tempModel atIndex:destinationIndex];
-        
-        BNNDataArrayModelChanges *changes = [self changesWithIndicesSource:sourceIndex
-                                                               destination:destinationIndex
-                                                                     state:BNNDataArrayModelMove];
-        [self setState:BNNDataModelDidChange withObject:changes];
-    }
+    NSMutableArray *array = self.mutableModelArray;
+//        [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
+    [array exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
+    BNNDataArrayModelChanges *changes = [BNNDataArrayModelChanges changesWithIndicesSource:sourceIndex
+                                                                               destination:destinationIndex
+                                                                                 withState:BNNDataArrayModelMove];
+    [self setState:BNNDataModelDidChange withObject:changes];
 }
 
 - (void)addModelsFromArray:(NSArray *)anArray {
@@ -142,26 +136,14 @@ static NSString * const BNNMutableModelArray = @"mutableModelArray";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        self.mutableModelArray = [aDecoder decodeObjectForKey:BNNMutableModelArray];
+        self.mutableModelArray = [aDecoder decodeObjectForKey:kBNNMutableModelArrayKey];
     }
     
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.mutableModelArray forKey:BNNMutableModelArray];
-}
-
-#pragma mark -
-#pragma mark Private Methods
-
-- (BNNDataArrayModelChanges *)changesWithIndicesSource:(NSUInteger)sourceIndex
-                                           destination:(NSUInteger)destinationIndex
-                                                 state:(BNNDataArrayModelChangesState)state
-{
-    return [BNNDataArrayModelChanges changesWithPaths:[BNNDataArrayModelChangingPaths movingFromIndex:sourceIndex
-                                                                                              toIndex:destinationIndex]
-                                            withState:state];
+    [aCoder encodeObject:self.mutableModelArray forKey:kBNNMutableModelArrayKey];
 }
 
 @end
