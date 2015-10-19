@@ -43,7 +43,6 @@
 		848E9CD71BA3678E00B0B178 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848E9CD61BA3678E00B0B178 /* LaunchScreen.xib */; };
 		848E9CD91BA36D4800B0B178 /* BNNRectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */; };
 		84E7C4D61BBC69CE00CD9011 /* UITableView+BNNExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E7C4D51BBC69CD00CD9011 /* UITableView+BNNExtensions.m */; };
-		F46033BD1BD3E0E10060B0AC /* NSMutableArray+BNNExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F46033BC1BD3E0E10060B0AC /* NSMutableArray+BNNExtensions.m */; };
 		F46033C11BD41FA40060B0AC /* BNNLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46033C01BD41FA40060B0AC /* BNNLoadingView.m */; };
 		F46033C41BD41FF00060B0AC /* BNNLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46033C31BD41FF00060B0AC /* BNNLoadingView.xib */; };
 		F46033C81BD43F400060B0AC /* BNNImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46033C71BD43F400060B0AC /* BNNImageView.m */; };
@@ -152,8 +151,6 @@
 		848E9CD81BA36D4800B0B178 /* BNNRectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNNRectViewController.xib; sourceTree = "<group>"; };
 		84E7C4D41BBC69CD00CD9011 /* UITableView+BNNExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+BNNExtensions.h"; path = "UITableView/UITableView+BNNExtensions.h"; sourceTree = "<group>"; };
 		84E7C4D51BBC69CD00CD9011 /* UITableView+BNNExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+BNNExtensions.m"; path = "UITableView/UITableView+BNNExtensions.m"; sourceTree = "<group>"; };
-		F46033BB1BD3E0E10060B0AC /* NSMutableArray+BNNExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+BNNExtensions.h"; path = "NSMutableArray/NSMutableArray+BNNExtensions.h"; sourceTree = "<group>"; };
-		F46033BC1BD3E0E10060B0AC /* NSMutableArray+BNNExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+BNNExtensions.m"; path = "NSMutableArray/NSMutableArray+BNNExtensions.m"; sourceTree = "<group>"; };
 		F46033BF1BD41FA40060B0AC /* BNNLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNLoadingView.h; path = Source/UI/ViewController/Views/LoadingView/BNNLoadingView.h; sourceTree = "<group>"; };
 		F46033C01BD41FA40060B0AC /* BNNLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNLoadingView.m; path = Source/UI/ViewController/Views/LoadingView/BNNLoadingView.m; sourceTree = "<group>"; };
 		F46033C31BD41FF00060B0AC /* BNNLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BNNLoadingView.xib; path = Source/UI/ViewController/Views/LoadingView/BNNLoadingView.xib; sourceTree = "<group>"; };
@@ -369,7 +366,6 @@
 				843DD4421BBC617400EF6D5B /* UIWindow */,
 				84E7C4D71BBC69D300CD9011 /* UITableView */,
 				F461D5951BCC4D9F007FA69C /* NSIndexPath */,
-				F46033BE1BD3E0E50060B0AC /* NSMutableArray */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -593,15 +589,6 @@
 				84E7C4D51BBC69CD00CD9011 /* UITableView+BNNExtensions.m */,
 			);
 			name = UITableView;
-			sourceTree = "<group>";
-		};
-		F46033BE1BD3E0E50060B0AC /* NSMutableArray */ = {
-			isa = PBXGroup;
-			children = (
-				F46033BB1BD3E0E10060B0AC /* NSMutableArray+BNNExtensions.h */,
-				F46033BC1BD3E0E10060B0AC /* NSMutableArray+BNNExtensions.m */,
-			);
-			name = NSMutableArray;
 			sourceTree = "<group>";
 		};
 		F46033C21BD41FA80060B0AC /* LoadingView */ = {
@@ -969,7 +956,6 @@
 				845515251BB89077003AD071 /* BNNImageModel.m in Sources */,
 				8455150F1BB86DA6003AD071 /* BNNDataModel.m in Sources */,
 				F4E8609D1BC7076A0019587B /* UIViewController+BNNExtensions.m in Sources */,
-				F46033BD1BD3E0E10060B0AC /* NSMutableArray+BNNExtensions.m in Sources */,
 				F4E7BDD11BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m in Sources */,
 				845514B01BB71C68003AD071 /* main.m in Sources */,
 				84693DF81BC02570009AC956 /* BNNModelArray.m in Sources */,

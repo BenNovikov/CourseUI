@@ -29,7 +29,8 @@ static CGFloat const kBNNInvisibleAlpha     = 0.0f;
 }
 
 - (instancetype)initWithSuperview:(UIView *)view {
-    if((self = [super init])) {
+    self = [super init];
+    if (self) {
         self = [UINib objectWithClass:[self class]];
         
         [view addSubview:self];

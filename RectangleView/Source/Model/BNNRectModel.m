@@ -16,7 +16,8 @@
 #pragma mark Public
 
 - (instancetype)initWithPosition:(BNNRectPositionType)position {
-    if ((self = [super init])) {
+    self = [super init];
+    if (self) {
         self.position = position;
     }
     

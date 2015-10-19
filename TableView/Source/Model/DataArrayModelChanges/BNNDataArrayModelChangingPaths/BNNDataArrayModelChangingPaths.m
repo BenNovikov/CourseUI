@@ -39,7 +39,8 @@
 - (instancetype)initWithSourcePath:(NSIndexPath *)sourcePath
                    destinationPath:(NSIndexPath *)destinationPath
 {
-    if((self = [super init])) {
+    self = [super init];
+    if (self) {
         self.sourcePath = sourcePath;
         self.destinationPath = destinationPath;
     }

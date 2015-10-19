@@ -11,7 +11,6 @@
 #import "BNNDataArrayModelChanges.h"
 
 #import "NSIndexPath+BNNExtensions.h"
-#import "NSMutableArray+BNNExtensions.h"
 
 static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 
@@ -35,7 +34,8 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithModelsCount:(NSUInteger)count {
-    if ((self = [super init])) {
+    self = [super init];
+    if (self) {
         self.mutableModelArray = [NSMutableArray arrayWithCapacity:count];
     }
     
@@ -113,9 +113,7 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 }
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
-    NSMutableArray *array = self.mutableModelArray;
-//        [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
-    [array exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
+    [self.mutableModelArray exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
     BNNDataArrayModelChanges *changes = [BNNDataArrayModelChanges changesWithIndicesSource:sourceIndex
                                                                                destination:destinationIndex
                                                                                  withState:BNNDataArrayModelMove];

@@ -16,7 +16,8 @@ static NSString * const kBNNTextKey = @"text";
 static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2015/04/15/10/griner3.jpg";
 
 @interface BNNDataModel()
-@property(nonatomic, assign)  BNNImageModel   *imageModel;
+//@property(nonatomic, assign)  BNNImageModel   *imageModel;
+@property(nonatomic, strong)  UIImage   *image;
 
 @end
 
@@ -30,7 +31,8 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 }
 
 - (instancetype)initWithString:(NSString *)string {
-    if((self = [super init])) {
+    self = [super init];
+    if (self) {
         self.text = string;
     }
     
@@ -40,14 +42,22 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 #pragma mark -
 #pragma mark Accesors
 
-- (BNNImageModel *)imageModel {
+//- (BNNImageModel *)imageModel {
+//    self.state = BNNDataModelWillLoad;
+//    BNNImageModel *imageModel = [BNNImageModel imageFromURL:[NSURL URLWithString:kBNNImageName]];
+//    self.state = imageModel ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
+////    NSLog(@"Data Model state: %lu", self.state);
+//    
+//    return imageModel;
+//}
+
+- (UIImage *)image {
     self.state = BNNDataModelWillLoad;
-    BNNImageModel *imageModel = [BNNImageModel imageFromURL:[NSURL URLWithString:kBNNImageName]];
-    self.state = imageModel ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
-//    NSLog(@"Data Model state: %lu", self.state);
+    [self load];
     
-    return imageModel;
+    return self.image;
 }
+
 
 #pragma mark -
 #pragma mark BNNModel
@@ -58,8 +68,11 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 }
 
 - (void)performLoading {
-    self.state = BNNDataModelDidLoad;
-}
+    //some kind of true load magic to be implemented here
+    UIImage *image = nil;
+    
+    self.image = image;
+    self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;}
 
 #pragma mark -
 #pragma mark NSCoding
@@ -69,7 +82,8 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    if((self = [super init])) {
+    self = [super init];
+    if (self) {
         self.text = [aDecoder decodeObjectForKey:kBNNTextKey];
     }
     

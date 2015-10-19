@@ -38,8 +38,10 @@
 - (void)fillWithModel:(BNNDataModel *)model {
     self.contentLabel.text = model.text;
     [self.loadingView setVisible:YES];
-    self.contentImageView.image = model.imageModel.image;
-    [self.loadingView setVisible:NO withAnimation:YES];
+    
+    self.contentImageView.image = model.image;
+    
+    [self.loadingView setVisible:NO];
 }
 
 #pragma mark -

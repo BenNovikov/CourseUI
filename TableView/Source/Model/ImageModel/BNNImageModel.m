@@ -40,7 +40,8 @@
 
 - (instancetype)initWithURL:(NSURL *)url {
     @synchronized(self) {
-        if((self = [super init])) {
+        self = [super init];
+        if (self) {
             self.url = url;
         }
         

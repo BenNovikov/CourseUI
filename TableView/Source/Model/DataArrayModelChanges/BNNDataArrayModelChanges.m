@@ -36,7 +36,8 @@
 #pragma mark Public Methods
 
 - (instancetype)initChangesWithPaths:(BNNDataArrayModelChangingPaths *)paths withState:(NSUInteger)state {
-    if((self = [super init])) {
+    self = [super init];
+    if (self) {
         self.paths = paths;
         self.state = state;
     }

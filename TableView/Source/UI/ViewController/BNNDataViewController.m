@@ -16,7 +16,6 @@
 #import "BNNMacros.h"
 
 static double const BNNOnTapDelayInSeconds = 0.2;
-static NSUInteger const kBNNTableViewRowHeight = 66;
 
 BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
@@ -55,15 +54,17 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 - (IBAction)onTapAddButton:(id)sender {
 //    NSLog(@"Added %u row", (NSUInteger)self.arrayModel.count + 1);
     [self.arrayModel addModel:[BNNDataModel dataModel]];
-    
-    UIApplication *sharedApp = [UIApplication sharedApplication];
-    [sharedApp beginIgnoringInteractionEvents];
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC * BNNOnTapDelayInSeconds));
-    dispatch_after(time, dispatch_get_main_queue(), ^(void) {
-        if ([sharedApp isIgnoringInteractionEvents]) {
-            [sharedApp endIgnoringInteractionEvents];
-        }
-    });
+ 
+//    They say there is no need to control double taps. So let it be cleaned away, a bit later.
+//
+//    UIApplication *sharedApp = [UIApplication sharedApplication];
+//    [sharedApp beginIgnoringInteractionEvents];
+//    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC * BNNOnTapDelayInSeconds));
+//    dispatch_after(time, dispatch_get_main_queue(), ^(void) {
+//        if ([sharedApp isIgnoringInteractionEvents]) {
+//            [sharedApp endIgnoringInteractionEvents];
+//        }
+//    });
 }
 
 - (IBAction)onTapRemoveButton:(id)sender {
@@ -86,7 +87,6 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataView.tableView.rowHeight = kBNNTableViewRowHeight;
 
     [self.arrayModel load];
     
