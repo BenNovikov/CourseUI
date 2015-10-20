@@ -51,14 +51,6 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 //    return imageModel;
 //}
 
-- (UIImage *)image {
-    self.state = BNNDataModelWillLoad;
-    [self load];
-    
-    return self.image;
-}
-
-
 #pragma mark -
 #pragma mark BNNModel
 
