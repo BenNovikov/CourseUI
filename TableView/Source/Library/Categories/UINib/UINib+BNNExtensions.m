@@ -53,7 +53,7 @@
 //}
 
 - (id)objectWithClass:(Class)aClass owner:(id)owner options:(NSDictionary *)options {
-    NSArray *objects = [self instantiateWithOwner:owner options:nil];
+    NSArray *objects = [self instantiateWithOwner:owner options:options];
     for (id object in objects) {
         if ([object isMemberOfClass:aClass]) {
             return object;

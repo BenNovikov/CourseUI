@@ -18,7 +18,7 @@
 
 BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
-@interface BNNDataViewController () <BNNObservableModel>
+@interface BNNDataViewController () //<BNNObservableModel>
 
 @end
 
@@ -163,13 +163,14 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (void)modelWillLoad:(id)model {
     BNNLogForObject(@"modelWillLoad:%@", model);
+    [self.dataView.loadingView setVisible:NO];
 }
 
 - (void)modelDidLoad:(id)model {
     //spinner off?
     BNNDataView *view = self.dataView;
     [view.tableView reloadData];
-    [view.loadingView setVisible:NO];
+    [view.loadingView setVisible:YES];
     BNNLogForObject(@"modelDidLoad:%@", model);
 }
 

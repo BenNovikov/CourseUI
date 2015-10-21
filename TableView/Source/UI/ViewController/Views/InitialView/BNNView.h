@@ -13,10 +13,16 @@
 @class BNNLoadingView;
 
 @interface BNNView : UIView
-@property (nonatomic, strong)                       BNNLoadingView  *loadingView;
+@property (nonatomic, readonly)                     BNNLoadingView  *loadingView;
 @property (nonatomic, readonly, getter = isVisible) BOOL            visible;
 
-- (void)setVisible:(BOOL)visible;
-- (void)setVisible:(BOOL)visible withAnimation:(BOOL)animated;
+- (instancetype)initWithFrame:(CGRect)frame;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder;
+
+- (void)showLoadingView;
+- (void)hideLoadingView;
+- (BOOL)isLoadingViewVisible;
+
+//- (BNNLoadingView *)newLoadingView;
 
 @end

@@ -10,55 +10,50 @@
 
 #import "UINib+BNNExtensions.h"
 
-@interface BNNLoadingView()
-@property (nonatomic, assign, getter=isVisible) BOOL    visible;
-
-@end
-
 @implementation BNNLoadingView
 
-@dynamic visible;
+@synthesize visible = _visible;
 
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)viewWithSuperview:(UIView *)view {
-    return [[self alloc] initWithSuperview:view];
++ (instancetype)viewWithSuperview:(UIView *)superview {
+    return [[self alloc] initWithSuperview:superview];
 }
 
-- (instancetype)initWithSuperview:(UIView *)view {
-    self = [super init];
+- (instancetype)initWithSuperview:(UIView *)superview {
+    self = [super initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     if (self) {
         self = [UINib objectWithClass:[self class]];
         
-        [view addSubview:self];
-        self.frame = view.bounds;
+        [superview addSubview:self];
+        self.frame = superview.bounds;
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark BNNView
+#pragma mark Public
 
 - (void)setVisible:(BOOL)visible {
-//    [self setVisible:visible withAnimation:YES];
+    [self setVisible:visible withAnimation:YES];
 }
 
 - (void)setVisible:(BOOL)visible withAnimation:(BOOL)animated {
-//    [UIView animateWithDuration:kBNNAnimationDuration animations:^{
-//        self.alpha = visible ? kBNNVisibleAlpha : kBNNInvisibleAlpha;
-//    } completion:^(BOOL finished) {
-//        if (finished) {
-//            _visible = visible;
-//        }
-//    }];
+    [UIView animateWithDuration:kBNNAnimationDuration animations:^{
+        self.alpha = visible ? kBNNVisibleAlpha : kBNNInvisibleAlpha;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            _visible = visible;
+        }
+    }];
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.visible = NO;
-}
+//- (void)awakeFromNib {
+//    [super awakeFromNib];
+//    
+//    self.visible = NO;
+//}
 
 @end

@@ -20,7 +20,6 @@ static NSString * const kBNNEditButtonTitleDone = @"Done";
 @implementation BNNDataView
 
 @dynamic editing;
-@dynamic loadingView;
 
 #pragma mark -
 #pragma mark Accessors

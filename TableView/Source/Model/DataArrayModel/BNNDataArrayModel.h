@@ -9,8 +9,6 @@
 #import "BNNModel.h"
 
 @interface BNNDataArrayModel : BNNModel <NSCoding>
-//@property (nonatomic, readonly) NSUInteger  count;
-//@property (nonatomic, readonly) NSArray     *array;
 
 @property (nonatomic, readonly) NSArray *modelArray;
 

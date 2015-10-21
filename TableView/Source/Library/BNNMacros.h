@@ -11,9 +11,6 @@
 #define BNNDefineMainViewProperty(propertyName, class) \
     @property (nonatomic, readonly) class   *propertyName
 
-//#define BNNDefineBoolProperty(boolName, boolGetter) \
-//@property (nonatomic, readonly, getter=##boolGetter) BOOL   *boolName
-
 #define BNNViewGetterSynthesize(selector, viewClass) \
     - (viewClass *) selector { \
         if ([self isViewLoaded] && [self.view isKindOfClass:[viewClass class]]) { \
@@ -80,6 +77,8 @@
     \
     return self;
 
+// Debug Loggers
+
 #if BNNDebugMode
     #define BNNSleep(time) do { \
         if (time < kBNNSleepDuration) { \
@@ -104,14 +103,6 @@
 #else
     #define BNNLogLoadingPerformed
 #endif
-
-//#if BNNDebugMode
-//    #define BNNLogStateForModel(model) \
-//    NSLog(@"%@ with State:%@", [model class], \
-//            NSStringFromSelector([[model class] selectorForState:model.state]))
-//#else
-//    #define BNNLogLoadingPerformed
-//#endif
 
 #if BNNDebugMode
 #define BNNLogForObject(log, object) \

@@ -9,14 +9,14 @@
 #import "BNNView.h"
 
 @interface BNNLoadingView : BNNView
-@property (nonatomic, readonly, getter = isVisible) BOOL        visible;
-@property (nonatomic, strong) IBOutlet UIActivityIndicatorView  *spinner;
+@property (nonatomic, assign, getter = isVisible) BOOL        visible;
+//@property (nonatomic, strong) IBOutlet UIActivityIndicatorView  *spinner;
 
 + (instancetype)viewWithSuperview:(UIView *)view;
 
 - (instancetype)initWithSuperview:(UIView *)view NS_DESIGNATED_INITIALIZER;
 
-//- (void)setVisible:(BOOL)visible;
-//- (void)setVisible:(BOOL)visible withAnimation:(BOOL)animated;
+- (void)setVisible:(BOOL)visible;
+- (void)setVisible:(BOOL)visible withAnimation:(BOOL)animated;
 
 @end

@@ -10,7 +10,8 @@
 #import "BNNLoadingView.h"
 
 @interface BNNView()
-@property (nonatomic, assign, getter=isVisible) BOOL    visible;
+@property (nonatomic, strong)                   BNNLoadingView  *loadingView;
+@property (nonatomic, assign, getter=isVisible) BOOL            visible;
 
 @end
 
@@ -23,36 +24,50 @@
     self.loadingView = nil;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-
-//    BNNLoadingView *spinnerView = [[BNNLoadingView alloc] initWithSuperview:self];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     
-//    self.loadingView = spinnerView;
+    self.loadingView = [BNNLoadingView viewWithSuperview:self];
+    
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.loadingView = [BNNLoadingView viewWithSuperview:self];
+    }
+    
     return self;
 }
 
 #pragma mark -
 #pragma mark Accesors
 
-- (void)setVisible:(BOOL)visible {
-    [self setVisible:visible withAnimation:YES];
+- (BNNLoadingView *)loadingView {
+    if (!_loadingView) {
+        _loadingView = [BNNLoadingView viewWithSuperview:self];
+    }
+    
+    return _loadingView;
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)setVisible:(BOOL)visible withAnimation:(BOOL)animated {
-    [UIView animateWithDuration:kBNNAnimationDuration animations:^{
-        self.alpha = visible ? kBNNVisibleAlpha : kBNNInvisibleAlpha;
-    } completion:^(BOOL finished) {
-        if (finished) {
-            _visible = visible;
-        }
-    }];
+- (void)showLoadingView {
+    [self bringSubviewToFront:self.loadingView];
+    [self.loadingView setVisible:YES];
+}
+
+- (void)hideLoadingView {
+    BNNLoadingView *view = self.loadingView;
+    [view setVisible:NO];
+    [view removeFromSuperview];
+}
+
+- (BOOL)isLoadingViewVisible {
+    return self.loadingView.visible;
 }
 
 @end

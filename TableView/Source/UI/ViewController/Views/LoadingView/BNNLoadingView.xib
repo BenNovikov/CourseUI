@@ -16,9 +16,6 @@
                 </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-            <connections>
-                <outlet property="spinner" destination="zNd-fI-YFn" id="RYX-3Y-les"/>
-            </connections>
             <point key="canvasLocation" x="297" y="433"/>
         </view>
     </objects>
