@@ -34,7 +34,4 @@
 - (void)addModelsFromArray:(NSArray *)anArray;
 - (void)removeModelsInArray:(NSArray *)anArray;
 
-- (id)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
-- (void)encodeWithCoder:(NSCoder *)coder;
-
 @end

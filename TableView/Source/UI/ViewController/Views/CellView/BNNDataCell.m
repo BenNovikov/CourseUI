@@ -9,7 +9,6 @@
 #import "BNNDataCell.h"
 
 #import "BNNDataModel.h"
-#import "BNNLoadingView.h"
 #import "BNNImageView.h"
 
 #import "BNNMacros.h"
@@ -27,9 +26,11 @@
 #pragma mark Accessors
 
 - (void)setModel:(BNNDataModel *)model {
-    BNNObservableSetterSynthesize(model);
-    
+    BNNSynthesizeObservableSetterAndExecuteMethod(model, load);
+ 
     [self fillWithModel:model];
+    
+    [model load];
 }
 
 #pragma mark -
@@ -37,27 +38,25 @@
 
 - (void)fillWithModel:(BNNDataModel *)model {
     self.contentLabel.text = model.text;
-    [self.loadingView setVisible:YES];
-    
     self.contentImageView.image = model.image;
-    
-    [self.loadingView setVisible:NO];
 }
 
 #pragma mark -
-#pragma mark BNNModelStateProtocol
+#pragma mark BNNObservableModel
 
 - (void)modelWillLoad:(id)model {
-    [self.loadingView setVisible:YES withAnimation:YES];
+    self.contentSpinnerView.hidesWhenStopped = YES;
+    [self.contentSpinnerView startAnimating];
+    BNNLogForObject(@"modelWillLoad:%@", model);
 }
 
 - (void)modelDidLoad:(id)model {
     [self fillWithModel:model];
-    [self.loadingView setVisible:NO withAnimation:YES];
+    [self.contentSpinnerView stopAnimating];
 }
 
 - (void)modelDidFailLoading:(id)model{
-    [self.model load];
+    [self.model load]; //probably dispatch_once should be added here to avoid infinite cycle
 }
 
 @end

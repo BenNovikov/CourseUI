@@ -11,7 +11,7 @@
 #import "BNNModel.h"
 //#import "BNNImageModel.h"
 
-@interface BNNDataModel : BNNModel
+@interface BNNDataModel : BNNModel <NSCoding>
 @property(nonatomic, copy)      NSString    *text;
 @property(nonatomic, readonly)  UIImage     *image;
 //@property(nonatomic, readonly)  BNNImageModel   *imageModel;
@@ -19,8 +19,5 @@
 + (instancetype)dataModel;
 
 - (instancetype)initWithString:(NSString *)string NS_DESIGNATED_INITIALIZER;
-
-- (id)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
-- (void)encodeWithCoder:(NSCoder *)coder;
 
 @end

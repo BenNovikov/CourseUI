@@ -11,7 +11,6 @@
 #import "BNNDataCell.h"
 #import "BNNDataView.h"
 
-#import "BNNModelProtocol.h"
 #import "UITableView+BNNExtensions.h"
 #import "BNNMacros.h"
 
@@ -19,7 +18,7 @@
 
 BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
-@interface BNNDataViewController () <BNNModelProtocol>
+@interface BNNDataViewController () <BNNObservableModel>
 
 @end
 
@@ -45,7 +44,7 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 #pragma mark Accessors
 
 - (void)setArrayModel:(BNNDataArrayModel *)arrayModel {
-    BNNObservableSetterSynthesize(arrayModel);
+    BNNSynthesizeObservableSetterAndExecuteMethod(arrayModel, load);
 }
 
 #pragma mark -
@@ -67,14 +66,14 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 //    });
 }
 
-- (IBAction)onTapRemoveButton:(id)sender {
-    NSUInteger counter = self.arrayModel.count;
-    if (counter) {
-//        NSLog(@"Removed %lu row", (unsigned long)self.arrayModel.count);
-        NSUInteger sourcePath = (NSUInteger)[[self.dataView.tableView indexPathForSelectedRow] row];
-        [self.arrayModel removeModelAtIndex:sourcePath];
-    }
-}
+//- (IBAction)onTapRemoveButton:(id)sender {
+//    NSUInteger counter = self.arrayModel.count;
+//    if (counter) {
+////        NSLog(@"Removed %lu row", (unsigned long)self.arrayModel.count);
+//        NSUInteger sourcePath = (NSUInteger)[[self.dataView.tableView indexPathForSelectedRow] row];
+//        [self.arrayModel removeModelAtIndex:sourcePath];
+//    }
+//}
 
 - (IBAction)onTapEditButton:(id)sender {
 //    NSLog(@"Edit: %d", self.dataView.isEditing);
@@ -89,13 +88,14 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
     [super viewDidLoad];
 
     [self.arrayModel load];
-    
-//    /* Task #2 */
-//    [self.dataView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
 }
 
 #pragma mark -
@@ -155,19 +155,22 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 }
 
 #pragma mark -
-#pragma mark BNNModelProtocol
+#pragma mark BNNObservableModel
 
 - (void)modelDidUnload:(id)model {
     //do nothing yet
 }
 
 - (void)modelWillLoad:(id)model {
-
+    BNNLogForObject(@"modelWillLoad:%@", model);
 }
 
 - (void)modelDidLoad:(id)model {
     //spinner off?
-    [self.dataView.tableView reloadData];
+    BNNDataView *view = self.dataView;
+    [view.tableView reloadData];
+    [view.loadingView setVisible:NO];
+    BNNLogForObject(@"modelDidLoad:%@", model);
 }
 
 - (void)modelDidFailLoading:(id)model {

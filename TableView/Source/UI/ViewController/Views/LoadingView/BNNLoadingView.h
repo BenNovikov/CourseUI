@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BNNView.h"
 
-@interface BNNLoadingView : UIView
+@interface BNNLoadingView : BNNView
 @property (nonatomic, readonly, getter = isVisible) BOOL        visible;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView  *spinner;
 
@@ -16,7 +16,7 @@
 
 - (instancetype)initWithSuperview:(UIView *)view NS_DESIGNATED_INITIALIZER;
 
-- (void)setVisible:(BOOL)visible;
-- (void)setVisible:(BOOL)visible withAnimation:(BOOL)animated;
+//- (void)setVisible:(BOOL)visible;
+//- (void)setVisible:(BOOL)visible withAnimation:(BOOL)animated;
 
 @end

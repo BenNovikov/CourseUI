@@ -9,10 +9,9 @@
 #import "BNNDataModel.h"
 
 #import "NSString+BNNExtensions.h"
-#import "BNNTableConstants.h"
 #import "BNNMacros.h"
 
-static NSString * const kBNNTextKey = @"text";
+//static NSString * const kBNNTextKey = @"text";
 static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2015/04/15/10/griner3.jpg";
 
 @interface BNNDataModel()
@@ -42,45 +41,41 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 #pragma mark -
 #pragma mark Accesors
 
-//- (BNNImageModel *)imageModel {
-//    self.state = BNNDataModelWillLoad;
-//    BNNImageModel *imageModel = [BNNImageModel imageFromURL:[NSURL URLWithString:kBNNImageName]];
-//    self.state = imageModel ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
-////    NSLog(@"Data Model state: %lu", self.state);
-//    
-//    return imageModel;
-//}
+//reserved
 
 #pragma mark -
 #pragma mark BNNModel
 
 - (void)initiateLoading {
-    NSLog(@"Data Model Loading Started...");
     self.state = BNNDataModelWillLoad;
+    
+    BNNLogLoadingInitiated;
 }
 
 - (void)performLoading {
-    //some kind of true load magic to be implemented here
-    //loops until non-nil image loaded
-    UIImage *image = nil;
+    UIImage *image = [UIImage imageNamed:kBNNImageName];
+    BNNSleep(kBNNSleepDuration);
     
-    self.image = image;
-    self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;}
+    BNNDispatchAsyncOnMainTread(^{
+        self.image = image;
+        self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
+        BNNLogLoadingPerformed;
+    });
+}
 
 #pragma mark -
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.text forKey:kBNNTextKey];
+    BNNSynthesizeEncoderForProperty(text);
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
-    if (self) {
-        self.text = [aDecoder decodeObjectForKey:kBNNTextKey];
-    }
-    
-    return self;
+- (id)initWithCoder:(NSCoder *)coder {
+    BNNSynthesizeDecoderForProperty(text);
 }
+
+//73:1: Convenience initializer missing a 'self' call to another initializer
+//74:5: Convenience initializer should not invoke an initializer on 'super'
+// wtf is that?
 
 @end

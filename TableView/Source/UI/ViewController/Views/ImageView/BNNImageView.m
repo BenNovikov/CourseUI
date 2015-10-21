@@ -25,7 +25,7 @@
 #pragma mark Accessors
 
 - (void)setImageModel:(BNNImageModel *)model {
-    BNNObservableSetterSynthesize(model);
+    BNNSynthesizeObservableSetter(model);
     
     [self fillWithModel:model];
 }
@@ -38,7 +38,7 @@
 }
 
 #pragma mark -
-#pragma mark BNNModelStateProtocol
+#pragma mark BNNObservableModel
 
 - (void)modelDidLoad:(id)model {
     

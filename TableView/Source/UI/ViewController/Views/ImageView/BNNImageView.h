@@ -6,11 +6,15 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNLoadingView.h"
+#import "BNNView.h"
+
+//
+//  prerelease, not finished!
+//
 
 @class BNNImageModel;
 
-@interface BNNImageView : BNNLoadingView
+@interface BNNImageView : BNNView
 @property (nonatomic, strong) UIImage       *image;
 @property (nonatomic, strong) BNNImageModel *model;
 

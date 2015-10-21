@@ -129,19 +129,32 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 }
 
 #pragma mark -
-#pragma mark NSCoding
+#pragma mark BNNModel
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
-    if (self) {
-        self.mutableModelArray = [aDecoder decodeObjectForKey:kBNNMutableModelArrayKey];
-    }
+- (void)initiateLoading {
+    self.state = BNNDataModelWillLoad;
     
-    return self;
+    BNNLogLoadingInitiated;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.mutableModelArray forKey:kBNNMutableModelArrayKey];
+- (void)performLoading {
+    
+    
+    //dispatch on main thread
+    self.state = BNNDataModelDidLoad;
+    
+    BNNLogLoadingPerformed;
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    BNNSynthesizeEncoderForProperty(mutableModelArray);
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    BNNSynthesizeDecoderForProperty(mutableModelArray);
 }
 
 @end

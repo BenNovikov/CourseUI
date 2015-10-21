@@ -19,11 +19,10 @@
         if(BNNDataModelDidUnload == state
            || BNNDataModelDidFailLoading == state)
         {
-            self.state = BNNDataModelWillLoad;
             [self initiateLoading];
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
+                
                 [self performLoading];
             });
         } else {
@@ -33,15 +32,19 @@
 }
 
 - (void)initiateLoading {
-    // do something before loading
+    /* use this in subclasses to log 
+     initiateLoading in DebugMode: */
+    //    BNNLogLoadingInitiated;
 }
 
 - (void)performLoading {
-    // do what you need to load
+    /* use this in subclasses to log 
+     performLoading in DebugMode: */
+    //    BNNLogLoadingPerformed;
 }
 
 #pragma mark -
-#pragma mark BNNObservableObject
+#pragma mark BNNObservableModel
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch(state) {

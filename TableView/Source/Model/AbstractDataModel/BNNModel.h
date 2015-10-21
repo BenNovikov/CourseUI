@@ -8,6 +8,9 @@
 
 #import "BNNObservableObject.h"
 
+#import "BNNDispatch.h"
+#import "BNNMacros.h"
+
 typedef NS_ENUM(NSUInteger, BNNDataModelState) {
     BNNDataModelDidUnload, 
     BNNDataModelWillLoad,
@@ -19,7 +22,7 @@ typedef NS_ENUM(NSUInteger, BNNDataModelState) {
 @interface BNNModel : BNNObservableObject
 
 - (void)load;
-- (void)initiateLoading;    //does nothing until reloaded in subclasses
-- (void)performLoading;     //does nothing until reloaded in subclasses
+- (void)initiateLoading;    //does nothing until reloaded, notify with state in your subclass
+- (void)performLoading;     //does nothing until reloaded, notify with state in your subclass
 
 @end

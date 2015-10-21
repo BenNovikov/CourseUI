@@ -24,11 +24,16 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="a3o-iR-x8c">
+                        <rect key="frame" x="23" y="22" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    </activityIndicatorView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentImageView" destination="Zq2-gq-hra" id="d8u-UC-mGE"/>
                 <outlet property="contentLabel" destination="ySg-Yl-KG0" id="zLE-bc-D73"/>
+                <outlet property="contentSpinnerView" destination="a3o-iR-x8c" id="iC6-gW-ZgB"/>
             </connections>
             <point key="canvasLocation" x="352" y="191"/>
         </tableViewCell>

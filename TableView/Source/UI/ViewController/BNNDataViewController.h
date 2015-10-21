@@ -15,7 +15,6 @@
 @property (nonatomic, strong)   BNNDataArrayModel   *arrayModel;
 
 - (IBAction)onTapAddButton:(id)sender;
-- (IBAction)onTapRemoveButton:(id)sender;
 - (IBAction)onTapEditButton:(id)sender;
 
 @end

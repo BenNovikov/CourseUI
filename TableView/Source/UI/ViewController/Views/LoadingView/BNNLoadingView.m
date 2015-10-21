@@ -10,16 +10,14 @@
 
 #import "UINib+BNNExtensions.h"
 
-static NSTimeInterval const kBNNDuration    = 2.0f;
-static CGFloat const kBNNVisibleAlpha       = 0.7f;
-static CGFloat const kBNNInvisibleAlpha     = 0.0f;
-
 @interface BNNLoadingView()
 @property (nonatomic, assign, getter=isVisible) BOOL    visible;
 
 @end
 
 @implementation BNNLoadingView
+
+@dynamic visible;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -41,24 +39,26 @@ static CGFloat const kBNNInvisibleAlpha     = 0.0f;
 }
 
 #pragma mark -
-#pragma mark Accesors
+#pragma mark BNNView
 
 - (void)setVisible:(BOOL)visible {
-    [self setVisible:visible withAnimation:YES];
+//    [self setVisible:visible withAnimation:YES];
 }
 
-#pragma mark -
-#pragma mark Public Methods
-
 - (void)setVisible:(BOOL)visible withAnimation:(BOOL)animated {
-    [UIView animateWithDuration:kBNNDuration animations:^{
-        self.alpha = visible ? kBNNVisibleAlpha : kBNNInvisibleAlpha;
-    } completion:^(BOOL finished) {
+//    [UIView animateWithDuration:kBNNAnimationDuration animations:^{
+//        self.alpha = visible ? kBNNVisibleAlpha : kBNNInvisibleAlpha;
+//    } completion:^(BOOL finished) {
 //        if (finished) {
-//            self.visible = visible;
+//            _visible = visible;
 //        }
-    }];
+//    }];
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
     
+    self.visible = NO;
 }
 
 @end
