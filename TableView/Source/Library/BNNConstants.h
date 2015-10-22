@@ -16,10 +16,10 @@ BNN_NSSTRING_KEY(kBNNImageName,         @"01.jpg");
 BNN_NSUINT_KEY(kBNNRandomStringLength,  10);
 
 #define BNN_CGFLOAT_KEY(key, value) static double const key = value
-BNN_CGFLOAT_KEY(kBNNVisibleAlpha,       0.5);
+BNN_CGFLOAT_KEY(kBNNVisibleAlpha,       1.0);
 BNN_CGFLOAT_KEY(kBNNInvisibleAlpha,     0.0);
 
 #define BNN_NSTIME_KEY(key, value) static NSTimeInterval const key = value
 BNN_NSTIME_KEY(kBNNAnimationDuration,   2.0);
-BNN_NSTIME_KEY(kBNNSleepDuration,       1.0);
+BNN_NSTIME_KEY(kBNNSleepDuration,       0.5);
 

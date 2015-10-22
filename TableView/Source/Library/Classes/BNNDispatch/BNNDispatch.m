@@ -18,13 +18,13 @@ void BNNDispatchOnMainQueue(void(^block)(void)) {
     }
 }
 
-void BNNDispatchAsyncOnMainTread(void(^block)(void)) {
+void BNNDispatchAsyncOnMainThread(void(^block)(void)) {
     if (block) {
         dispatch_async(dispatch_get_main_queue(), block);
     }
 }
 
-void BNNDispatchAsyncOnBackgroundTread(void(^block)(void)) {
+void BNNDispatchAsyncOnBackgroundThread(void(^block)(void)) {
     if (block) {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), block);
     }

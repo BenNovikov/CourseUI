@@ -15,6 +15,8 @@
 
 @implementation BNNDataCell
 
+@dynamic state;
+
 #pragma mark -
 #pragma mark Initialization and Deallocation
 
@@ -26,7 +28,7 @@
 #pragma mark Accessors
 
 - (void)setModel:(BNNDataModel *)model {
-    BNNSynthesizeObservableSetterAndExecuteMethod(model, load);
+    BNNSynthesizeObservableSetter(model);
  
     [self fillWithModel:model];
     
@@ -56,7 +58,7 @@
 }
 
 - (void)modelDidFailLoading:(id)model{
-    [self.model load]; //probably dispatch_once should be added here to avoid infinite cycle
+    [self.model load]; //logic should be added here to avoid infinite cycle
 }
 
 @end

@@ -131,9 +131,7 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 #pragma mark -
 #pragma mark BNNModel
 
-- (void)initiateLoading {
-    self.state = BNNDataModelWillLoad;
-    
+- (void)initiateLoading {   
     BNNLogLoadingInitiated;
 }
 

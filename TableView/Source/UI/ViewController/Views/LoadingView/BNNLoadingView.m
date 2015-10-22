@@ -22,7 +22,7 @@
 }
 
 - (instancetype)initWithSuperview:(UIView *)superview {
-    self = [super initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    self = [super initWithFrame:[superview frame]];
     if (self) {
         self = [UINib objectWithClass:[self class]];
         

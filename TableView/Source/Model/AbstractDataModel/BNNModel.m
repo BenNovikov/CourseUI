@@ -16,13 +16,13 @@
 - (void)load {
     @synchronized(self) {
         NSUInteger state = self.state;
-        if(BNNDataModelDidUnload == state
+        if (BNNDataModelDidUnload == state
            || BNNDataModelDidFailLoading == state)
         {
+            self.state = BNNDataModelWillLoad;
             [self initiateLoading];
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                
                 [self performLoading];
             });
         } else {

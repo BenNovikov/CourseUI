@@ -8,9 +8,7 @@
 
 #import "BNNView.h"
 
-//
-//  prerelease, not finished!
-//
+#import "BNNObservableObject.h"
 
 @class BNNImageModel;
 

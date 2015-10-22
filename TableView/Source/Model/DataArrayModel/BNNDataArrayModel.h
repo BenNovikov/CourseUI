@@ -14,7 +14,7 @@
 
 + (instancetype)dataWithModelsCount:(NSUInteger)count;
 
-- (instancetype)initWithModelsCount:(NSUInteger)count NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithModelsCount:(NSUInteger)count;
 
 - (NSUInteger)count;
 

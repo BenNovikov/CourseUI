@@ -24,22 +24,22 @@
     self.loadingView = nil;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    
-    self.loadingView = [BNNLoadingView viewWithSuperview:self];
-    
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.loadingView = [BNNLoadingView viewWithSuperview:self];
-    }
-    
-    return self;
-}
+//- (instancetype)initWithFrame:(CGRect)frame {
+//    self = [super initWithFrame:frame];
+//    
+//    self.loadingView = [BNNLoadingView viewWithSuperview:self];
+//    
+//    return self;
+//}
+//
+//- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+//    self = [super initWithCoder:aDecoder];
+//    if (self) {
+//        self.loadingView = [BNNLoadingView viewWithSuperview:self];
+//    }
+//    
+//    return self;
+//}
 
 #pragma mark -
 #pragma mark Accesors

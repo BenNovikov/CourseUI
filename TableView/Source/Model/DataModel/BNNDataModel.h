@@ -18,6 +18,6 @@
 
 + (instancetype)dataModel;
 
-- (instancetype)initWithString:(NSString *)string NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithString:(NSString *)string;
 
 @end

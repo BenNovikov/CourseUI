@@ -36,10 +36,10 @@
 
 // use BNNWeakify(var) and BNNStrongify(var) to the same object
 #define BNNWeakify(var) \
-    __weak__typeof(var) __BNNWeakified_##var = var
+    __weak __typeof(var) __BNNWeakified_##var = var
 
 #define BNNStrongify(var) \
-    __strong__typeof(var) var = __BNNWeakified_##var
+    __strong __typeof(var) var = __BNNWeakified_##var
 
 #define BNNEmpty
 

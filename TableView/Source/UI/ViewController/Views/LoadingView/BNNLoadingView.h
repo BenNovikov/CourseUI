@@ -8,7 +8,7 @@
 
 #import "BNNView.h"
 
-@interface BNNLoadingView : BNNView
+@interface BNNLoadingView : UIView
 @property (nonatomic, assign, getter = isVisible) BOOL        visible;
 //@property (nonatomic, strong) IBOutlet UIActivityIndicatorView  *spinner;
 

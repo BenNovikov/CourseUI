@@ -46,17 +46,16 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 #pragma mark -
 #pragma mark BNNModel
 
-- (void)initiateLoading {
-    self.state = BNNDataModelWillLoad;
-    
+- (void)initiateLoading {    
     BNNLogLoadingInitiated;
 }
 
 - (void)performLoading {
     UIImage *image = [UIImage imageNamed:kBNNImageName];
     BNNSleep(kBNNSleepDuration);
-    
-    BNNDispatchAsyncOnMainTread(^{
+    BNNWeakify(self);
+    BNNDispatchAsyncOnMainThread(^{
+        BNNStrongify(self);
         self.image = image;
         self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
         BNNLogLoadingPerformed;
@@ -73,9 +72,5 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 - (id)initWithCoder:(NSCoder *)coder {
     BNNSynthesizeDecoderForProperty(text);
 }
-
-//73:1: Convenience initializer missing a 'self' call to another initializer
-//74:5: Convenience initializer should not invoke an initializer on 'super'
-// wtf is that?
 
 @end

@@ -12,7 +12,7 @@ extern
 void BNNDispatchOnMainQueue(void(^block)(void));
 
 extern
-void BNNDispatchAsyncOnMainTread(void(^block)(void));
+void BNNDispatchAsyncOnMainThread(void(^block)(void));
 
 extern
-void BNNDispatchAsyncOnBackgroundTread(void(^block)(void));
+void BNNDispatchAsyncOnBackgroundThread(void(^block)(void));
