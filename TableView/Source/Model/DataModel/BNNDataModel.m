@@ -57,7 +57,7 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
     BNNDispatchAsyncOnMainThread(^{
         BNNStrongify(self);
         
-        BNNSleep(kBNNSleepDuration);
+        BNNSleep(kBNNDefaultSleepDuration);
         self.image = image;
         self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
         BNNLogLoadingPerformed;

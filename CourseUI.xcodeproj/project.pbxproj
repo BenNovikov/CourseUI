@@ -50,6 +50,7 @@
 		F461D5901BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = F461D58F1BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.m */; };
 		F461D5941BCC4D97007FA69C /* NSIndexPath+BNNExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F461D5931BCC4D97007FA69C /* NSIndexPath+BNNExtensions.m */; };
 		F4E410251BD9AFC9001AE1A9 /* BNNArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E410241BD9AFC9001AE1A9 /* BNNArrayModel.m */; };
+		F4E410291BD9BAF6001AE1A9 /* NSFileManager+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E410281BD9BAF6001AE1A9 /* NSFileManager+Extensions.m */; };
 		F4E7BDD11BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7BDD01BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m */; };
 		F4E8606A1BC6ED350019587B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E860691BC6ED350019587B /* main.m */; };
 		F4E8606D1BC6ED350019587B /* BNNMVCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8606C1BC6ED350019587B /* BNNMVCAppDelegate.m */; };
@@ -166,6 +167,8 @@
 		F4E410221BD97C4B001AE1A9 /* BNNObservableModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BNNObservableModel.h; path = Source/Model/AbstractDataModel/BNNObservableModel.h; sourceTree = "<group>"; };
 		F4E410231BD9AFC9001AE1A9 /* BNNArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNArrayModel.h; path = Source/Model/ArrayModel/BNNArrayModel.h; sourceTree = "<group>"; };
 		F4E410241BD9AFC9001AE1A9 /* BNNArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNArrayModel.m; path = Source/Model/ArrayModel/BNNArrayModel.m; sourceTree = "<group>"; };
+		F4E410271BD9BAF6001AE1A9 /* NSFileManager+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Extensions.h"; path = "NSFileManager/NSFileManager+Extensions.h"; sourceTree = "<group>"; };
+		F4E410281BD9BAF6001AE1A9 /* NSFileManager+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Extensions.m"; path = "NSFileManager/NSFileManager+Extensions.m"; sourceTree = "<group>"; };
 		F4E7BDCF1BC55DEE00BBFD63 /* BNNDataArrayModelChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNNDataArrayModelChanges.h; path = Source/Model/DataArrayModelChanges/BNNDataArrayModelChanges.h; sourceTree = "<group>"; };
 		F4E7BDD01BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNDataArrayModelChanges.m; path = Source/Model/DataArrayModelChanges/BNNDataArrayModelChanges.m; sourceTree = "<group>"; };
 		F4E860651BC6ED350019587B /* MVCSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +372,7 @@
 				843DD4421BBC617400EF6D5B /* UIWindow */,
 				84E7C4D71BBC69D300CD9011 /* UITableView */,
 				F461D5951BCC4D9F007FA69C /* NSIndexPath */,
+				F4E4102A1BD9BAFC001AE1A9 /* NSFileManager */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -650,6 +654,15 @@
 				F4E410241BD9AFC9001AE1A9 /* BNNArrayModel.m */,
 			);
 			name = ArrayModel;
+			sourceTree = "<group>";
+		};
+		F4E4102A1BD9BAFC001AE1A9 /* NSFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				F4E410271BD9BAF6001AE1A9 /* NSFileManager+Extensions.h */,
+				F4E410281BD9BAF6001AE1A9 /* NSFileManager+Extensions.m */,
+			);
+			name = NSFileManager;
 			sourceTree = "<group>";
 		};
 		F4E7BDD21BC55DF600BBFD63 /* DataArrayModelChanges */ = {
@@ -986,6 +999,7 @@
 				F4E8609D1BC7076A0019587B /* UIViewController+BNNExtensions.m in Sources */,
 				F4E7BDD11BC55DEE00BBFD63 /* BNNDataArrayModelChanges.m in Sources */,
 				845514B01BB71C68003AD071 /* main.m in Sources */,
+				F4E410291BD9BAF6001AE1A9 /* NSFileManager+Extensions.m in Sources */,
 				843DD4411BBC616C00EF6D5B /* UIWindow+BNNExtensions.m in Sources */,
 				845515171BB8734A003AD071 /* NSString+BNNExtensions.m in Sources */,
 			);

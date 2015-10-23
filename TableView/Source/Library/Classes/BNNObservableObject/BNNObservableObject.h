@@ -18,7 +18,7 @@
 
 - (void)notifyObserversWithSelector:(SEL)selector;
 - (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object;
-- (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object1 withObject:(id)object2;
+//- (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object1 withObject:(id)object2;
 
 - (SEL)selectorForState:(NSUInteger)state;
 - (void)setState:(NSUInteger)state withObject:(id)object;

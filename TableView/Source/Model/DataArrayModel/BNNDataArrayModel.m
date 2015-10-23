@@ -121,13 +121,13 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
     [self setState:BNNDataModelDidChange withObject:changes];
 }
 
-- (void)addModelsFromArray:(NSArray *)anArray {
-    
-}
-
-- (void)removeModelsInArray:(NSArray *)anArray {
-    
-}
+//- (void)addModelsFromArray:(NSArray *)anArray {
+//    
+//}
+//
+//- (void)removeModelsInArray:(NSArray *)anArray {
+//    
+//}
 
 #pragma mark -
 #pragma mark BNNModel

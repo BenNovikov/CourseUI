@@ -81,10 +81,10 @@
 
 #if BNNDebugMode
     #define BNNSleep(time) do { \
-        if (time < kBNNSleepDuration) { \
+        if (time < kBNNDefaultSleepDuration) { \
             [NSThread sleepForTimeInterval:time]; \
         } else { \
-            [NSThread sleepForTimeInterval:kBNNSleepDuration]; \
+            [NSThread sleepForTimeInterval:kBNNDefaultSleepDuration]; \
         } \
     } while(0)
 #else

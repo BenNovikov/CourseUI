@@ -11,6 +11,7 @@
 
 #define BNN_NSSTRING_KEY(key, value) static NSString * const key = value
 BNN_NSSTRING_KEY(kBNNImageName,         @"01.jpg");
+BNN_NSSTRING_KEY(kBNNTempFileName,      @"BNNTemp.plist");
 
 #define BNN_NSUINT_KEY(key, value) static NSUInteger const key = value
 BNN_NSUINT_KEY(kBNNRandomStringLength,  10);
@@ -20,6 +21,6 @@ BNN_CGFLOAT_KEY(kBNNVisibleAlpha,       1.0);
 BNN_CGFLOAT_KEY(kBNNInvisibleAlpha,     0.0);
 
 #define BNN_NSTIME_KEY(key, value) static NSTimeInterval const key = value
-BNN_NSTIME_KEY(kBNNAnimationDuration,   2.0);
-BNN_NSTIME_KEY(kBNNSleepDuration,       0.5);
+BNN_NSTIME_KEY(kBNNAnimationDuration,       2.0);
+BNN_NSTIME_KEY(kBNNDefaultSleepDuration,    0.5);
 

@@ -6,8 +6,11 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNModel.h"
+#import "BNNDataArrayModel.h"
+#import "BNNObservableModel.h"
 
-@interface BNNArrayModel : BNNModel <BNNObservableModel>
+@interface BNNArrayModel : BNNDataArrayModel <BNNObservableModel>
+
+- (void)save;
 
 @end

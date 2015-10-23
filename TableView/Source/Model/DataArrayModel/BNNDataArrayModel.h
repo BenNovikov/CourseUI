@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNArrayModel.h"
+#import "BNNModel.h"
 
-@interface BNNDataArrayModel : BNNArrayModel  <NSCoding>
+@interface BNNDataArrayModel : BNNModel <NSCoding>
 
 @property (nonatomic, readonly) NSArray *modelArray;
 
@@ -29,7 +29,7 @@
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex;
 
-- (void)addModelsFromArray:(NSArray *)anArray;
-- (void)removeModelsInArray:(NSArray *)anArray;
+//- (void)addModelsFromArray:(NSArray *)anArray;
+//- (void)removeModelsInArray:(NSArray *)anArray;
 
 @end
