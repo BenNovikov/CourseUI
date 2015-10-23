@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNModel.h"
+#import "BNNArrayModel.h"
 
-@interface BNNDataArrayModel : BNNModel <NSCoding>
+@interface BNNDataArrayModel : BNNArrayModel  <NSCoding>
 
 @property (nonatomic, readonly) NSArray *modelArray;
 

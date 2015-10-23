@@ -7,7 +7,8 @@
 //
 
 #import "BNNDataArrayModel.h"
-#import "BNNDataModel.h"
+
+//#import "BNNDataModel.h"
 #import "BNNDataArrayModelChanges.h"
 
 #import "NSIndexPath+BNNExtensions.h"
@@ -132,7 +133,6 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 #pragma mark BNNModel
 
 - (void)initiateLoading {   
-    BNNLogLoadingInitiated;
 }
 
 - (void)performLoading {

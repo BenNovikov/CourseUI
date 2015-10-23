@@ -8,20 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol BNNObservableModel <NSObject>
-@property (atomic, assign)      NSUInteger  state;
-
-@optional
-- (void)modelDidUnload:(id)model;
-- (void)modelWillLoad:(id)model;
-- (void)modelDidLoad:(id)model;
-- (void)modelDidFailLoading:(id)model;
-- (void)modelDidChange:(id)model;
-
-- (void)model:(id)model didChangeWithObject:(id)object;
-
-@end
-
 @interface BNNObservableObject : NSObject
 @property (nonatomic, readonly) NSSet       *observerSet;
 @property (atomic, assign)      NSUInteger  state;
@@ -32,6 +18,7 @@
 
 - (void)notifyObserversWithSelector:(SEL)selector;
 - (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object;
+- (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object1 withObject:(id)object2;
 
 - (SEL)selectorForState:(NSUInteger)state;
 - (void)setState:(NSUInteger)state withObject:(id)object;

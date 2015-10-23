@@ -92,21 +92,21 @@
 #endif
 
 #if BNNDebugMode
-    #define BNNLogLoadingInitiated NSLog(@"%@ Load Initiated", [self class])
+    #define BNNLogLoadingInitiated NSLog(@"%@ Load Initiated", self)
 #else
     #define BNNLogLoadingInitiated
 #endif
 
 #if BNNDebugMode
     #define BNNLogLoadingPerformed \
-    NSLog(@"%@ Load Performed with State:%@", [self class], NSStringFromSelector([self selectorForState:self.state]))
+    NSLog(@"%@ Load Performed State: %@", self, NSStringFromSelector([self selectorForState:self.state]))
 #else
     #define BNNLogLoadingPerformed
 #endif
 
 #if BNNDebugMode
 #define BNNLogForObject(log, object) \
-    NSLog(@"%@ :%@", log, object)
+    NSLog(log, object)
 #else
     #define BNNLogForObject
 #endif

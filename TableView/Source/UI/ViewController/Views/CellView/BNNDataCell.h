@@ -13,6 +13,8 @@
 #import "BNNLoadingView.h"
 #import "BNNObservableObject.h"
 
+#import "BNNObservableModel.h"
+
 @class BNNDataModel;
 @class BNNImageView;
 

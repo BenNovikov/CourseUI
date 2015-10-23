@@ -8,8 +8,12 @@
 #import <UIKit/UIKitDefines.h>
 
 #import "BNNDataViewController.h"
+
 #import "BNNDataCell.h"
 #import "BNNDataView.h"
+#import "BNNDataModel.h"
+#import "BNNDataArrayModel.h"
+//#import "BNNDataArrayModelChanges.h"
 
 #import "UITableView+BNNExtensions.h"
 #import "BNNMacros.h"
@@ -17,10 +21,6 @@
 //static double const BNNOnTapDelayInSeconds = 0.2;
 
 BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
-
-@interface BNNDataViewController () <BNNObservableModel>
-
-@end
 
 @implementation BNNDataViewController
 
@@ -51,7 +51,6 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 #pragma mark UI
 
 - (IBAction)onTapAddButton:(id)sender {
-//    NSLog(@"Added %u row", (NSUInteger)self.arrayModel.count + 1);
     [self.arrayModel addModel:[BNNDataModel dataModel]];
  
 //    They say there is no need to control double taps. So let it be cleaned away, a bit later.
@@ -65,15 +64,6 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 //        }
 //    });
 }
-
-//- (IBAction)onTapRemoveButton:(id)sender {
-//    NSUInteger counter = self.arrayModel.count;
-//    if (counter) {
-////        NSLog(@"Removed %lu row", (unsigned long)self.arrayModel.count);
-//        NSUInteger sourcePath = (NSUInteger)[[self.dataView.tableView indexPathForSelectedRow] row];
-//        [self.arrayModel removeModelAtIndex:sourcePath];
-//    }
-//}
 
 - (IBAction)onTapEditButton:(id)sender {
 //    NSLog(@"Edit: %d", self.dataView.isEditing);
@@ -158,7 +148,6 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 #pragma mark BNNObservableModel
 
 - (void)modelDidUnload:(id)model {
-    //do nothing yet
 }
 
 - (void)modelWillLoad:(id)model {
@@ -167,7 +156,6 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 }
 
 - (void)modelDidLoad:(id)model {
-    //spinner off?
     BNNDataView *view = self.dataView;
     [view.tableView reloadData];
     [view.loadingView setVisible:NO];
@@ -175,16 +163,20 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 }
 
 - (void)modelDidFailLoading:(id)model {
-
 }
 
 - (void)modelDidChange:(id)changes {
-//    NSLog(@"modelDidChange:%@", changes);
+    BNNLogForObject(@"modelDidChange:%@", changes);
     [self.dataView.tableView updateWithChanges:changes];
+    
+    /*
+     *  this helps to reload image but this way sucks!
+     */
+    [self.dataView.tableView reloadData];
 }
 
 - (void)model:(BNNDataArrayModel *)modelArray didChangeWithObject:(BNNDataArrayModelChanges *)changes {
-//    NSLog(@"model didChangeWithObject: %@", changes);
+    BNNLogForObject(@"model didChangeWithObject: %@", changes);
     [self.dataView.tableView updateWithChanges:changes];
 }
 

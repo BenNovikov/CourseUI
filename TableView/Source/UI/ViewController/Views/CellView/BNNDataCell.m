@@ -15,8 +15,6 @@
 
 @implementation BNNDataCell
 
-@dynamic state;
-
 #pragma mark -
 #pragma mark Initialization and Deallocation
 
@@ -31,6 +29,10 @@
     BNNSynthesizeObservableSetter(model);
  
     [self fillWithModel:model];
+    
+    UIActivityIndicatorView *spinner = self.contentSpinnerView;
+    spinner.hidesWhenStopped = YES;
+    [spinner startAnimating];
     
     [model load];
 }
@@ -47,18 +49,26 @@
 #pragma mark BNNObservableModel
 
 - (void)modelWillLoad:(id)model {
-    self.contentSpinnerView.hidesWhenStopped = YES;
-    [self.contentSpinnerView startAnimating];
-    BNNLogForObject(@"modelWillLoad:%@", model);
+    BNNLogForObject(@"@Cell: %@", self);
+    BNNLogForObject(@"modelWillLoad: %@", model);
 }
 
 - (void)modelDidLoad:(id)model {
+    
+    /*
+     *  it comes here only when the table is moved OUT of the screen
+     *  first of all i thought i've got big troubles with notification
+     *  but in a few hours later i guess it should be some kind of other magic 
+    */
+    
     [self fillWithModel:model];
     [self.contentSpinnerView stopAnimating];
+    //
+    self.contentSpinnerView = nil;
 }
 
 - (void)modelDidFailLoading:(id)model{
-    [self.model load]; //logic should be added here to avoid infinite cycle
+    [self.model load]; //some logic should be added to avoid infinite loading cycles
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import "BNNObservableObject.h"
 
+#import "BNNDispatch.h"
+#import "BNNMacros.h"
+
 @interface BNNObservableObject ()
 @property (nonatomic, strong)   NSHashTable *observers;
 
@@ -68,7 +71,10 @@
 - (void)notifyObserversWithSelector:(SEL)selector {
     for (id observer in self.observers) {
         if ([observer respondsToSelector:selector]) {
-            [observer performSelectorOnMainThread:selector withObject:self waitUntilDone:NO];
+//            [observer performSelectorOnMainThread:selector withObject:self waitUntilDone:NO];
+            BNNDispatchOnMainQueue(^{
+                [observer performSelector:selector withObject:self];
+            });
         }
     }
 }
@@ -76,10 +82,28 @@
 - (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object {
     for (id observer in self.observers) {
         if ([observer respondsToSelector:selector]) {
-            [observer performSelectorOnMainThread:selector withObject:object waitUntilDone:NO];
+//            [observer performSelectorOnMainThread:selector withObject:object waitUntilDone:NO];
+            BNNDispatchOnMainQueue(^{
+                [observer performSelector:selector withObject:object];
+            });
         }
     }
 }
+
+//don't look at this mess, anyway it doesn't work as i'd like 
+//- (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object1 withObject:(id)object2 {
+//    for (id observer in self.observers) {
+//        if ([observer respondsToSelector:selector]) {
+//            BNNDispatchOnMainQueue(^{
+//                BNNLogForObject(@"selector:%@", NSStringFromSelector(selector));
+//                BNNLogForObject(@"object1:%@", self);
+//                BNNLogForObject(@"object2:%@", object2);
+//                
+//                [observer performSelector:selector withObject:self withObject:object2];
+//            });
+//        }
+//    }
+//}
 
 - (SEL)selectorForState:(NSUInteger)state {
     // to be overloaded in subclasses

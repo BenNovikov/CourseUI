@@ -52,10 +52,12 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 
 - (void)performLoading {
     UIImage *image = [UIImage imageNamed:kBNNImageName];
-    BNNSleep(kBNNSleepDuration);
+
     BNNWeakify(self);
     BNNDispatchAsyncOnMainThread(^{
         BNNStrongify(self);
+        
+        BNNSleep(kBNNSleepDuration);
         self.image = image;
         self.state = image ? BNNDataModelDidLoad : BNNDataModelDidFailLoading;
         BNNLogLoadingPerformed;
