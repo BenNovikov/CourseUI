@@ -41,6 +41,10 @@
 #pragma mark -
 #pragma mark BNNObservableModel
 
+//- (void)modelWillLoad:(id)model {
+//    
+//}
+
 - (void)modelDidLoad:(id)model {
     
     [self fillWithModel:model];

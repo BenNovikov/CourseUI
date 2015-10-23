@@ -66,7 +66,6 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 }
 
 - (IBAction)onTapEditButton:(id)sender {
-//    NSLog(@"Edit: %d", self.dataView.isEditing);
     BNNDataView *view = self.dataView;
     [view setEditing:![view isEditing]];
 }
@@ -152,17 +151,14 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (void)modelWillLoad:(id)model {
     BNNLogForObject(@"modelWillLoad:%@", model);
-    [self.dataView.loadingView setVisible:YES];
+    self.dataView.loadingView.visible = YES;
 }
 
 - (void)modelDidLoad:(id)model {
     BNNDataView *view = self.dataView;
     [view.tableView reloadData];
-    [view.loadingView setVisible:NO];
+    view.loadingView.visible = NO;
     BNNLogForObject(@"modelDidLoad:%@", model);
-}
-
-- (void)modelDidFailLoading:(id)model {
 }
 
 - (void)modelDidChange:(id)changes {
@@ -172,7 +168,7 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
     /*
      *  this helps to reload image but this way sucks!
      */
-    [self.dataView.tableView reloadData];
+//    [self.dataView.tableView reloadData];
 }
 
 - (void)model:(BNNDataArrayModel *)modelArray didChangeWithObject:(BNNDataArrayModelChanges *)changes {

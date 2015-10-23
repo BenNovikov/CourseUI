@@ -90,32 +90,19 @@
     }
 }
 
-//don't look at this mess, anyway it doesn't work as i'd like 
-//- (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object1 withObject:(id)object2 {
-//    for (id observer in self.observers) {
-//        if ([observer respondsToSelector:selector]) {
-//            BNNDispatchOnMainQueue(^{
-//                BNNLogForObject(@"selector:%@", NSStringFromSelector(selector));
-//                BNNLogForObject(@"object1:%@", self);
-//                BNNLogForObject(@"object2:%@", object2);
-//                
-//                [observer performSelector:selector withObject:self withObject:object2];
-//            });
-//        }
-//    }
-//}
-
 - (SEL)selectorForState:(NSUInteger)state {
     // to be overloaded in subclasses
     return NULL;
 }
 
+- (void)setState:(NSUInteger)state {
+    [self setState:state withObject:nil];
+}
+
 - (void)setState:(NSUInteger)state withObject:(id)object {
-    @synchronized(self) {
-        self.state = state;
+        _state = state;
         
         [self notifyObserversWithSelector:[self selectorForState:_state] withObject:object];
-    }
 }
 
 @end

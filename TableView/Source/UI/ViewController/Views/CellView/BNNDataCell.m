@@ -31,7 +31,7 @@
     [self fillWithModel:model];
     
     UIActivityIndicatorView *spinner = self.contentSpinnerView;
-    spinner.hidesWhenStopped = YES;
+
     [spinner startAnimating];
     
     [model load];
@@ -48,11 +48,6 @@
 #pragma mark -
 #pragma mark BNNObservableModel
 
-- (void)modelWillLoad:(id)model {
-    BNNLogForObject(@"@Cell: %@", self);
-    BNNLogForObject(@"modelWillLoad: %@", model);
-}
-
 - (void)modelDidLoad:(id)model {
     
     /*
@@ -63,8 +58,6 @@
     
     [self fillWithModel:model];
     [self.contentSpinnerView stopAnimating];
-    //
-    self.contentSpinnerView = nil;
 }
 
 - (void)modelDidFailLoading:(id)model{

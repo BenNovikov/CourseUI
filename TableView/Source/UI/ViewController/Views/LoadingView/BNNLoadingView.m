@@ -50,10 +50,4 @@
     }];
 }
 
-//- (void)awakeFromNib {
-//    [super awakeFromNib];
-//    
-//    self.visible = NO;
-//}
-
 @end

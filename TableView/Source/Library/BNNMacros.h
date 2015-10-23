@@ -66,48 +66,21 @@
         [_##property addObserver:self]; \
     }
 
-#define BNNSynthesizeEncoderForProperty(property) \
-    [coder encodeObject:self.property forKey:NSStringFromClass([self class])];
-
-#define BNNSynthesizeDecoderForProperty(property) \
-    self = [super init]; \
-    if (self) { \
-        self.property = [coder decodeObjectForKey:NSStringFromClass([self class])]; \
-    } \
-    \
-    return self;
-
 // Debug Loggers
 
 #if BNNDebugMode
-    #define BNNSleep(time) do { \
-        if (time < kBNNDefaultSleepDuration) { \
-            [NSThread sleepForTimeInterval:time]; \
-        } else { \
-            [NSThread sleepForTimeInterval:kBNNDefaultSleepDuration]; \
-        } \
-    } while(0)
+    #define BNNSleep(time) [NSThread sleepForTimeInterval:time]
 #else
     #define BNNSleep
 #endif
 
 #if BNNDebugMode
     #define BNNLogLoadingInitiated NSLog(@"%@ Load Initiated", self)
+    #define BNNLogLoadingPerformed NSLog(@"%@ Load Performed State: %@", self, NSStringFromSelector([self selectorForState:self.state]))
+    #define BNNLogForObject(log, object) NSLog(log, object)
 #else
     #define BNNLogLoadingInitiated
-#endif
-
-#if BNNDebugMode
-    #define BNNLogLoadingPerformed \
-    NSLog(@"%@ Load Performed State: %@", self, NSStringFromSelector([self selectorForState:self.state]))
-#else
     #define BNNLogLoadingPerformed
-#endif
-
-#if BNNDebugMode
-#define BNNLogForObject(log, object) \
-    NSLog(log, object)
-#else
     #define BNNLogForObject
 #endif
 

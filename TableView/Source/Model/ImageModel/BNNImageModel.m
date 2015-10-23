@@ -62,10 +62,6 @@
 #pragma mark -
 #pragma mark BNNModel
 
-- (void)initiateLoading {
-//    NSLog(@"Image Loading Started...state:%lu", (unsigned long)self.state);
-}
-
 - (void)performLoading {
     NSString *imageName = self.url.absoluteString;
 //    NSLog(@"Full path: %@", imageName);

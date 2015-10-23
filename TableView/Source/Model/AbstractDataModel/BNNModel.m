@@ -19,8 +19,6 @@
         if (BNNDataModelDidUnload == state
            || BNNDataModelDidFailLoading == state)
         {
-            self.state = BNNDataModelWillLoad;
-            BNNLogLoadingInitiated;
             [self initiateLoading];
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -33,9 +31,8 @@
 }
 
 - (void)initiateLoading {
-    /* use this in subclasses to log 
-     initiateLoading in DebugMode: */
-    //    BNNLogLoadingInitiated;
+    self.state = BNNDataModelWillLoad;
+    BNNLogLoadingInitiated;
 }
 
 - (void)performLoading {
@@ -62,7 +59,7 @@
             return @selector(modelDidFailLoading:);
             
         case BNNDataModelDidChange:
-            return @selector(modelDidChange:);
+            return @selector(model:didChangeWithObject:);
             
         default:
             return [super selectorForState:state];
