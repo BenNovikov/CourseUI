@@ -66,22 +66,30 @@
         [_##property addObserver:self]; \
     }
 
-// Debug Loggers
-
+// Debug Setters and Loggers
 #if BNNDebugMode
     #define BNNSleep(time) [NSThread sleepForTimeInterval:time]
-#else
-    #define BNNSleep
-#endif
-
-#if BNNDebugMode
     #define BNNLogLoadingInitiated NSLog(@"%@ Load Initiated", self)
     #define BNNLogLoadingPerformed \
         NSLog(@"%@ Load Performed State: %@", self, NSStringFromSelector([self selectorForState:self.state]))
     #define BNNLogForObject(log, object) NSLog(log, object)
 #else
+    #define BNNSleep
     #define BNNLogLoadingInitiated
     #define BNNLogLoadingPerformed
     #define BNNLogForObject
 #endif
 
+// Restored <NSCoding> macros
+#define BNNSynthesizeEncoderForProperty(property) \
+    BNNLogForObject(@"Key:%@", NSStringFromClass([self class])); \
+    [coder encodeObject:self.property forKey:NSStringFromClass([self class])];
+
+#define BNNSynthesizeDecoderForProperty(property) \
+    self = [super init]; \
+        if (self) { \
+            BNNLogForObject(@"Key:%@", NSStringFromClass([self class])); \
+            self.property = [coder decodeObjectForKey:NSStringFromClass([self class])]; \
+        } \
+    \
+    return self;

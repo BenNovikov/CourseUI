@@ -14,7 +14,6 @@
 
 @implementation BNNImageView
 
-
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -41,12 +40,7 @@
 #pragma mark -
 #pragma mark BNNObservableModel
 
-//- (void)modelWillLoad:(id)model {
-//    
-//}
-
 - (void)modelDidLoad:(id)model {
-    
     [self fillWithModel:model];
 }
 

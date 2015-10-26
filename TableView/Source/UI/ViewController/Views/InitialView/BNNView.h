@@ -16,13 +16,7 @@
 @property (nonatomic, readonly)                     BNNLoadingView  *loadingView;
 @property (nonatomic, readonly, getter = isVisible) BOOL            visible;
 
-//- (instancetype)initWithFrame:(CGRect)frame;
-//- (instancetype)initWithCoder:(NSCoder *)aDecoder;
-
 - (void)showLoadingView;
 - (void)hideLoadingView;
-//- (BOOL)isLoadingViewVisible;
-
-//- (BNNLoadingView *)newLoadingView;
 
 @end

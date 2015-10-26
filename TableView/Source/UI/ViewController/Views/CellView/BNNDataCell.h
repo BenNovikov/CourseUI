@@ -20,7 +20,7 @@
 
 @interface BNNDataCell : BNNTableViewCell <BNNObservableModel>
 @property (nonatomic, strong) IBOutlet UILabel                  *contentLabel;
-@property (nonatomic, strong) IBOutlet UIImageView              *contentImageView; //UIImageView
+@property (nonatomic, strong) IBOutlet BNNImageView             *contentImageView; //UIImageView
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView  *contentSpinnerView;
 
 @property (nonatomic, strong) BNNDataModel          *model;

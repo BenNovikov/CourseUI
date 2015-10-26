@@ -140,43 +140,30 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
            editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    BOOL insertable = (0 == indexPath.row || indexPath.row == self.arrayModel.count - 1);
-//    return insertable ? UITableViewCellEditingStyleNone : UITableViewCellEditingStyleDelete;
-    
+{    
     return UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark -
 #pragma mark BNNObservableModel
 
-- (void)modelDidUnload:(id)model {
-}
-
 - (void)modelWillLoad:(id)model {
-    BNNLogForObject(@"modelWillLoad:%@", model);
     self.dataView.loadingView.visible = YES;
+    BNNLogForObject(@"modelWillLoad:%@", model);
 }
 
 - (void)modelDidLoad:(id)model {
     BNNDataView *view = self.dataView;
     
-    [self.dataView.tableView reloadData];
-    
     view.loadingView.visible = NO;
     BNNLogForObject(@"modelDidLoad:%@", model);
+    
+    [self.dataView.tableView reloadData];
 }
 
 - (void)modelDidChange:(id)changes {
     BNNLogForObject(@"modelDidChange:%@", changes);
     [self.dataView.tableView updateWithChanges:changes];
-    
-    [self.dataView.tableView reloadData];
 }
-
-//- (void)model:(BNNDataArrayModel *)modelArray didChangeWithObject:(BNNDataArrayModelChanges *)changes {
-//    BNNLogForObject(@"model didChangeWithObject: %@", changes);
-//    [self.dataView.tableView updateWithChanges:changes];
-//}
 
 @end
