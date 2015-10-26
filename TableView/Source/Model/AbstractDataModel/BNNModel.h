@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, BNNDataModelState) {
     BNNDataModelDidChange
 };
 
-@interface BNNModel : BNNObservableObject
+@interface BNNModel : BNNObservableObject <BNNObservableModel>
 
 - (void)load;
 - (void)initiateLoading;    //does nothing until reloaded, notify with state in your subclass

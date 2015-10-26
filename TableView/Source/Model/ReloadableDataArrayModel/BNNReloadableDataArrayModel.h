@@ -7,9 +7,8 @@
 //
 
 #import "BNNDataArrayModel.h"
-#import "BNNObservableModel.h"
 
-@interface BNNReloadableDataArrayModel : BNNDataArrayModel //<BNNObservableModel>
+@interface BNNReloadableDataArrayModel : BNNDataArrayModel
 
 - (void)save;
 

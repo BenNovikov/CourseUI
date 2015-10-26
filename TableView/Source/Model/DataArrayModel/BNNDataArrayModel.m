@@ -13,7 +13,7 @@
 
 #import "NSIndexPath+BNNExtensions.h"
 
-//static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
+static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 
 @interface BNNDataArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableModelArray;
@@ -145,30 +145,20 @@
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    
-    // The following commented code...
-    /*
      NSString *kBNNMutableModelArrayKey = NSStringFromClass([self class]);
      BNNLogForObject(@"Key:%@", kBNNMutableModelArrayKey);
      [coder encodeObject:self.mutableModelArray forKey:kBNNMutableModelArrayKey];
-     */
-    // ... is ABSOLUTELY THE SAME as this Macro deleted before:
-
-    BNNSynthesizeEncoderForProperty(mutableModelArray);
-    
-    // just some logs to make the case OBVIOUS were added
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
-//    self = [super init];
-//    if (self) {
-//        NSString *kBNNMutableModelArrayKey = NSStringFromClass([self class]);
-//        BNNLogForObject(@"Key:%@", kBNNMutableModelArrayKey);
-//        self.mutableModelArray = [coder decodeObjectForKey:kBNNMutableModelArrayKey];
-//    }
-//    
-//    return self;
-    BNNSynthesizeDecoderForProperty(mutableModelArray);
+    self = [super init];
+    if (self) {
+        NSString *kBNNMutableModelArrayKey = NSStringFromClass([self class]);
+        BNNLogForObject(@"Key:%@", kBNNMutableModelArrayKey);
+        self.mutableModelArray = [coder decodeObjectForKey:kBNNMutableModelArrayKey];
+    }
+    
+    return self;
 }
 
 @end

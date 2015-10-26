@@ -30,9 +30,9 @@
     UITableView *tableView = self;
     
     [tableView beginUpdates];
-    
-    [changes applyToTableView:tableView];
-
+    @synchronized(self) {
+        [changes applyToTableView:tableView];
+    }
     [tableView endUpdates];
     [self reloadData];
 }

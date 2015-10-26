@@ -45,8 +45,8 @@
     return self;
 }
 
+//move to changingPaths
 - (void)applyToTableView:(UITableView *)tableView {
-    
     switch (self.state) {
         case BNNDataArrayModelInsert:
             [tableView insertRowsAtIndexPaths:@[self.paths.destinationPath]

@@ -52,6 +52,7 @@ static NSUInteger const kBNNArraySleepDuration  = 2;
     self = [super init];
     if (self) {
         [self subscribeToApplicationNotifications:self.notificationNames];
+        
     }
     
     return self;

@@ -52,12 +52,14 @@
 }
 
 - (void)setState:(NSUInteger)state withObject:(id)object {
-    if (_state != state) {
-        _state = state;
-    }
-    
-    if (self.shouldNotify) {
-        [self notifyObserversWithSelector:[self selectorForState:_state] withObject:object];
+    @synchronized(self) {
+        if (_state != state) {
+            _state = state;
+        }
+        
+        if (self.shouldNotify) {
+            [self notifyObserversWithSelector:[self selectorForState:_state] withObject:object];
+        }
     }
 }
 
@@ -100,7 +102,7 @@
         if ([observer respondsToSelector:selector]) {
 //            [observer performSelectorOnMainThread:selector withObject:object waitUntilDone:NO];
             BNNDispatchOnMainQueue(^{
-                [observer performSelector:selector withObject:object];
+                [observer performSelector:selector withObject:self withObject:object];
             });
         }
     }

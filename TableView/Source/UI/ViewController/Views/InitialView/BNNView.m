@@ -40,13 +40,11 @@
 
 - (void)showLoadingView {
     [self bringSubviewToFront:self.loadingView];
-    [self.loadingView setVisible:YES];
+    self.loadingView.visible = YES;
 }
 
 - (void)hideLoadingView {
-    BNNLoadingView *view = self.loadingView;
-    [view setVisible:NO];
-    [view removeFromSuperview];
+    self.loadingView.visible = NO;
 }
 
 @end

@@ -31,6 +31,7 @@
     
     BNNDataViewController *controller = [BNNDataViewController new];
     controller.arrayModel = dataArray;
+    
     self.window.rootViewController = controller;
     
     [window makeKeyAndVisible];

@@ -48,8 +48,7 @@
 #pragma mark BNNObservableModel
 
 - (void)modelDidLoad:(id)model {
-    //model is empty now
-    model = self.model;
+    [self fillWithModel:model];
     
     [self.contentSpinnerView stopAnimating];
 }

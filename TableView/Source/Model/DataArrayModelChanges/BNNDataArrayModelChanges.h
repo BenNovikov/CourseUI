@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BNNDataArrayModelChangingPaths.h"
+#import "BNNObservableModel.h"
 
 typedef NS_ENUM(NSUInteger, BNNDataArrayModelChangesState) {
     BNNDataArrayModelInsert,
@@ -16,7 +17,7 @@ typedef NS_ENUM(NSUInteger, BNNDataArrayModelChangesState) {
     BNNDataArrayModelMove
 };
 
-@interface BNNDataArrayModelChanges : NSObject
+@interface BNNDataArrayModelChanges : NSObject <BNNObservableModel>
 @property (nonatomic, readonly) BNNDataArrayModelChangesState   state;
 @property (nonatomic, readonly) BNNDataArrayModelChangingPaths  *paths;
 

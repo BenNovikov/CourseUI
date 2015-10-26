@@ -161,7 +161,7 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
     [self.dataView.tableView reloadData];
 }
 
-- (void)modelDidChange:(id)changes {
+- (void)model:(id)model didChangeWithObject:(id)changes {
     BNNLogForObject(@"modelDidChange:%@", changes);
     [self.dataView.tableView updateWithChanges:changes];
 }

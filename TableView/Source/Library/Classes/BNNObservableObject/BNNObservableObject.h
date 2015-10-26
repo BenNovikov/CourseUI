@@ -20,7 +20,7 @@
 - (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object;
 
 - (SEL)selectorForState:(NSUInteger)state;
-- (void)setState:(NSUInteger)state;
+//- (void)setState:(NSUInteger)state;
 - (void)setState:(NSUInteger)state withObject:(id)object;
 
 - (void)performBlock:(void(^)(void))block shouldNotify:(BOOL)shouldNotify;

@@ -56,8 +56,8 @@
             return @selector(modelDidFailLoading:);
             
         case BNNDataModelDidChange:
-            return @selector(modelDidChange:);
-//            return @selector(model:didChangeWithObject:);
+//            return @selector(modelDidChange:);
+            return @selector(model:didChangeWithObject:);
             
         default:
             return [super selectorForState:state];

@@ -79,17 +79,3 @@
     #define BNNLogLoadingPerformed
     #define BNNLogForObject
 #endif
-
-// Restored <NSCoding> macros
-#define BNNSynthesizeEncoderForProperty(property) \
-    BNNLogForObject(@"Key:%@", NSStringFromClass([self class])); \
-    [coder encodeObject:self.property forKey:NSStringFromClass([self class])];
-
-#define BNNSynthesizeDecoderForProperty(property) \
-    self = [super init]; \
-        if (self) { \
-            BNNLogForObject(@"Key:%@", NSStringFromClass([self class])); \
-            self.property = [coder decodeObjectForKey:NSStringFromClass([self class])]; \
-        } \
-    \
-    return self;
