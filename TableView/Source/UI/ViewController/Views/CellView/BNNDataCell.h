@@ -10,17 +10,17 @@
 
 #import "BNNTableViewCell.h"
 
+#import "BNNImageView.h"
 #import "BNNLoadingView.h"
 #import "BNNObservableObject.h"
 
 #import "BNNObservableModel.h"
 
 @class BNNDataModel;
-@class BNNImageView;
 
 @interface BNNDataCell : BNNTableViewCell <BNNObservableModel>
 @property (nonatomic, strong) IBOutlet UILabel                  *contentLabel;
-@property (nonatomic, strong) IBOutlet BNNImageView             *contentImageView;
+@property (nonatomic, strong) IBOutlet UIImageView              *contentImageView; //UIImageView
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView  *contentSpinnerView;
 
 @property (nonatomic, strong) BNNDataModel          *model;

@@ -7,7 +7,6 @@
 //
 
 #import "BNNObservableObject.h"
-
 #import "BNNObservableModel.h"
 #import "BNNDispatch.h"
 #import "BNNMacros.h"

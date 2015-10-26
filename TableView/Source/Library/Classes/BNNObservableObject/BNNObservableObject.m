@@ -13,6 +13,7 @@
 
 @interface BNNObservableObject ()
 @property (nonatomic, strong)   NSHashTable *observers;
+@property (nonatomic, assign)   BOOL        shouldNotify;
 
 @end
 
@@ -27,6 +28,7 @@
     self = [super init];
     if (self) {
         self.observers = [NSHashTable weakObjectsHashTable];
+        self.shouldNotify = YES;
     }
     
     return self;
@@ -42,6 +44,20 @@
 - (NSSet *)observerSet {
     @synchronized(self) {
         return [self.observers copy];
+    }
+}
+
+- (void)setState:(NSUInteger)state {
+    [self setState:state withObject:nil];
+}
+
+- (void)setState:(NSUInteger)state withObject:(id)object {
+    if (_state != state) {
+        _state = state;
+    }
+    
+    if (self.shouldNotify) {
+        [self notifyObserversWithSelector:[self selectorForState:_state] withObject:object];
     }
 }
 
@@ -92,17 +108,19 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     // to be overloaded in subclasses
-    return NULL;
+    return nil;
 }
 
-- (void)setState:(NSUInteger)state {
-    [self setState:state withObject:nil];
-}
-
-- (void)setState:(NSUInteger)state withObject:(id)object {
-        _state = state;
+- (void)performBlock:(void(^)(void))block shouldNotify:(BOOL)shouldNotify {
+    @synchronized(self) {
+        BOOL cachedState = self.shouldNotify;
+        self.shouldNotify = shouldNotify;
+        if (block) {
+            block();
+        }
         
-        [self notifyObserversWithSelector:[self selectorForState:_state] withObject:object];
+        self.shouldNotify = cachedState;
+    }
 }
 
 @end

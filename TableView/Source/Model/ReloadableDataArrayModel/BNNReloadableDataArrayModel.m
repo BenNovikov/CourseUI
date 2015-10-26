@@ -1,12 +1,12 @@
 //
-//  BNNArrayModel.m
+//  BNNReloadableDataArrayModel.m
 //  CourseUI
 //
 //  Created by Home on 15/10/23.
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNArrayModel.h"
+#import "BNNReloadableDataArrayModel.h"
 
 #import "BNNDataModel.h"
 #import "BNNDispatch.h"
@@ -15,13 +15,13 @@
 #import "NSFileManager+Extensions.h"
 
 static NSUInteger const kBNNDefaultModelsNumber = 10;
-static NSUInteger const kBNNArraySleepDuration  = 3;
+static NSUInteger const kBNNArraySleepDuration  = 2;
 
-@interface BNNArrayModel ()
+@interface BNNReloadableDataArrayModel ()
 @property (nonatomic, readonly) NSString                *fileName;
 @property (nonatomic, readonly) NSString                *fileFolder;
 @property (nonatomic, readonly) NSString                *filePath;
-@property (nonatomic, readonly) NSArray                 *notifications;
+@property (nonatomic, readonly) NSArray                 *notificationNames;
 
 @property (nonatomic, readonly, getter=isCached) BOOL   cached;
 
@@ -32,26 +32,26 @@ static NSUInteger const kBNNArraySleepDuration  = 3;
 
 @end
 
-@implementation BNNArrayModel
+@implementation BNNReloadableDataArrayModel
 
 @dynamic fileName;
 @dynamic fileFolder;
 @dynamic filePath;
 @dynamic cached;
-@dynamic notifications;
+@dynamic notificationNames;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self unsubscribeFromApplicationNotifications:self.notifications];
+    [self unsubscribeFromApplicationNotifications:self.notificationNames];
     [self removeObserver:self];
 }
 
 - (id)init {
     self = [super init];
     if (self) {
-        [self subscribeToApplicationNotifications:self.notifications];
+        [self subscribeToApplicationNotifications:self.notificationNames];
     }
     
     return self;
@@ -72,7 +72,7 @@ static NSUInteger const kBNNArraySleepDuration  = 3;
     return [self.fileFolder stringByAppendingPathComponent:self.fileName];
 }
 
-- (NSArray *)notifications {
+- (NSArray *)notificationNames {
     return @[UIApplicationWillTerminateNotification, UIApplicationWillResignActiveNotification];
 
 }
@@ -93,9 +93,10 @@ static NSUInteger const kBNNArraySleepDuration  = 3;
 
 - (void)performLoading {
     id block = nil;
-    if (self.cached) {
+    if (self.isCached) {
         BNNSleep(kBNNArraySleepDuration);
         id objects = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
+        
         block = ^{
             for (id model in objects) {
                 [self addModel:model];
@@ -107,9 +108,15 @@ static NSUInteger const kBNNArraySleepDuration  = 3;
 		};
     }
     
-    BNNDispatchOnMainQueue(^{
-        self.state = BNNDataModelDidLoad;
-    });
+    [self performBlock:block shouldNotify:NO];
+    
+    BNNDispatchAsyncOnMainThread(^{
+        [self performBlock:^{
+            self.state = BNNDataModelDidLoad;
+        }
+              shouldNotify:YES];
+    });   
+
 }
 
 #pragma mark -
@@ -140,6 +147,11 @@ static NSUInteger const kBNNArraySleepDuration  = 3;
 
 #pragma mark -
 #pragma mark BNNObservableModel
+
+- (void)modelDidChange:(id)model {
+    BNNLogForObject(@"%@ saved", model);
+    [self save];
+}
 
 - (void)model:(id)model didChangeWithObject:(id)object {
     BNNLogForObject(@"%@ saved", self);

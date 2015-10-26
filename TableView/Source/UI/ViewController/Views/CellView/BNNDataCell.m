@@ -9,7 +9,6 @@
 #import "BNNDataCell.h"
 
 #import "BNNDataModel.h"
-#import "BNNImageView.h"
 
 #import "BNNMacros.h"
 
@@ -49,14 +48,9 @@
 #pragma mark BNNObservableModel
 
 - (void)modelDidLoad:(id)model {
+    //model is empty now
+    model = self.model;
     
-    /*
-     *  it comes here only when the table is moved OUT of the screen
-     *  first of all i thought i've got big troubles with notification
-     *  but in a few hours later i guess it should be some kind of other magic 
-    */
-    
-    [self fillWithModel:model];
     [self.contentSpinnerView stopAnimating];
 }
 

@@ -45,4 +45,27 @@
     return self;
 }
 
+- (void)applyToTableView:(UITableView *)tableView {
+    
+    switch (self.state) {
+        case BNNDataArrayModelInsert:
+            [tableView insertRowsAtIndexPaths:@[self.paths.destinationPath]
+                             withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+            
+        case BNNDataArrayModelMove:
+            [tableView moveRowAtIndexPath:self.paths.sourcePath
+                              toIndexPath:self.paths.destinationPath];
+            break;
+            
+        case BNNDataArrayModelDelete:
+            [tableView deleteRowsAtIndexPaths:@[self.paths.destinationPath]
+                             withRowAnimation:UITableViewRowAnimationRight];
+            break;
+            
+        default:
+            break;
+    }
+}
+
 @end

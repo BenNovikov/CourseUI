@@ -8,7 +8,7 @@
 
 #import "BNNModel.h"
 
-@interface BNNDataArrayModel : BNNModel <NSCoding>
+@interface BNNDataArrayModel : BNNModel <NSCoding, NSFastEnumeration>
 
 @property (nonatomic, readonly) NSArray *modelArray;
 

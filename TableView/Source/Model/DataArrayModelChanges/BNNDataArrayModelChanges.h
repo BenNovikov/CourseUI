@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import "BNNDataArrayModelChangingPaths.h"
 
@@ -26,5 +26,7 @@ typedef NS_ENUM(NSUInteger, BNNDataArrayModelChangesState) {
                                withState:(NSUInteger)state;
 
 - (instancetype)initChangesWithPaths:(BNNDataArrayModelChangingPaths *)paths withState:(NSUInteger)state;
+
+- (void)applyToTableView:(UITableView *)tableView;
 
 @end

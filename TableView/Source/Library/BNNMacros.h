@@ -76,7 +76,8 @@
 
 #if BNNDebugMode
     #define BNNLogLoadingInitiated NSLog(@"%@ Load Initiated", self)
-    #define BNNLogLoadingPerformed NSLog(@"%@ Load Performed State: %@", self, NSStringFromSelector([self selectorForState:self.state]))
+    #define BNNLogLoadingPerformed \
+        NSLog(@"%@ Load Performed State: %@", self, NSStringFromSelector([self selectorForState:self.state]))
     #define BNNLogForObject(log, object) NSLog(log, object)
 #else
     #define BNNLogLoadingInitiated

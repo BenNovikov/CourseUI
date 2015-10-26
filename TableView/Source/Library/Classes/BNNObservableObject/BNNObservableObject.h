@@ -10,7 +10,7 @@
 
 @interface BNNObservableObject : NSObject
 @property (nonatomic, readonly) NSSet       *observerSet;
-@property (atomic, assign)      NSUInteger  state;
+@property (nonatomic, assign)   NSUInteger  state;
 
 - (void)addObserver:(id)observer;
 - (void)removeObserver:(id)observer;
@@ -22,5 +22,7 @@
 - (SEL)selectorForState:(NSUInteger)state;
 - (void)setState:(NSUInteger)state;
 - (void)setState:(NSUInteger)state withObject:(id)object;
+
+- (void)performBlock:(void(^)(void))block shouldNotify:(BOOL)shouldNotify;
 
 @end

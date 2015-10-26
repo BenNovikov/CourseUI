@@ -13,7 +13,7 @@
 #import "BNNDataView.h"
 #import "BNNDataModel.h"
 #import "BNNDataArrayModel.h"
-//#import "BNNDataArrayModelChanges.h"
+#import "BNNDataArrayModelChanges.h"
 
 #import "UITableView+BNNExtensions.h"
 #import "BNNMacros.h"
@@ -77,6 +77,8 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
     [super viewDidLoad];
 
     [self.arrayModel load];
+    
+    BNNLogForObject(@"arrayModel:%@", self.arrayModel);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +107,8 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     [self.dataView.tableView setEditing:editing animated:animated];
+    
+    [self.dataView.tableView reloadData];
 }
 
 - (void)    tableView:(UITableView *)tableView
@@ -156,7 +160,9 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (void)modelDidLoad:(id)model {
     BNNDataView *view = self.dataView;
-    [view.tableView reloadData];
+    
+    [self.dataView.tableView reloadData];
+    
     view.loadingView.visible = NO;
     BNNLogForObject(@"modelDidLoad:%@", model);
 }
@@ -165,15 +171,12 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
     BNNLogForObject(@"modelDidChange:%@", changes);
     [self.dataView.tableView updateWithChanges:changes];
     
-    /*
-     *  this helps to reload image but this way sucks!
-     */
-//    [self.dataView.tableView reloadData];
+    [self.dataView.tableView reloadData];
 }
 
-- (void)model:(BNNDataArrayModel *)modelArray didChangeWithObject:(BNNDataArrayModelChanges *)changes {
-    BNNLogForObject(@"model didChangeWithObject: %@", changes);
-    [self.dataView.tableView updateWithChanges:changes];
-}
+//- (void)model:(BNNDataArrayModel *)modelArray didChangeWithObject:(BNNDataArrayModelChanges *)changes {
+//    BNNLogForObject(@"model didChangeWithObject: %@", changes);
+//    [self.dataView.tableView updateWithChanges:changes];
+//}
 
 @end

@@ -36,9 +36,6 @@
 }
 
 - (void)performLoading {
-    /* use this in subclasses to log 
-     performLoading in DebugMode: */
-    //    BNNLogLoadingPerformed;
 }
 
 #pragma mark -
@@ -59,7 +56,8 @@
             return @selector(modelDidFailLoading:);
             
         case BNNDataModelDidChange:
-            return @selector(model:didChangeWithObject:);
+            return @selector(modelDidChange:);
+//            return @selector(model:didChangeWithObject:);
             
         default:
             return [super selectorForState:state];

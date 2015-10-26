@@ -11,7 +11,7 @@
 #import "NSString+BNNExtensions.h"
 #import "BNNMacros.h"
 
-static NSString * const kBNNTextKey = @"text";
+//static NSString * const kBNNTextKey = @"text";
 static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2015/04/15/10/griner3.jpg";
 
 @interface BNNDataModel()
@@ -39,11 +39,6 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 }
 
 #pragma mark -
-#pragma mark Accesors
-
-//reserved
-
-#pragma mark -
 #pragma mark BNNModel
 
 - (void)performLoading {
@@ -65,13 +60,18 @@ static NSString * const kBNNURL     = @"http://static.standard.co.uk/s3fs-public
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.text forKey:kBNNTextKey]; //property
+    NSString *kBNNTextKey = NSStringFromClass([self class]);
+    BNNLogForObject(@"Key:%@", kBNNTextKey);
+    [coder encodeObject:self.text forKey:kBNNTextKey];
+
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super init];
     if (self) {
-        self.text = [coder decodeObjectForKey:kBNNTextKey]; //property
+        NSString *kBNNTextKey = NSStringFromClass([self class]);
+        BNNLogForObject(@"Key:%@", kBNNTextKey);
+        self.text = [coder decodeObjectForKey:kBNNTextKey];
     }
     
     return self;

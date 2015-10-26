@@ -28,28 +28,13 @@
 
 - (void)updateWithChanges:(BNNDataArrayModelChanges *)changes {
     UITableView *tableView = self;
-    NSIndexPath *destination = changes.paths.destinationPath;
     
     [tableView beginUpdates];
     
-    switch (changes.state) {
-        case BNNDataArrayModelInsert:
-            [tableView insertRowsAtIndexPaths:@[destination] withRowAnimation:UITableViewRowAnimationLeft];
-            break;
-            
-        case BNNDataArrayModelMove:
-            [tableView moveRowAtIndexPath:changes.paths.sourcePath toIndexPath:destination];
-            break;
-            
-        case BNNDataArrayModelDelete:
-            [tableView deleteRowsAtIndexPaths:@[destination] withRowAnimation:UITableViewRowAnimationRight];
-            break;
-            
-        default:
-            break;
-    }
-    
+    [changes applyToTableView:tableView];
+
     [tableView endUpdates];
+    [self reloadData];
 }
 
 @end

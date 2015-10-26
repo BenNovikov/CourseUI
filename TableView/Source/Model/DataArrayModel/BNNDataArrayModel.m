@@ -13,7 +13,7 @@
 
 #import "NSIndexPath+BNNExtensions.h"
 
-static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
+//static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 
 @interface BNNDataArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableModelArray;
@@ -78,14 +78,13 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 }
 
 - (void)addModel:(id)model {
-    NSUInteger index = [self.mutableModelArray count];
-    [self insertModel:model atIndex:index];
+    [self insertModel:model atIndex:self.mutableModelArray.count];
 }
 
 - (void)insertModel:(id)model atIndex:(NSUInteger)index {
     @synchronized (self) {
         NSMutableArray *array = self.mutableModelArray;
-        if ([array count]) {
+        if (index < [array count]) {
             [array insertObject:model atIndex:index];
         } else {
             [array addObject:model];
@@ -121,35 +120,41 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
     [self setState:BNNDataModelDidChange withObject:changes];
 }
 
-//- (void)addModelsFromArray:(NSArray *)anArray {
-//    
-//}
-//
-//- (void)removeModelsInArray:(NSArray *)anArray {
-//    
-//}
-
 #pragma mark -
 #pragma mark BNNModel
 
 - (void)performLoading {
-    
-    //dispatch on main thread
     self.state = BNNDataModelDidLoad;
     
     BNNLogLoadingPerformed;
 }
 
 #pragma mark -
+#pragma mark NSFastEnumeration protocol
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                  objects:(__unsafe_unretained id[])buffer
+                                    count:(NSUInteger)len
+{
+    return [self.mutableModelArray countByEnumeratingWithState:state
+                                                       objects:buffer
+                                                         count:len];
+}
+
+#pragma mark -
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
+    NSString *kBNNMutableModelArrayKey = NSStringFromClass([self class]);
+    BNNLogForObject(@"Key:%@", kBNNMutableModelArrayKey);
     [coder encodeObject:self.mutableModelArray forKey:kBNNMutableModelArrayKey];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super init];
     if (self) {
+        NSString *kBNNMutableModelArrayKey = NSStringFromClass([self class]);
+        BNNLogForObject(@"Key:%@", kBNNMutableModelArrayKey);
         self.mutableModelArray = [coder decodeObjectForKey:kBNNMutableModelArrayKey];
     }
     
