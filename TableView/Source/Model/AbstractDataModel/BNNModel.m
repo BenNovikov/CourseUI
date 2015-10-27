@@ -7,6 +7,7 @@
 //
 
 #import "BNNModel.h"
+#import "BNNModelObserver.h"
 
 @implementation BNNModel
 
@@ -39,7 +40,7 @@
 }
 
 #pragma mark -
-#pragma mark BNNObservableModel
+#pragma mark BNNModelObserver
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch(state) {
@@ -56,7 +57,6 @@
             return @selector(modelDidFailLoading:);
             
         case BNNDataModelDidChange:
-//            return @selector(modelDidChange:);
             return @selector(model:didChangeWithObject:);
             
         default:

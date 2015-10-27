@@ -45,14 +45,12 @@ static NSUInteger const kBNNArraySleepDuration  = 2;
 
 - (void)dealloc {
     [self unsubscribeFromApplicationNotifications:self.notificationNames];
-    [self removeObserver:self];
 }
 
 - (id)init {
     self = [super init];
     if (self) {
         [self subscribeToApplicationNotifications:self.notificationNames];
-        
     }
     
     return self;
@@ -146,17 +144,17 @@ static NSUInteger const kBNNArraySleepDuration  = 2;
     }
 }
 
-#pragma mark -
-#pragma mark BNNObservableModel
-
-- (void)modelDidChange:(id)model {
-    BNNLogForObject(@"%@ saved", model);
-    [self save];
-}
-
-- (void)model:(id)model didChangeWithObject:(id)object {
-    BNNLogForObject(@"%@ saved", self);
-    [self save];
-}
+//#pragma mark -
+//#pragma mark BNNModelObserver
+//
+//- (void)modelDidChange:(id)model {
+//    BNNLogForObject(@"%@ saved", model);
+//    [self save];
+//}
+//
+//- (void)model:(id)model didChangeWithObject:(id)object {
+//    BNNLogForObject(@"%@ saved", self);
+//    [self save];
+//}
 
 @end

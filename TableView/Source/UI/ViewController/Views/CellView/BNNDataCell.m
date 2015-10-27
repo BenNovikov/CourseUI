@@ -45,7 +45,7 @@
 }
 
 #pragma mark -
-#pragma mark BNNObservableModel
+#pragma mark BNNModelObserver
 
 - (void)modelDidLoad:(id)model {
     [self fillWithModel:model];

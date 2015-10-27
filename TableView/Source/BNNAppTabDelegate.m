@@ -53,7 +53,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [self.model save];
+    //[self.model save];
 }
 
 @end

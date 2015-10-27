@@ -7,7 +7,6 @@
 //
 
 #import "BNNObservableObject.h"
-#import "BNNObservableModel.h"
 #import "BNNDispatch.h"
 #import "BNNMacros.h"
 
@@ -19,10 +18,10 @@ typedef NS_ENUM(NSUInteger, BNNDataModelState) {
     BNNDataModelDidChange
 };
 
-@interface BNNModel : BNNObservableObject <BNNObservableModel>
+@interface BNNModel : BNNObservableObject
 
 - (void)load;
-- (void)initiateLoading;    //does nothing until reloaded, notify with state in your subclass
+- (void)initiateLoading;    //does nothing until reloaded
 - (void)performLoading;     //does nothing until reloaded, notify with state in your subclass
 
 @end

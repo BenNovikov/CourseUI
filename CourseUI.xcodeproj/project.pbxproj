@@ -164,7 +164,7 @@
 		F461D58F1BCC4A4A007FA69C /* BNNDataArrayModelChangingPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNNDataArrayModelChangingPaths.m; path = Source/Model/DataArrayModelChanges/BNNDataArrayModelChangingPaths/BNNDataArrayModelChangingPaths.m; sourceTree = "<group>"; };
 		F461D5921BCC4D97007FA69C /* NSIndexPath+BNNExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSIndexPath+BNNExtensions.h"; path = "NSIndexPath/NSIndexPath+BNNExtensions.h"; sourceTree = "<group>"; };
 		F461D5931BCC4D97007FA69C /* NSIndexPath+BNNExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSIndexPath+BNNExtensions.m"; path = "NSIndexPath/NSIndexPath+BNNExtensions.m"; sourceTree = "<group>"; };
-		F4E410221BD97C4B001AE1A9 /* BNNObservableModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BNNObservableModel.h; path = Source/Model/AbstractDataModel/BNNObservableModel.h; sourceTree = "<group>"; };
+		F4E410221BD97C4B001AE1A9 /* BNNModelObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BNNModelObserver.h; path = Source/Model/AbstractDataModel/BNNModelObserver.h; sourceTree = "<group>"; };
 		F4E410231BD9AFC9001AE1A9 /* BNNReloadableDataArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNNReloadableDataArrayModel.h; sourceTree = "<group>"; };
 		F4E410241BD9AFC9001AE1A9 /* BNNReloadableDataArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNNReloadableDataArrayModel.m; sourceTree = "<group>"; };
 		F4E410271BD9BAF6001AE1A9 /* NSFileManager+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Extensions.h"; path = "NSFileManager/NSFileManager+Extensions.h"; sourceTree = "<group>"; };
@@ -401,7 +401,7 @@
 			children = (
 				8455151F1BB87B55003AD071 /* BNNModel.h */,
 				845515201BB87B55003AD071 /* BNNModel.m */,
-				F4E410221BD97C4B001AE1A9 /* BNNObservableModel.h */,
+				F4E410221BD97C4B001AE1A9 /* BNNModelObserver.h */,
 			);
 			name = AbstractDataModel;
 			sourceTree = "<group>";

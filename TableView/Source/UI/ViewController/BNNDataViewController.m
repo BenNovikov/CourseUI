@@ -18,8 +18,6 @@
 #import "UITableView+BNNExtensions.h"
 #import "BNNMacros.h"
 
-//static double const BNNOnTapDelayInSeconds = 0.2;
-
 BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 @implementation BNNDataViewController
@@ -33,9 +31,6 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
 
     return self;
 }
@@ -52,17 +47,6 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 
 - (IBAction)onTapAddButton:(id)sender {
     [self.arrayModel addModel:[BNNDataModel dataModel]];
- 
-//    They say there is no need to control double taps. So let it be cleaned away, a bit later.
-//
-//    UIApplication *sharedApp = [UIApplication sharedApplication];
-//    [sharedApp beginIgnoringInteractionEvents];
-//    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC * BNNOnTapDelayInSeconds));
-//    dispatch_after(time, dispatch_get_main_queue(), ^(void) {
-//        if ([sharedApp isIgnoringInteractionEvents]) {
-//            [sharedApp endIgnoringInteractionEvents];
-//        }
-//    });
 }
 
 - (IBAction)onTapEditButton:(id)sender {
@@ -145,7 +129,7 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
 }
 
 #pragma mark -
-#pragma mark BNNObservableModel
+#pragma mark BNNModelObserver
 
 - (void)modelWillLoad:(id)model {
     self.dataView.loadingView.visible = YES;

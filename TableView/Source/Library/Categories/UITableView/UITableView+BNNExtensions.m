@@ -30,11 +30,10 @@
     UITableView *tableView = self;
     
     [tableView beginUpdates];
-    @synchronized(self) {
-        [changes applyToTableView:tableView];
-    }
+
+    [changes applyToTableView:tableView];
+
     [tableView endUpdates];
-    [self reloadData];
 }
 
 @end

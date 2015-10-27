@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BNNObservableModel.h"
+#import "BNNModelObserver.h"
 
 @class BNNDataArrayModel;
 
-@interface BNNDataViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, BNNObservableModel>
+@interface BNNDataViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, BNNModelObserver>
 @property (nonatomic, strong)   BNNDataArrayModel   *arrayModel;
 
 - (IBAction)onTapAddButton:(id)sender;

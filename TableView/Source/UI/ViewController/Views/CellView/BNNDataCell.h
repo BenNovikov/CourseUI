@@ -14,11 +14,11 @@
 #import "BNNLoadingView.h"
 #import "BNNObservableObject.h"
 
-#import "BNNObservableModel.h"
+#import "BNNModelObserver.h"
 
 @class BNNDataModel;
 
-@interface BNNDataCell : BNNTableViewCell <BNNObservableModel>
+@interface BNNDataCell : BNNTableViewCell <BNNModelObserver>
 @property (nonatomic, strong) IBOutlet UILabel                  *contentLabel;
 @property (nonatomic, strong) IBOutlet BNNImageView             *contentImageView; //UIImageView
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView  *contentSpinnerView;
