@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/Library/Classes/BNNObservableObject/BNNObservableObject.m"
-            timestampString = "467506986.800852"
+            timestampString = "467859487.088885"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131">
+            startingLineNumber = "124"
+            endingLineNumber = "124">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -235,12 +235,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/Model/ImageModel/BNNImageModel.m"
-            timestampString = "466910010.404306"
+            timestampString = "467859125.492926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-initiateLoading"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-performLoading"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -251,12 +251,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/UI/ViewController/BNNDataViewController.m"
-            timestampString = "467086483.967162"
+            timestampString = "467844203.293683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-setArrayModel:"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-onTapAddButton:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -326,12 +326,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/UI/ViewController/BNNDataViewController.m"
-            timestampString = "467511787.005093"
+            timestampString = "467844203.293683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -342,22 +342,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             symbolName = "*0xdd91d5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TableView/Source/Model/ReloadableDataArrayModel/BNNReloadableDataArrayModel.m"
-            timestampString = "467506767.90055"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-modelDidChange:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -385,11 +369,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/Library/Classes/BNNObservableObject/BNNObservableObject.m"
-            timestampString = "467506986.800852"
+            timestampString = "467859487.088885"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-notifyObserversWithSelector:withObject:"
             landmarkType = "5">
             <Locations>
@@ -432,7 +416,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableView/Source/Model/ReloadableDataArrayModel/BNNReloadableDataArrayModel.m"
+            filePath = "TableView/Source/Model/ReloadableDataArrayModel/BNNFileDataArrayModel.m"
             timestampString = "467485192.087007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -498,12 +482,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/UI/ViewController/BNNDataViewController.m"
-            timestampString = "467486436.954139"
+            timestampString = "467844203.293683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-onTapAddButton:"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-onTapEditButton:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -514,13 +498,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/UI/ViewController/BNNDataViewController.m"
-            timestampString = "467518093.684227"
+            timestampString = "467844203.293683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-modelDidChange:"
-            landmarkType = "5">
+            startingLineNumber = "166"
+            endingLineNumber = "166">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -591,12 +573,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/UI/ViewController/BNNDataViewController.m"
-            timestampString = "467500067.924902"
+            timestampString = "467844203.293683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-tableView:moveRowAtIndexPath:toIndexPath:"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-tableView:canEditRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -607,12 +589,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/UI/ViewController/BNNDataViewController.m"
-            timestampString = "467500043.642752"
+            timestampString = "467844203.293683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-tableView:editingStyleForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -623,11 +605,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/BNNAppTabDelegate.m"
-            timestampString = "467500672.04658"
+            timestampString = "467843601.802146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-applicationWillResignActive:"
             landmarkType = "5">
          </BreakpointContent>
@@ -639,11 +621,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableView/Source/BNNAppTabDelegate.m"
-            timestampString = "467500673.827964"
+            timestampString = "467843601.802146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "-applicationWillTerminate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -654,7 +636,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableView/Source/Model/ReloadableDataArrayModel/BNNReloadableDataArrayModel.m"
+            filePath = "TableView/Source/Model/ReloadableDataArrayModel/BNNFileDataArrayModel.m"
             timestampString = "467506767.90055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -670,7 +652,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableView/Source/Model/ReloadableDataArrayModel/BNNReloadableDataArrayModel.m"
+            filePath = "TableView/Source/Model/ReloadableDataArrayModel/BNNFileDataArrayModel.m"
             timestampString = "467506767.90055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -692,7 +674,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
             endingLineNumber = "69"
-            landmarkName = "-encodeWithCoder:"
+            landmarkName = "-initWithCoder:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -718,13 +700,75 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableView/Source/Model/ReloadableDataArrayModel/BNNReloadableDataArrayModel.m"
-            timestampString = "467511991.041076"
+            filePath = "TableView/Source/Model/DataArrayModel/BNNDataArrayModel.m"
+            timestampString = "467850224.800088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "-model:didChangeWithObject:"
+            startingLineNumber = "176"
+            endingLineNumber = "176">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableView/Source/Model/AbstractDataModel/BNNModel.m"
+            timestampString = "467836993.25491"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-load"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BNNModel load]"
+                  moduleName = "TableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/home/Documents/development/CourseUI/TableView/Source/Model/AbstractDataModel/BNNModel.m"
+                  timestampString = "467843811.4539"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "325">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BNNModel load]"
+                  moduleName = "TableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/home/Documents/development/CourseUI/TableView/Source/Model/AbstractDataModel/BNNModel.m"
+                  timestampString = "467843811.454247"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "436">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableView/Source/Model/AbstractDataModel/BNNModel.m"
+            timestampString = "467837559.259338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-selectorForState:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -734,13 +778,77 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableView/Source/Model/DataArrayModel/BNNDataArrayModel.m"
-            timestampString = "467516427.044274"
+            filePath = "TableView/Source/Library/Categories/UITableView/UITableView+BNNExtensions.m"
+            timestampString = "467845619.997828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "-initWithCoder:"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "-updateWithChanges:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableView/Source/Library/Classes/BNNObservableObject/BNNObservableObject.m"
+            timestampString = "467859487.088885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-notifyObserversWithSelector:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableView/Source/Model/FileDataArrayModel/BNNFileDataArrayModel.m"
+            timestampString = "467848121.747706"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-save"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableView/Source/Model/DataArrayModelChanges/BNNDataArrayModelChanges.m"
+            timestampString = "467848705.483263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-applyToTableView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableView/Source/Model/ImageModel/LocalImageModel/BNNLocalImageModel.m"
+            timestampString = "467859125.492926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-fileName"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

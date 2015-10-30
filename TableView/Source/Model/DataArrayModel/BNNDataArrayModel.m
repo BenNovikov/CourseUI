@@ -113,11 +113,17 @@ static NSString * const kBNNMutableModelArrayKey = @"mutableModelArray";
 }
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
-    [self.mutableModelArray exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
-    BNNDataArrayModelChanges *changes = [BNNDataArrayModelChanges changesWithIndicesSource:sourceIndex
-                                                                               destination:destinationIndex
-                                                                                 withState:BNNDataArrayModelMove];
-    [self setState:BNNDataModelDidChange withObject:changes];
+    @synchronized (self) {
+        NSMutableArray *array = self.mutableModelArray;
+        id model = [array objectAtIndex:sourceIndex];
+        [array removeObjectAtIndex:sourceIndex];
+        [array insertObject:model atIndex:destinationIndex];
+        
+        BNNDataArrayModelChanges *changes = [BNNDataArrayModelChanges changesWithIndicesSource:sourceIndex
+                                                                                   destination:destinationIndex
+                                                                                     withState:BNNDataArrayModelMove];
+        [self setState:BNNDataModelDidChange withObject:changes];
+    }
 }
 
 #pragma mark -

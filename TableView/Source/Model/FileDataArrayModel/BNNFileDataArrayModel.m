@@ -1,12 +1,12 @@
 //
-//  BNNReloadableDataArrayModel.m
+//  BNNFileDataArrayModel.m
 //  CourseUI
 //
 //  Created by Home on 15/10/23.
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNReloadableDataArrayModel.h"
+#import "BNNFileDataArrayModel.h"
 
 #import "BNNDataModel.h"
 #import "BNNDispatch.h"
@@ -15,9 +15,9 @@
 #import "NSFileManager+Extensions.h"
 
 static NSUInteger const kBNNDefaultModelsNumber = 10;
-static NSUInteger const kBNNArraySleepDuration  = 2;
+static NSUInteger const kBNNArraySleepDuration  = 1;
 
-@interface BNNReloadableDataArrayModel ()
+@interface BNNFileDataArrayModel ()
 @property (nonatomic, readonly) NSString                *fileName;
 @property (nonatomic, readonly) NSString                *fileFolder;
 @property (nonatomic, readonly) NSString                *filePath;
@@ -32,7 +32,7 @@ static NSUInteger const kBNNArraySleepDuration  = 2;
 
 @end
 
-@implementation BNNReloadableDataArrayModel
+@implementation BNNFileDataArrayModel
 
 @dynamic fileName;
 @dynamic fileFolder;
@@ -45,12 +45,14 @@ static NSUInteger const kBNNArraySleepDuration  = 2;
 
 - (void)dealloc {
     [self unsubscribeFromApplicationNotifications:self.notificationNames];
+    [self removeObserver:self];
 }
 
 - (id)init {
     self = [super init];
     if (self) {
         [self subscribeToApplicationNotifications:self.notificationNames];
+        [self addObserver:self];
     }
     
     return self;
@@ -143,18 +145,5 @@ static NSUInteger const kBNNArraySleepDuration  = 2;
                                                       object:nil];
     }
 }
-
-//#pragma mark -
-//#pragma mark BNNModelObserver
-//
-//- (void)modelDidChange:(id)model {
-//    BNNLogForObject(@"%@ saved", model);
-//    [self save];
-//}
-//
-//- (void)model:(id)model didChangeWithObject:(id)object {
-//    BNNLogForObject(@"%@ saved", self);
-//    [self save];
-//}
 
 @end

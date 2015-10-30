@@ -74,8 +74,8 @@
         NSLog(@"%@ Load Performed State: %@", self, NSStringFromSelector([self selectorForState:self.state]))
     #define BNNLogForObject(log, object) NSLog(log, object)
 #else
-    #define BNNSleep
+    #define BNNSleep(time)
     #define BNNLogLoadingInitiated
     #define BNNLogLoadingPerformed
-    #define BNNLogForObject
+    #define BNNLogForObject(log, object)
 #endif

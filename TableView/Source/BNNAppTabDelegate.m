@@ -7,16 +7,15 @@
 //
 
 #import "BNNAppTabDelegate.h"
+
 #import "BNNDataModel.h"
-#import "BNNReloadableDataArrayModel.h"
+#import "BNNFileDataArrayModel.h"
 #import "BNNDataViewController.h"
 #import "UIWindow+BNNExtensions.h"
 #import "BNNConstants.h"
 
-//static const NSUInteger kBNNDataArrayModelCount = 10;
-
 @interface BNNAppTabDelegate ()
-@property (nonatomic, strong) BNNReloadableDataArrayModel *model;
+@property (nonatomic, strong) BNNFileDataArrayModel *model;
 
 @end
 
@@ -26,7 +25,7 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    BNNReloadableDataArrayModel *dataArray = [[BNNReloadableDataArrayModel alloc] init];
+    BNNFileDataArrayModel *dataArray = [[BNNFileDataArrayModel alloc] init];
     self.model = dataArray;
     
     BNNDataViewController *controller = [BNNDataViewController new];
@@ -53,7 +52,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    //[self.model save];
+    [self.model save];
 }
 
 @end

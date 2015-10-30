@@ -87,26 +87,24 @@
 }
 
 - (void)notifyObserversWithSelector:(SEL)selector {
-    for (id observer in self.observers) {
-        if ([observer respondsToSelector:selector]) {
-//            [observer performSelectorOnMainThread:selector withObject:self waitUntilDone:NO];
-            BNNDispatchOnMainQueue(^{
-                [observer performSelector:selector withObject:self];
-            });
-        }
-    }
+    [self notifyObserversWithSelector:selector withObject:nil];
 }
+
+#pragma mark -
+#pragma mark Some Pragma Needed to Kill WARNING
 
 - (void)notifyObserversWithSelector:(SEL)selector withObject:(id)object {
     for (id observer in self.observers) {
         if ([observer respondsToSelector:selector]) {
-//            [observer performSelectorOnMainThread:selector withObject:object waitUntilDone:NO];
             BNNDispatchOnMainQueue(^{
                 [observer performSelector:selector withObject:self withObject:object];
             });
         }
     }
 }
+
+#pragma mark -
+#pragma mark Some Pragma Needed to Kill WARNING 
 
 - (SEL)selectorForState:(NSUInteger)state {
     // to be overloaded in subclasses

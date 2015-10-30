@@ -27,13 +27,13 @@
 }
 
 - (void)updateWithChanges:(BNNDataArrayModelChanges *)changes {
-    UITableView *tableView = self;
+    [self beginUpdates];
     
-    [tableView beginUpdates];
+    if (changes) {
+        [changes applyToTableView:self];
+    }
 
-    [changes applyToTableView:tableView];
-
-    [tableView endUpdates];
+    [self endUpdates];
 }
 
 @end

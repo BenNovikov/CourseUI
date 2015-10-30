@@ -14,6 +14,7 @@
 #import "BNNDataModel.h"
 #import "BNNDataArrayModel.h"
 #import "BNNDataArrayModelChanges.h"
+#import "BNNFileDataArrayModel.h"
 
 #import "UITableView+BNNExtensions.h"
 #import "BNNMacros.h"
@@ -145,7 +146,7 @@ BNNViewControllerMainViewProperty(BNNDataViewController, dataView, BNNDataView);
     [self.dataView.tableView reloadData];
 }
 
-- (void)model:(id)model didChangeWithObject:(id)changes {
+- (void)model:(BNNFileDataArrayModel *)model didChangeWithObject:(BNNDataArrayModelChanges *)changes {
     BNNLogForObject(@"modelDidChange:%@", changes);
     [self.dataView.tableView updateWithChanges:changes];
 }

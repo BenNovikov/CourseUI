@@ -1,5 +1,5 @@
 //
-//  BNNReloadableDataArrayModel.h
+//  BNNFileDataArrayModel.h
 //  CourseUI
 //
 //  Created by Home on 15/10/23.
@@ -8,7 +8,7 @@
 
 #import "BNNDataArrayModel.h"
 
-@interface BNNReloadableDataArrayModel : BNNDataArrayModel
+@interface BNNFileDataArrayModel : BNNDataArrayModel
 
 - (void)save;
 

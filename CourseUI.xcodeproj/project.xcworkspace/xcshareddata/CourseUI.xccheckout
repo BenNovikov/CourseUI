@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>40A38E8D-9E5D-4AD9-A2D6-1E77867BA722</string>
 	<key>IDESourceControlProjectName</key>
-	<string>CourseUI</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>84F34AB2AD302AB8184C7EEADF1111CB68ED29EC</key>
 		<string>https://github.com/BenNovikov/CourseUI.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CourseUI.xcodeproj</string>
+	<string>CourseUI.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>84F34AB2AD302AB8184C7EEADF1111CB68ED29EC</key>

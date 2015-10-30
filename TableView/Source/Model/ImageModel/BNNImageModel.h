@@ -6,22 +6,24 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
-#import "BNNModel.h"
 #import <UIKit/UIKit.h>
 
-//
-//  prerelease, not finished!
-//
+#import "BNNModel.h"
+#import "BNNImageModelCache.h"
+
+@class BNNImageModelCache;
 
 @interface BNNImageModel : BNNModel
-@property (nonatomic, readonly) UIImage *image;
-@property (nonatomic, readonly) NSURL   *url;
+@property (nonatomic, readonly) UIImage             *image;
+@property (nonatomic, readonly) NSURL               *url;
+@property (nonatomic, readonly) BNNImageModelCache  *cache;
+
++ (BNNImageModelCache *)imageModelCache;
 
 + (instancetype)imageFromURL:(NSURL *)url;
 
 - (instancetype)initWithURL:(NSURL *)url NS_DESIGNATED_INITIALIZER;
 
-//- (void)load;
-- (void)unload;
+
 
 @end

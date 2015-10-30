@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 BenNovikov. All rights reserved.
 //
 
+@class BNNDataArrayModelChanges;
+@class BNNFileDataArrayModel;
+
 @protocol BNNModelObserver <NSObject>
 
 @optional
@@ -13,6 +16,7 @@
 - (void)modelWillLoad:(id)model;
 - (void)modelDidLoad:(id)model;
 - (void)modelDidFailLoading:(id)model;
-- (void)model:(id)model didChangeWithObject:(id)object;
+
+- (void)model:(BNNFileDataArrayModel *)model didChangeWithObject:(BNNDataArrayModelChanges *)changes;
 
 @end

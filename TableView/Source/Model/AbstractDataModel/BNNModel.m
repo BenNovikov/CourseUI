@@ -58,7 +58,7 @@
             
         case BNNDataModelDidChange:
             return @selector(model:didChangeWithObject:);
-            
+
         default:
             return [super selectorForState:state];
     }
